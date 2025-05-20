@@ -11,6 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  disableFocusRing?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   leftIcon,
   rightIcon,
+  disableFocusRing = false,
   ...rest
 }) => {
   // Base classes
@@ -31,15 +33,15 @@ const Button: React.FC<ButtonProps> = ({
     inline-flex items-center justify-center
     transition-colors duration-200
     font-['Poppins'] font-[500]
-    focus:outline-none focus:ring-2 focus:ring-offset-2
+    ${disableFocusRing ? 'focus:outline-none' : 'focus:outline-none focus:ring-2 focus:ring-offset-2'}
   `;
 
   // Variant classes
   const variantClasses = {
-    primary: 'bg-[#1dbf73] text-white hover:bg-[#19a563] focus:ring-[#1dbf73]',
-    secondary: 'bg-[#1f1f1f] text-white hover:bg-[#333] focus:ring-[#1f1f1f]',
-    outline: 'border border-[#1dbf73] text-[#1dbf73] hover:bg-[#1dbf73] hover:text-white focus:ring-[#1dbf73]',
-    text: 'text-[#1dbf73] hover:underline focus:ring-[#1dbf73]'
+    primary: `bg-[#1dbf73] text-white hover:bg-[#19a563] ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`,
+    secondary: `bg-[#1f1f1f] text-white hover:bg-[#333] ${!disableFocusRing ? 'focus:ring-[#1f1f1f]' : ''}`,
+    outline: `border border-[#1dbf73] text-[#1dbf73] hover:bg-[#1dbf73] hover:text-white ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`,
+    text: `text-[#1dbf73] hover:underline ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`
   };
 
   // Size classes
