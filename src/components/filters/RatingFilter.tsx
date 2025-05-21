@@ -1,4 +1,3 @@
-// src/components/filters/RatingFilter.tsx
 import React from 'react';
 import FilterSection from './FilterSection';
 import StarRating from '../common/StarRating';
