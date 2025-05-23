@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   };
 
   return (
-    <header className="relative w-full max-w-[1434px] mx-auto px-4 mt-4">
+    <header className="relative w-full max-w-[1434px] mx-auto mt-4">
       <Container>
       <div className="flex items-center justify-between h-[2.75rem] md:h-[3.4375rem]">
         {/* Left section: Hamburger (mobile only) and Logo */}
