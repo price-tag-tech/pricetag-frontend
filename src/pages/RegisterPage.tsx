@@ -354,7 +354,7 @@ const RegisterPage: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <div className="items-center px-8 py-6 border-t border-[#e1e1e1]">
+      <div className="items-center px-8 py-6">
         <div className="flex justify-between items-center space-x-6 text-[#444] font-['Poppins'] text-[.8125rem]">
           <span>© Price Tag. {new Date().getFullYear()}</span>
           <div className="space-x-6">
