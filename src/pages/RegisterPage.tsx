@@ -343,7 +343,7 @@ const RegisterPage: React.FC = () => {
                 Already have a Pricetag account? 
               </Link>
               <Link
-                  to="/privacy"
+                  to="/login"
                   className="font-['Poppins'] text-xs font-medium text-[#1dbf73] hover:text-[#16a863] transition-colors"
                 >
                   Log In
