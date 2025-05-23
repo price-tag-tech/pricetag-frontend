@@ -20,6 +20,7 @@ import ReferralProgramPage from './pages/ReferralProgramPage';
 import UserProfilePage from './pages/UserProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
+import Stores from './pages/Stores';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="subscription" element={<SubscriptionPage />} />
           <Route path="referral" element={<ReferralProgramPage />} />
           <Route path="profile" element={<UserProfilePage />} />
+          <Route path="stores" element={<Stores />} />
           
           {/* Dashboard routes */}
           <Route path="dashboard/*" element={<BusinessDashboard />} />
