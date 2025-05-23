@@ -60,7 +60,7 @@ const EmailVerification: React.FC<EmailVerificationProps> = ({
               </p>
             </div>
             
-            <div className="flex gap-3 items-end">
+            <div className="flex gap-3 ml-6 items-end">
               <div className="flex-1">
                 <input
                   type="text"
