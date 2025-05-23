@@ -19,6 +19,7 @@ import SubscriptionPage from './pages/SubscriptionPage';
 import ReferralProgramPage from './pages/ReferralProgramPage';
 import UserProfilePage from './pages/UserProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
+import EmailVerification from './pages/EmailVerification';
 
 function App() {
   return (
@@ -27,8 +28,6 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           {/* Public routes */}
           <Route index element={<HomePage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
           <Route path="products" element={<ProductListingPage />} />
           <Route path="products/search" element={<SearchResultsPage />} />
           <Route path="category/:categoryId" element={<CategoryPage />} />
@@ -44,6 +43,9 @@ function App() {
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="verification" element={<EmailVerification />} />
       </Routes>
     </Router>
   );
