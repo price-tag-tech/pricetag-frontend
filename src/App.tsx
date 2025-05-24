@@ -21,6 +21,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
+import Affiliate from './pages/Affiliate';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="referral" element={<ReferralProgramPage />} />
           <Route path="profile" element={<UserProfilePage />} />
           <Route path="stores" element={<Stores />} />
+          <Route path="become-agent" element={<Affiliate />} />
           
           {/* Dashboard routes */}
           <Route path="dashboard/*" element={<BusinessDashboard />} />
