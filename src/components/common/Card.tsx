@@ -91,6 +91,7 @@ const CardList: React.FC<CardListProps> = ({
     }
   };
 
+  useEffect(() => {
   const handleScroll = () => {
     const scrollContainer = scrollRef.current;
     if (scrollContainer) {
@@ -104,18 +105,17 @@ const CardList: React.FC<CardListProps> = ({
     }
   };
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      handleScroll();
-      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
-      window.addEventListener('resize', handleScroll);
-      return () => {
-        scrollContainer.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleScroll);
-      };
-    }
-  }, []); 
+  const scrollContainer = scrollRef.current;
+  if (scrollContainer) {
+    handleScroll();
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }
+}, [items.length]);
 
   return (
     <div className="relative">
@@ -175,5 +175,7 @@ const Card: React.FC<CardProps> = ({
     </section>
   );
 };
+
+// added to force git recognition
 
 export default Card;
