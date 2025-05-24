@@ -8,6 +8,7 @@ import { DevicePhoneMobileIcon, ComputerDesktopIcon, TagIcon, RocketLaunchIcon }
 import TopStores from "../components/HomePage/TopStores";
 import HelpfulGuides from "../components/HomePage/HelpfulGuides";
 import Button from "../components/common/Button";
+import BecomeAnAgent from "../components/BecomeAnAgent";
 
 
 const HomePage: React.FC = () => {
@@ -242,27 +243,11 @@ const HomePage: React.FC = () => {
 
       <HelpfulGuides/>
 
-      <Section>
-      <div className="py-12 md:py-16 font-['Poppins']">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-emerald-50 rounded-2xl shadow-sm text-center py-12 px-6 sm:py-16 sm:px-8 lg:py-20 lg:px-12">
-            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-800 leading-tight mb-8 md:mb-10 max-w-3xl mx-auto">
-              Become a Pricetag agent and make money on the go!
-            </h2>
-            
-            <Button
-              variant="secondary" 
-              size="lg"          
-              onClick={handleGetStartedClick}
-              
-            >
-              Get started now
-            </Button>
-          </div>
-        </div>
-      </div>
-      </Section>
+      <BecomeAnAgent 
+          heading="Become a Pricetag agent and make money on the go!"
+          buttonText="Get started now"
+          onButtonClick={handleGetStartedClick}
+      />
 
     
       {/* Chat With Support */}
