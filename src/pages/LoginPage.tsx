@@ -5,6 +5,7 @@ import appleImage from "../assets/icons/apple.svg";
 import facebookImage from "../assets/icons/facebook.svg";
 import googleImage from "../assets/icons/google.svg";
 import banner from "../assets/images/banner.svg";
+import { Button } from "@headlessui/react";
 
 interface LoginFormData {
   emailOrUsername: string;
@@ -153,12 +154,12 @@ const LoginPage: React.FC = () => {
                   </Link>
                 </div>
 
-                <button
+                <Button
                   type="submit"
                   className="w-full h-[2.8125rem] rounded-[0.3125rem] bg-[#1f1f1f] text-white font-['Poppins'] text-sm font-semibold hover:bg-black transition-colors"
                 >
                   Log In
-                </button>
+                </Button>
 
                 <div className="relative flex items-center justify-center h-[1.875rem]">
                   <div className="w-full h-px bg-[#e1e1e1]"></div>
