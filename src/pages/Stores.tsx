@@ -51,16 +51,16 @@ const LocationSelector: React.FC<{
   };
 
   return (
-    <div className={`flex items-center w-[17.0625rem] ${className}`}>
-      <div className="text-black font-['Poppins'] text-[.9375rem] font-medium leading-normal mr-3">
+    <div className={`flex flex-col sm:flex-row sm:items-center w-full sm:w-auto ${className}`}>
+      <div className="text-black font-['Poppins'] text-sm sm:text-[.9375rem] font-medium leading-normal mb-2 sm:mb-0 sm:mr-3">
         Location:
       </div>
-      <div className="relative flex-shrink-0 w-[11.875rem] h-10">
+      <div className="relative w-full sm:w-[11.875rem] h-10">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="fit-content h-10 rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center gap-2 px-2 hover:bg-gray-50 transition-colors focus:outline-none focus:border-[#1dbf73]"
+          className="w-full h-10 rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center gap-2 px-3 hover:bg-gray-50 transition-colors focus:outline-none focus:border-[#1dbf73]"
         >
-          <span className="text-[#1f1f1f] font-['Poppins'] text-sm truncate">
+          <span className="text-[#1f1f1f] font-['Poppins'] text-sm truncate flex-1 text-left">
             {formatLocationDisplay(selectedLocation)}
           </span>
           <svg 
@@ -116,19 +116,16 @@ const Stores: React.FC = () => {
 
   const handleLocationChange = (location: Location) => {
     setSelectedLocation(location);
-    // filter stores based on location
     console.log('Location changed to:', location);
   };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement search logic here
     console.log('Searching for:', searchQuery);
   };
 
   const handleFilterToggle = () => {
     setIsFilterOpen(!isFilterOpen);
-    // Implement filter logic here
     console.log('Filter toggled:', !isFilterOpen);
   };
 
@@ -184,7 +181,6 @@ const Stores: React.FC = () => {
       services: 'Dry Cleaning',
       location: { state: 'Oyo', city: 'Ibadan' }
     },
-    // Additional stores for load more functionality
     {
       id: '6',
       owner: 'Sarah Johnson',
@@ -235,7 +231,6 @@ const Stores: React.FC = () => {
   const handleLoadMore = () => {
     setIsLoading(true);
     
-    // Simulate loading delay
     setTimeout(() => {
       setVisibleStores(prev => Math.min(prev + 5, filteredStores.length));
       setIsLoading(false);
@@ -243,34 +238,38 @@ const Stores: React.FC = () => {
   };
 
   const handleVisitStore = (storeId: string) => {
-    // Navigate to store page or handle store visit
     console.log(`Visiting store with ID: ${storeId}`);
   };
 
   return (
     <div className="w-full max-w-[1423px] mx-auto px-4 py-6">
-      {/* Top Section with Location Dropdown */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between">
         <LocationSelector
           selectedLocation={selectedLocation}
           onLocationChange={handleLocationChange}
+          className="lg:flex-shrink-0"
         />
         
         {/* Search and Filter Section */}
-        <div className="flex-shrink-0 w-[414px] h-12 flex items-center gap-3">
-          {/* Search Input */}
-          <form onSubmit={handleSearch} className="relative flex-1">
-            <div className="relative w-[17.9375rem] h-[2.4rem] rounded-lg bg-[#f6f6f6]">
+        <div className="flex gap-3 lg:flex-shrink-0 lg:w-auto">
+          <div className="flex-1 sm:flex-initial">
+            <div className="relative w-full sm:w-[17.9375rem] h-[2.4rem] rounded-lg bg-[#f6f6f6]">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSearch(e);
+                  }
+                }}
                 placeholder="Search for a store"
                 className="w-full h-full rounded-lg bg-transparent px-4 pr-12 text-[#1f1f1f] font-['Poppins'] text-sm focus:outline-none focus:ring-2 focus:ring-[#1dbf73] focus:ring-opacity-50"
               />
               <button
-              title='btn'
-                type="submit"
+                title="Search"
+                onClick={(e) => handleSearch(e)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#1f1f1f] hover:text-[#1dbf73] transition-colors"
               >
                 <svg width={17} height={17} viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -278,27 +277,28 @@ const Stores: React.FC = () => {
                 </svg>
               </button>
             </div>
-          </form>
+          </div>
           
+          {/* Filter Button - Icon only on mobile, full button on larger screens */}
           <button
             onClick={handleFilterToggle}
-            className={`flex-shrink-0 w-[6.25rem] h-10 rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors ${
+            className={`flex-shrink-0 w-10 h-10 sm:w-[6.25rem] rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors ${
               isFilterOpen ? 'bg-[#1dbf73] bg-opacity-10 border-[#1dbf73]' : ''
             }`}
+            title="Filters"
           >
             <svg width={16} height={9} viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0.75C0 0.551088 0.105357 0.360322 0.292893 0.21967C0.48043 0.0790178 0.734784 0 1 0H15C15.2652 0 15.5196 0.0790178 15.7071 0.21967C15.8946 0.360322 16 0.551088 16 0.75C16 0.948912 15.8946 1.13968 15.7071 1.28033C15.5196 1.42098 15.2652 1.5 15 1.5H1C0.734784 1.5 0.48043 1.42098 0.292893 1.28033C0.105357 1.13968 0 0.948912 0 0.75ZM2 4.5C2 4.30109 2.10536 4.11032 2.29289 3.96967C2.48043 3.82902 2.73478 3.75 3 3.75H13C13.2652 3.75 13.5196 3.82902 13.7071 3.96967C13.8946 4.11032 14 4.30109 14 4.5C14 4.69891 13.8946 4.88968 13.7071 5.03033C13.5196 5.17098 13.2652 5.25 13 5.25H3C2.73478 5.25 2.48043 5.17098 2.29289 5.03033C2.10536 4.88968 2 4.69891 2 4.5ZM4 8.25C4 8.05109 4.10536 7.86032 4.29289 7.71967C4.48043 7.57902 4.73478 7.5 5 7.5H11C11.2652 7.5 11.5196 7.57902 11.7071 7.71967C11.8946 7.86032 12 8.05109 12 8.25C12 8.44891 11.8946 8.63968 11.7071 8.78033C11.5196 8.92098 11.2652 9 11 9H5C4.73478 9 4.48043 8.92098 4.29289 8.78033C4.10536 8.63968 4 8.44891 4 8.25Z" fill="#1F1F1F" />
             </svg>
-            <span className="text-[#1f1f1f] font-['Poppins'] text-sm font-medium">
+            <span className="hidden sm:inline text-[#1f1f1f] font-['Poppins'] text-sm font-medium">
               Filters
             </span>
           </button>
         </div>
       </div>
 
-      {/* Table Container */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        {/* Table Header */}
+      {/* Desktop Table View - Hidden on mobile */}
+      <div className="hidden md:block bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div className="w-full border-b border-dashed border-[#676565] bg-gray-50">
           <div className="flex items-center px-6 py-4">
             <div className="flex-1 min-w-[250px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
@@ -327,7 +327,6 @@ const Stores: React.FC = () => {
           {displayedStores.map((store, index) => (
             <div key={store.id} className="w-full">
               <div className="flex items-center px-6 py-4 hover:bg-gray-50 transition-colors">
-                {/* Owner */}
                 <div className="flex-1 min-w-[250px] flex items-center">
                   <div className="w-[3.125rem] h-[3.125rem] rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
                     <img
@@ -345,35 +344,30 @@ const Stores: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Store Name */}
                 <div className="flex-1 min-w-[200px]">
                   <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
                     {store.storeName}
                   </span>
                 </div>
 
-                {/* Product Count */}
                 <div className="flex-1 min-w-[120px]">
                   <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
                     {store.productCount}
                   </span>
                 </div>
 
-                {/* Price Range */}
                 <div className="flex-1 min-w-[180px]">
                   <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
                     {store.priceRange}
                   </span>
                 </div>
 
-                {/* Services */}
                 <div className="flex-1 min-w-[150px]">
                   <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
                     {store.services}
                   </span>
                 </div>
 
-                {/* Visit Store Button */}
                 <div className="w-[140px] flex justify-center">
                   <button
                     onClick={() => handleVisitStore(store.id)}
@@ -386,42 +380,90 @@ const Stores: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Load More Section */}
-        {hasMoreStores && (
-          <div className="border-t border-dashed border-[#676565] bg-gray-50 p-6">
-            <div className="flex justify-center">
-              <button
-                onClick={handleLoadMore}
-                disabled={isLoading}
-                className="w-36 h-12 rounded-lg border border-[#e7e7e9] bg-white text-black font-['Poppins'] text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-              >
-                {isLoading ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2"></div>
-                    Loading...
-                  </div>
-                ) : (
-                  'Load More'
-                )}
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* No More Stores Message */}
-        {!hasMoreStores && filteredStores.length > 5 && (
-          <div className="border-t border-dashed border-[#676565] bg-gray-50 p-6">
-            <div className="text-center text-[#6e6e6e] font-['Poppins'] text-sm">
-              All stores have been loaded
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* Empty State */}
+      <div className="md:hidden space-y-4">
+        {displayedStores.map((store) => (
+          <div key={store.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
+                <img
+                  src={store.ownerImage}
+                  alt={store.owner}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(store.owner)}&background=1dbf73&color=fff&size=48`;
+                  }}
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-[#1f1f1f] font-['Poppins'] text-sm font-semibold truncate">
+                  {store.owner}
+                </h3>
+                <p className="text-[#6e6e6e] font-['Poppins'] text-xs truncate">
+                  {store.storeName}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div>
+                <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Products</p>
+                <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.productCount}</p>
+              </div>
+              <div>
+                <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Services</p>
+                <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.services}</p>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Price Range (₦)</p>
+              <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.priceRange}</p>
+            </div>
+
+            <button
+              onClick={() => handleVisitStore(store.id)}
+              className="w-full h-10 rounded-lg border border-[#1f1f1f] text-[#1f1f1f] font-['Poppins'] text-sm font-medium hover:bg-[#1f1f1f] hover:text-white transition-colors flex items-center justify-center"
+            >
+              Visit store
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {hasMoreStores && (
+        <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="flex justify-center">
+            <button
+              onClick={handleLoadMore}
+              disabled={isLoading}
+              className="w-36 h-12 rounded-lg border border-[#e7e7e9] bg-white text-black font-['Poppins'] text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            >
+              {isLoading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2"></div>
+                  Loading...
+                </div>
+              ) : (
+                'Load More'
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!hasMoreStores && filteredStores.length > 5 && (
+        <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="text-center text-[#6e6e6e] font-['Poppins'] text-sm">
+            All stores have been loaded
+          </div>
+        </div>
+      )}
+
       {filteredStores.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="text-[#6e6e6e] font-['Poppins'] text-lg mb-4">
             {searchQuery ? 
               `No stores found for "${searchQuery}" in ${selectedLocation.state}, ${selectedLocation.city}` :
