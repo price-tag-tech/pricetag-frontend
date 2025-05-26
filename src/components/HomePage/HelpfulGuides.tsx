@@ -42,7 +42,7 @@ const HelpfulGuides: React.FC = () => {
 
   return (
     <div className="bg-white py-12 md:py-16 font-['Poppins']"> 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="sm:px-6 lg:px-8">
         {/* Section Title */}
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-8 md:mb-12">
           Helpful guides to boost your growth

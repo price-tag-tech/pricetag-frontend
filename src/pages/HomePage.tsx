@@ -117,127 +117,127 @@ const HomePage: React.FC = () => {
 
       <PopularProducts />
 
-      {/* Take your business online */}
-      <Section className="bg-green-900 text-white py-16" containerClassName="max-w-7xl px-4 mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        {/* Left Side: Text and Button */}
-        <div className="md:w-1/2">
-          <h2 className="text-4xl font-bold leading-tight">
-            Take your business online and <br /> start selling globally
-          </h2>
-          <div className="mt-6 flex flex-col md:flex-row gap-6">
-            <div className="flex-1">
-              <div className="flex flex-col items-start gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
-                  <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
-                </svg>
-                <div>
-                  <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
-                  <p className="mt-1 text-gray-300 text-sm">
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
+      {/* Take your business online - Full Width Section */}
+      <Section className="bg-green-900 text-white py-16" fullWidth={true}>
+        <div className="max-w-7xl px-4 mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Left Side: Text and Button */}
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold leading-tight">
+              Take your business online and <br /> start selling globally
+            </h2>
+            <div className="mt-6 flex flex-col md:flex-row gap-6">
+              <div className="flex-1">
+                <div className="flex flex-col items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
+                    <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
+                  </svg>
+                  <div>
+                    <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
+                    <p className="mt-1 text-gray-300 text-sm">
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-col items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
+                    <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
+                  </svg>
+                  <div>
+                    <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
+                    <p className="mt-1 text-gray-300 text-sm">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex-1">
-              <div className="flex flex-col items-start gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
-                  <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
-                </svg>
-                <div>
-                  <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
-                  <p className="mt-1 text-gray-300 text-sm">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <Button className="mt-8 bg-white !text-green-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+              Register a store
+            </Button>
           </div>
-          <Button className="mt-8 bg-white !text-green-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-            Register a store
-          </Button>
-        </div>
 
-        {/* Right Side: Image and Overlays */}
-        <div className="md:w-1/2 mt-8 md:mt-0 relative w-full h-[400px]">
-          {/* Shopping Bag Image */}
-          <img
-            src="/bag.jpg"
-            alt="Shopping Bag"
-            className="absolute w-70 h-72 rounded-lg object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-          />
-          {/* Avatar Card */}
-          <div className="absolute flex items-center top-1/3 left-0 transform -translate-y-1/2 bg-white rounded-full p-4 shadow-lg z-10 w-48 h-11">
-            <div className="flex items-center gap-2">
-              <img
-                src="/face.jpg"
-                alt="Avatar"
-                className="w-8 h-8 rounded-full"
-              />
-              <div>
-                <span className="font-medium text-sm text-gray-500">Digital Shopping</span>
-                <p className="text-xs text-gray-500">100% efficiency</p>
+          {/* Right Side: Image and Overlays */}
+          <div className="md:w-1/2 mt-8 md:mt-0 relative w-full h-[400px]">
+            {/* Shopping Bag Image */}
+            <img
+              src="/bag.jpg"
+              alt="Shopping Bag"
+              className="absolute w-70 h-72 rounded-lg object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+            />
+            {/* Avatar Card */}
+            <div className="absolute flex items-center top-1/3 left-0 transform -translate-y-1/2 bg-white rounded-full p-4 shadow-lg z-10 w-48 h-11">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/face.jpg"
+                  alt="Avatar"
+                  className="w-8 h-8 rounded-full"
+                />
+                <div>
+                  <span className="font-medium text-sm text-gray-500">Digital Shopping</span>
+                  <p className="text-xs text-gray-500">100% efficiency</p>
+                </div>
               </div>
             </div>
-          </div>
-          {/* Chart Overlay */}
-          <div className="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow-lg z-8 w-64">
-            <p className="text-sm text-gray-600">Sales Overview</p>
-            <img
-              src="/map.webp"
-              alt="Sales Overview"
-              className="w-full h-24 object-cover"
-            />
+            {/* Chart Overlay */}
+            <div className="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow-lg z-8 w-64">
+              <p className="text-sm text-gray-600">Sales Overview</p>
+              <img
+                src="/map.webp"
+                alt="Sales Overview"
+                className="w-full h-24 object-cover"
+              />
+            </div>
           </div>
         </div>
       </Section>
-
 
       <Section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Heading */}
-        <h2 className="text-2xl md:text-3xl font-semibold mb-12 max-w-lg">
-          Get paid by clients who buy your products and services
-        </h2>
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold mb-12 max-w-lg">
+            Get paid by clients who buy your products and services
+          </h2>
 
-        {/* Icons Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {/* Icon 1 */}
-          <div>
-            <div className="mb-4 flex justify-center">
-              <DevicePhoneMobileIcon className="w-12 h-12  text-gray-800" />
+          {/* Icons Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {/* Icon 1 */}
+            <div>
+              <div className="mb-4 flex justify-center">
+                <DevicePhoneMobileIcon className="w-12 h-12  text-gray-800" />
+              </div>
+              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          </div>
 
-          {/* Icon 2 */}
-          <div>
-            <div className="mb-4 flex justify-center">
-              <ComputerDesktopIcon className="w-12 h-12  text-gray-800" />
+            {/* Icon 2 */}
+            <div>
+              <div className="mb-4 flex justify-center">
+                <ComputerDesktopIcon className="w-12 h-12  text-gray-800" />
+              </div>
+              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          </div>
 
-          {/* Icon 3 */}
-          <div>
-            <div className="mb-4 flex justify-center">
-              <TagIcon className="w-12 h-12  text-gray-800" />
+            {/* Icon 3 */}
+            <div>
+              <div className="mb-4 flex justify-center">
+                <TagIcon className="w-12 h-12  text-gray-800" />
+              </div>
+              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          </div>
 
-          {/* Icon 4 */}
-          <div>
-            <div className="mb-4 flex justify-center">
-              <RocketLaunchIcon className="w-12 h-12 text-gray-800" />
+            {/* Icon 4 */}
+            <div>
+              <div className="mb-4 flex justify-center">
+                <RocketLaunchIcon className="w-12 h-12 text-gray-800" />
+              </div>
+              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
           </div>
         </div>
-      </div>
       </Section>
-
 
       <TopStores />
 
@@ -249,7 +249,6 @@ const HomePage: React.FC = () => {
           onButtonClick={handleGetStartedClick}
       />
 
-    
       {/* Chat With Support */}
       <a
         href="/support"

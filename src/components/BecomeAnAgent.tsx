@@ -28,7 +28,7 @@ const BecomeAnAgent: React.FC<BecomeAnAgentProps> = ({
 
   return (
     <div className="py-12 md:py-16 font-['Poppins']">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`${bgColor} rounded-2xl shadow-sm text-center py-12 px-6 sm:py-16 sm:px-8 lg:py-20 lg:px-12`}>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-800 leading-tight mb-8 md:mb-10 max-w-3xl mx-auto">
