@@ -4,62 +4,66 @@ import SearchBar from "../components/common/SearchBar";
 import Card from "../components/common/Card";
 import debounce from "lodash/debounce";
 import PopularProducts from "../components/HomePage/PopularItems";
-import { DevicePhoneMobileIcon, ComputerDesktopIcon, TagIcon, RocketLaunchIcon } from '@heroicons/react/24/solid';
+import {
+  DevicePhoneMobileIcon,
+  ComputerDesktopIcon,
+  TagIcon,
+  RocketLaunchIcon,
+} from "@heroicons/react/24/solid";
 import TopStores from "../components/HomePage/TopStores";
 import HelpfulGuides from "../components/HomePage/HelpfulGuides";
 import Button from "../components/common/Button";
 import BecomeAnAgent from "../components/BecomeAnAgent";
 
-
 const HomePage: React.FC = () => {
-  //  store data 
+  //  store data
   const stores = useMemo(
-  () => [
-    {
-      name: "Prince G Shop",
-      rating: 1.3,
-      reviews: 0,
-      author: "Ndubuisi Prince Godson",
-      image: "/face.jpg",
-    },
-    {
-      name: "Mee Mee",
-      rating: 4.3,
-      reviews: 10,
-      author: "Ndubuisi Prince Godson",
-      image: "/face.jpg",
-    },
-    {
-      name: "Don Dave",
-      rating: 4.3,
-      reviews: 0,
-      author: "Ndubuisi Prince Godson",
-      image: "",
-    },
-    {
-      name: "Jenny Store",
-      rating: 4.3,
-      reviews: 15,
-      author: "Ndubuisi Prince Godson",
-      image: "",
-    },
-    {
-      name: "Melvin HD",
-      rating: 4.3,
-      reviews: 0,
-      author: "Ndubuisi Prince Godson",
-      image: "",
-    },
-    {
-      name: "Big Daddy Store",
-      rating: 4.3,
-      reviews: 15,
-      author: "Ndubuisi Prince Godson",
-      image: "",
-    },
-  ],
-  [] 
-);
+    () => [
+      {
+        name: "Prince G Shop",
+        rating: 1.3,
+        reviews: 0,
+        author: "Ndubuisi Prince Godson",
+        image: "/face.jpg",
+      },
+      {
+        name: "Mee Mee",
+        rating: 4.3,
+        reviews: 10,
+        author: "Ndubuisi Prince Godson",
+        image: "/face.jpg",
+      },
+      {
+        name: "Don Dave",
+        rating: 4.3,
+        reviews: 0,
+        author: "Ndubuisi Prince Godson",
+        image: "",
+      },
+      {
+        name: "Jenny Store",
+        rating: 4.3,
+        reviews: 15,
+        author: "Ndubuisi Prince Godson",
+        image: "",
+      },
+      {
+        name: "Melvin HD",
+        rating: 4.3,
+        reviews: 0,
+        author: "Ndubuisi Prince Godson",
+        image: "",
+      },
+      {
+        name: "Big Daddy Store",
+        rating: 4.3,
+        reviews: 15,
+        author: "Ndubuisi Prince Godson",
+        image: "",
+      },
+    ],
+    []
+  );
 
   const [filteredStores, setFilteredStores] = useState(stores);
 
@@ -76,23 +80,26 @@ const HomePage: React.FC = () => {
     [stores]
   );
 
- 
   const handleGetStartedClick = () => {
-    console.log('Get started now button clicked!');
+    console.log("Get started now button clicked!");
   };
-         
+
   return (
     <>
       {/* Hero Section */}
-      <Section className="relative text-center py-24" containerClassName="max-w-6xl px-4 mx-auto">
-        <h1 className="text-4xl sm:text-6xl font-extrabold">
+      <Section
+        className="relative text-center py-12 sm:py-16 md:py-20 lg:py-24"
+        containerClassName="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto"
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
           Business at the <br className="hidden sm:block" /> speed of search
         </h1>
-        <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-          Sell, Grow, and Compare Prices with <span className="font-semibold">Price Tag</span>!
+        <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-sm sm:max-w-xl mx-auto px-4 sm:px-0">
+          Sell, Grow, and Compare Prices with{" "}
+          <span className="font-semibold">Price Tag</span>!
         </p>
-        <div className="mt-6 flex justify-center items-center w-full">
-          <div className="mx-auto max-w-[595px]">
+        <div className="mt-6 sm:mt-8 flex justify-center items-center w-full px-4 sm:px-0">
+          <div className="w-full max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[595px]">
             <SearchBar
               onSearch={handleSearch}
               placeholder="Search products, services, or stores..."
@@ -106,7 +113,7 @@ const HomePage: React.FC = () => {
         <Card
           items={filteredStores.map((store) => ({
             ...store,
-            image: store.image || "/placeholder.png", 
+            image: store.image || "/placeholder.png",
           }))}
         />
       ) : (
@@ -128,26 +135,47 @@ const HomePage: React.FC = () => {
             <div className="mt-6 flex flex-col md:flex-row gap-6">
               <div className="flex-1">
                 <div className="flex flex-col items-start gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
-                    <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#4CAF50" />
+                    <path
+                      fill="#FFFFFF"
+                      d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"
+                    />
                   </svg>
                   <div>
-                    <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
+                    <h3 className="text-lg font-semibold">
+                      Lorem ipsum dolor sit amet
+                    </h3>
                     <p className="mt-1 text-gray-300 text-sm">
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="flex-1">
                 <div className="flex flex-col items-start gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#4CAF50"/> 
-                    <path fill="#FFFFFF" d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"/> 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#4CAF50" />
+                    <path
+                      fill="#FFFFFF"
+                      d="M9.5 16.6L5.4 12.5l1.1-1.1 3 3 7-7 1.1 1.1z"
+                    />
                   </svg>
                   <div>
-                    <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet</h3>
+                    <h3 className="text-lg font-semibold">
+                      Lorem ipsum dolor sit amet
+                    </h3>
                     <p className="mt-1 text-gray-300 text-sm">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
@@ -177,7 +205,9 @@ const HomePage: React.FC = () => {
                   className="w-8 h-8 rounded-full"
                 />
                 <div>
-                  <span className="font-medium text-sm text-gray-500">Digital Shopping</span>
+                  <span className="font-medium text-sm text-gray-500">
+                    Digital Shopping
+                  </span>
                   <p className="text-xs text-gray-500">100% efficiency</p>
                 </div>
               </div>
@@ -209,7 +239,9 @@ const HomePage: React.FC = () => {
               <div className="mb-4 flex justify-center">
                 <DevicePhoneMobileIcon className="w-12 h-12  text-gray-800" />
               </div>
-              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p className="text-sm text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
             </div>
 
             {/* Icon 2 */}
@@ -217,7 +249,9 @@ const HomePage: React.FC = () => {
               <div className="mb-4 flex justify-center">
                 <ComputerDesktopIcon className="w-12 h-12  text-gray-800" />
               </div>
-              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p className="text-sm text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
             </div>
 
             {/* Icon 3 */}
@@ -225,7 +259,9 @@ const HomePage: React.FC = () => {
               <div className="mb-4 flex justify-center">
                 <TagIcon className="w-12 h-12  text-gray-800" />
               </div>
-              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p className="text-sm text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
             </div>
 
             {/* Icon 4 */}
@@ -233,7 +269,9 @@ const HomePage: React.FC = () => {
               <div className="mb-4 flex justify-center">
                 <RocketLaunchIcon className="w-12 h-12 text-gray-800" />
               </div>
-              <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p className="text-sm text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
             </div>
           </div>
         </div>
@@ -241,12 +279,12 @@ const HomePage: React.FC = () => {
 
       <TopStores />
 
-      <HelpfulGuides/>
+      <HelpfulGuides />
 
-      <BecomeAnAgent 
-          heading="Become a Pricetag agent and make money on the go!"
-          buttonText="Get started now"
-          onButtonClick={handleGetStartedClick}
+      <BecomeAnAgent
+        heading="Become a Pricetag agent and make money on the go!"
+        buttonText="Get started now"
+        onButtonClick={handleGetStartedClick}
       />
 
       {/* Chat With Support */}
