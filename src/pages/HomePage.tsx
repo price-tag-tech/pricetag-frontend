@@ -1,8 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Section from "../components/layout/Section";
-import SearchBar from "../components/common/SearchBar";
 import Card from "../components/common/Card";
-import debounce from "lodash/debounce";
 import PopularProducts from "../components/HomePage/PopularItems";
 import {
   DevicePhoneMobileIcon,
@@ -14,71 +12,63 @@ import TopStores from "../components/HomePage/TopStores";
 import HelpfulGuides from "../components/HomePage/HelpfulGuides";
 import Button from "../components/common/Button";
 import BecomeAnAgent from "../components/BecomeAnAgent";
+import HeroSection from "../components/HomePage/HeroSection";
+import { useStoreState } from "../store/search-store";
 
 const HomePage: React.FC = () => {
   //  store data
-  const stores = useMemo(
-    () => [
-      {
-        name: "Prince G Shop",
-        rating: 1.3,
-        reviews: 0,
-        author: "Ndubuisi Prince Godson",
-        image: "/face.jpg",
-      },
-      {
-        name: "Mee Mee",
-        rating: 4.3,
-        reviews: 10,
-        author: "Ndubuisi Prince Godson",
-        image: "/face.jpg",
-      },
-      {
-        name: "Don Dave",
-        rating: 4.3,
-        reviews: 0,
-        author: "Ndubuisi Prince Godson",
-        image: "",
-      },
-      {
-        name: "Jenny Store",
-        rating: 4.3,
-        reviews: 15,
-        author: "Ndubuisi Prince Godson",
-        image: "",
-      },
-      {
-        name: "Melvin HD",
-        rating: 4.3,
-        reviews: 0,
-        author: "Ndubuisi Prince Godson",
-        image: "",
-      },
-      {
-        name: "Big Daddy Store",
-        rating: 4.3,
-        reviews: 15,
-        author: "Ndubuisi Prince Godson",
-        image: "",
-      },
-    ],
-    []
-  );
+  // const stores = useMemo(
+  //   () => [
+  //     {
+  //       name: "Prince G Shop",
+  //       rating: 1.3,
+  //       reviews: 0,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "/face.jpg",
+  //     },
+  //     {
+  //       name: "Mee Mee",
+  //       rating: 4.3,
+  //       reviews: 10,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "/face.jpg",
+  //     },
+  //     {
+  //       name: "Don Dave",
+  //       rating: 4.3,
+  //       reviews: 0,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "",
+  //     },
+  //     {
+  //       name: "Jenny Store",
+  //       rating: 4.3,
+  //       reviews: 15,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "",
+  //     },
+  //     {
+  //       name: "Melvin HD",
+  //       rating: 4.3,
+  //       reviews: 0,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "",
+  //     },
+  //     {
+  //       name: "Big Daddy Store",
+  //       rating: 4.3,
+  //       reviews: 15,
+  //       author: "Ndubuisi Prince Godson",
+  //       image: "",
+  //     },
+  //   ],
+  //   []
+  // );
 
-  const [filteredStores, setFilteredStores] = useState(stores);
+  const { filteredStores, isSearching } = useStoreState()
+
 
   // Debounced search function
-  const handleSearch = useMemo(
-    () =>
-      debounce((query: string) => {
-        const results = stores.filter((store) =>
-          store.name.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredStores(results);
-        console.log(`Searching for: ${query}`, results);
-      }, 300),
-    [stores]
-  );
 
   const handleGetStartedClick = () => {
     console.log("Get started now button clicked!");
@@ -87,29 +77,11 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <Section
-        className="relative text-center py-12 sm:py-16 md:py-20 lg:py-24"
-        containerClassName="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto"
-      >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-          Business at the <br className="hidden sm:block" /> speed of search
-        </h1>
-        <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-sm sm:max-w-xl mx-auto px-4 sm:px-0">
-          Sell, Grow, and Compare Prices with{" "}
-          <span className="font-semibold">Price Tag</span>!
-        </p>
-        <div className="mt-6 sm:mt-8 flex justify-center items-center w-full px-4 sm:px-0">
-          <div className="w-full max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[595px]">
-            <SearchBar
-              onSearch={handleSearch}
-              placeholder="Search products, services, or stores..."
-            />
-          </div>
-        </div>
-      </Section>
+      <HeroSection />
+
 
       {/* Top Stores Section */}
-      {filteredStores.length > 0 ? (
+      {isSearching && (filteredStores.length > 0 ? (
         <Card
           items={filteredStores.map((store) => ({
             ...store,
@@ -120,7 +92,7 @@ const HomePage: React.FC = () => {
         <p className="text-center mt-10 text-gray-500 text-lg">
           No stores found matching your search.
         </p>
-      )}
+      ))}
 
       <PopularProducts />
 
