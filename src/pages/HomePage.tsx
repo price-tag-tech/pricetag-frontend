@@ -14,6 +14,7 @@ import Button from "../components/common/Button";
 import BecomeAnAgent from "../components/BecomeAnAgent";
 import HeroSection from "../components/HomePage/HeroSection";
 import { useStoreState } from "../store/search-store";
+import ServiceListing from "../components/sections/services/service-listing";
 
 const HomePage: React.FC = () => {
   //  store data
@@ -93,6 +94,8 @@ const HomePage: React.FC = () => {
           No stores found matching your search.
         </p>
       ))}
+
+      <ServiceListing />
 
       <PopularProducts />
 
