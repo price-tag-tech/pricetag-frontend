@@ -9,9 +9,9 @@ interface ServicesGridProps {
 const ServicesGrid: React.FC<ServicesGridProps> = (props) => {
     return (
         <div className='w-full py-4'>
-            <div className='flex flex-wrap flex-col md:flex-row'>
+            <div className='flex flex-col md:flex-row'>
                 {props.services.map(
-                    (service, index) => <div key={index} className={`w-full md:w-1/${props.itemsPerRow} px-5`}>
+                    (service, index) => <div key={index} className={`w-full md:w-1/${props.itemsPerRow} p-4`}>
                         <ServiceCard {...service} />
                     </div>
                 )}

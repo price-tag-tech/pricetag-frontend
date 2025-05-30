@@ -12,7 +12,6 @@ const ServiceListing = () => {
     return (
         <div className='w-full my-5 px-5 md:px-24'>
             <CatalogsHeader title="services near you" link="#" />
-
             <ServicesGrid services={services} itemsPerRow={3} />
         </div>
     )
