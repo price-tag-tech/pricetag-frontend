@@ -20,6 +20,9 @@ module.exports = {
           100: "#1F5223",
         },
       },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
     },
   },
   plugins: [],
