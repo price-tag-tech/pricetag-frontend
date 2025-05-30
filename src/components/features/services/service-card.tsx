@@ -1,48 +1,46 @@
-import { Star, StarHalf } from 'lucide-react'
-import React from 'react'
 import RatingStars from '../../ui/rating-stars'
 import Button from '../../common/Button'
 
-export interface IService {
+export interface ServiceCardProps {
     id: string,
-    image: string,
-    title: string,
+    imageUrl: string,
+    name: string,
     rating: number,
     bookings: number,
     pricePerHour: number,
     category: string
     available?: boolean
 }
-const ServiceCard = ({ id, image, bookings, pricePerHour, rating, title, category, available }: IService) => {
+const ServiceCard: React.FC<ServiceCardProps> = (props) => {
     return (
         <div className='w-full flex flex-col gap-4'>
             <div className='bg-gray-200 w-full h-[150pt] relative'>
-                <img src={image} alt={title} />
+                <img src={props.imageUrl} alt={props.name} />
                 <div className='absolute bottom-[5pt] left-[5pt] text-sm bg-brand-600 text-white rounded-md px-2 py-1'>
-                    {category}
+                    {props.category}
                 </div>
             </div>
             <div className='py-3 px-2 flex flex-col gap-y-3'>
                 <h3 className="text-2xl font-normal">
-                    {title}
+                    {props.name}
                 </h3>
                 <div className="flex gap-x-2 items-center">
                     <div className='mr-4 flex items-center gap-x-2'>
-                        <RatingStars rating={rating} />
-                        <span className="text-gray-700 text-sm md:text-base font-semibold">{rating.toFixed(1)}</span>
+                        <RatingStars rating={props.rating} />
+                        <span className="text-gray-700 text-sm md:text-base font-semibold">{props.rating.toFixed(1)}</span>
                     </div>
-                    <span className="text-gray-500 text-sm md:text-base">{bookings} bookings</span>
+                    <span className="text-gray-500 text-sm md:text-base">{props.bookings} bookings</span>
                 </div>
 
                 <div className='text-md font-normal text-gray-600 flex gap-x-2'>
                     <span>
-                        Starting at ${pricePerHour}/hr
+                        Starting at ${props.pricePerHour}/hr
                     </span>
                     <span>
                         &bull;
                     </span>
                     <span>
-                        {available ? "Available today" : "Not available"}
+                        {props.available ? "Available today" : "Not available"}
                     </span>
                 </div>
             </div>

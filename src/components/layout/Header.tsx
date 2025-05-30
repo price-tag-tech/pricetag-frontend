@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logoImage from "../../assets/logo/logo.svg";
 import Button from "../common/Button";
 import Container from "./Container";
-import HeaderQuickActions from "./HeaderQuickActions";
+import HeaderQuickActions from "../ui/header-quick-actions";
 import Navbar from "./navbar";
 
 interface HeaderProps {
