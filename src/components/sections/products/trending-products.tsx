@@ -13,7 +13,7 @@ const TrendingProducts = () => {
     ]
 
     return (
-        <div className='w-full px-4 md:px-24 my-10 md:my-24'>
+        <div className='w-full px-5 md:px-24 my-10 md:my-24'>
             <CatalogsHeader title="trending products" link="#" />
             <ProductGrid products={trendingProducts} itemsPerRow={5} />
         </div>

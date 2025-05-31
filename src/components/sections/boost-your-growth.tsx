@@ -10,14 +10,14 @@ const BoostYourGrowth = () => {
     ]
 
     return (
-        <div className='px-4 md:px-24 py-10'>
+        <div className='px-5 md:px-24 py-10'>
             <h3 className='text-4xl font-medium text-gray-700'>
                 Helpful guides to boost your growth
             </h3>
 
-            <div className='flex gap-8 mt-10 flex-col md:flex-row gap-y-8'>
+            <div className='flex gap-y-12 md:gap-y-8 mt-10 flex-col md:flex-row'>
                 {items.map((item, i) => (
-                    <div className='flex flex-col gap-y-3 w-full'>
+                    <div className='flex flex-col md:gap-y-3 w-full'>
                         <img src={item.imageUrl} alt={item.note.substring(0, 10)} className='bg-gray-200 h-[200pt]' />
                         <div>
                             <p className='mt-5'>

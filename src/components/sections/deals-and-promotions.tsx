@@ -7,7 +7,7 @@ const DealsAndPromotions = () => {
     return (
         <div className='w-full px-4 md:px-24 py-24'>
             <CatalogsHeader title='Deals & Promotions' link="#" />
-            <div className='py-4 w-full flex gap-4'>
+            <div className='py-4 w-full flex flex-col md:flex-row gap-x-4 gap-y-8'>
                 <div className={`w-full md:w-1/2 bg-[#F5F4ED] shadow p-4 md:p-8 flex-between`}>
                     <div className='w-full flex flex-col gap-y-3'>
                         <h4 className='text-[#CA8A04] font-semibold'>
@@ -16,7 +16,7 @@ const DealsAndPromotions = () => {
                         <h6 className='uppercase text-3xl font-normal'>
                             20% off
                         </h6>
-                        <p className='text-xl font-light'>
+                        <p className='text-lg md:text-2xl font-light'>
                             On all electronics this weekend
                         </p>
                         <div>
@@ -42,10 +42,10 @@ const DealsAndPromotions = () => {
                             Limited Time Offer
                         </h4>
                         <h6 className='uppercase text-3xl font-normal'>
-                            20% off
+                            $15 off
                         </h6>
-                        <p className='text-xl font-light'>
-                            On all electronics this weekend
+                        <p className='text-lg md:text-2xl font-light'>
+                            On your first order above $50
                         </p>
                         <div>
                             <Link to="">

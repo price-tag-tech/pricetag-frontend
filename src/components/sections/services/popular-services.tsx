@@ -18,9 +18,9 @@ const PopularServices = () => {
 
     return (
         <div className='w-full my-5 px-5 md:px-24 gap-y-6 flex flex-col'>
-            <div className='flex-between'>
-                <h3 className='text-3xl font-bold capitalize'>Popular Services</h3>
-                <div className='flex items-center gap-x-4'>
+            <div className='flex-between flex-col md:flex-row gap-y-4'>
+                <h3 className='text-2xl md:text-3xl font-bold capitalize'>Popular Services</h3>
+                <div className='flex items-center gap-x-5'>
                     <div className='flex gap-x-4'>
                         {links.map((_, i) => (
                             <Link to={_.link} className='text-black hover:text-brand-600 text-sm font-semibold '>

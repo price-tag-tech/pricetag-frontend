@@ -131,7 +131,7 @@ const Footer: React.FC<FooterProps> = () => {
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center py-4 pt-0">
         <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-6 md:mb-0">
-          <div className="flex-between mb-4 w-full text-lg font-light text-gray-600">
+          <div className="flex-between flex-col mg:flex-row gap-y-4 mb-4 w-full text-lg font-light text-gray-600">
             <p>
               © {new Date().getFullYear()} Pricetag. All rights reserved.
             </p>

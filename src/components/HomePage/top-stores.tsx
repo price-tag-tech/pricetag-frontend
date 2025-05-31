@@ -74,7 +74,7 @@ const TopStores: React.FC = () => {
   const handleLoadMoreClick = () => console.log('Load More button clicked');
 
   return (
-    <div className="bg-white p-4 sm:p-6 md:px-24 py-10 rounded-lg shadow-sm font-montserrat">
+    <div className="bg-white px-5 sm:p-6 md:px-24 py-10 rounded-lg shadow-sm font-montserrat">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center space-x-3 sm:space-x-4">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-800 whitespace-nowrap">Top Stores</h2>

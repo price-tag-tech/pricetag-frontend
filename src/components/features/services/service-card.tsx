@@ -14,8 +14,8 @@ export interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = (props) => {
     return (
         <div className='w-full flex flex-col gap-4 shadow'>
-            <div className='bg-gray-200 w-full h-[150pt] relative'>
-                <img src={props.imageUrl} alt={props.name} />
+            <div className='w-full relative'>
+                <img src={props.imageUrl} alt={props.name} className='h-[200pt] w-full object-cover' />
                 <div className='absolute bottom-[5pt] left-[5pt] text-sm bg-brand-600 text-white rounded-md px-2 py-1'>
                     {props.category}
                 </div>
@@ -27,7 +27,7 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
                     </h3>
                     <div className="flex gap-x-2 items-center">
                         <div className='mr-4 flex items-center gap-x-2'>
-                            <RatingStars rating={props.rating} />
+                            <RatingStars rating={1} />
                             <span className="text-gray-700 text-sm md:text-base font-semibold">{props.rating.toFixed(1)}</span>
                         </div>
                         <span className="text-gray-500 text-sm md:text-base">{props.bookings} bookings</span>

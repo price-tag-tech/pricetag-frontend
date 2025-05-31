@@ -12,7 +12,7 @@ const RecentlyViewed = () => {
     ]
 
     return (
-        <div className='py-10 px-4 md:px-24'>
+        <div className='py-10 px-5 md:px-24'>
             <CatalogsHeader link='' title='Recently Viewed' />
 
             <div className='flex flex-col md:flex-row gap-4 mt-10'>
@@ -24,10 +24,10 @@ const RecentlyViewed = () => {
                             </div>
 
                             <div className='p-3 flex flex-col gap-y-2'>
-                                <h3 className='text-xl font-[450]'>
+                                <h3 className='text-md md:text-xl font-[450]'>
                                     {product.name}
                                 </h3>
-                                <span className='text-2xl font-semibold'>
+                                <span className='text-xl md:text-2xl font-semibold'>
                                     ${product.price}
                                 </span>
                             </div>

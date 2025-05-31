@@ -20,16 +20,16 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 
       <div className='flex flex-col gap-y-3 px-3 py-4'>
         <div className='flex flex-col'>
-          <h4 className='font-light text-gray-600 text-lg'>
+          <h4 className='font-light text-gray-600 md:text-lg'>
             {props.store}
           </h4>
-          <h3 className='text-gray-800 font-normal text-2xl'>
+          <h3 className='text-gray-800 font-normal text-xl md:text-2xl'>
             {props.name}
           </h3>
         </div>
         <div className='flex items-center gap-x-3'>
           <div className='flex gap-x-2 items-center'>
-            <RatingStars rating={4.3} />
+            <RatingStars rating={1} />
             <span className='font-semibold text-sm md:text-base'>
               4.3
             </span>
@@ -38,8 +38,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
             42 reviews
           </span>
         </div>
-        <div className='flex-between mt-2'>
-          <span className='font-bold text-3xl'>
+        <div className='flex-between '>
+          <span className='font-bold text-xl md:text-3xl'>
             ${props.price}
           </span>
           <div>

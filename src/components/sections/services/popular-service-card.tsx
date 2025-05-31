@@ -11,17 +11,17 @@ const PopularServiceCard = () => {
                 </div>
                 <div className='p-4 flex flex-col gap-y-3'>
                     <div className='flex gap-x-3 items-center'>
-                        <div className='h-16 w-16 rounded-full bg-gray-200'>
+                        <div className='h-10 md:h-16 w-10 md:w-16 rounded-full bg-gray-200'>
                         </div>
-                        <h4 className='text-2xl text-black font-semibold'>
+                        <h4 className='text-xl md:text-2xl text-black font-semibold'>
                             Dry Cleaner
                         </h4>
                     </div>
-                    <p className="text-md text-black">
+                    <p className="text-sm md:text-md text-black">
                         Lorem ipsum dolor sit amet consectetur elit.
                     </p>
 
-                    <div className='flex items-center gap-x-3 text-lg my-2'>
+                    <div className='flex items-center gap-x-3 text-sm md:text-lg my-2'>
                         <span className="text-black font-bold">
                             4.3
                         </span>
@@ -30,7 +30,7 @@ const PopularServiceCard = () => {
                             (10 Reviews)
                         </span>
                     </div>
-                    <div className='text-brand-600 font-bold text-2xl mt-2 font-montserrat'>
+                    <div className='text-brand-600 font-bold text-lg md:text-2xl mt-2 font-montserrat'>
                         From &#8358;3,900
                     </div>
                     <div className='flex gap-x-3 mt-2'>

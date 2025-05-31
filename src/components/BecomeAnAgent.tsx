@@ -29,7 +29,7 @@ const BecomeAnAgent: React.FC<BecomeAnAgentProps> = ({
   return (
     <div className="py-12 md:py-16 font-montserrat">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`${bgColor ? bgColor : "bg-gradient-to-tl to-black from-[#1B1B1B]"} rounded-2xl shadow py-12 px-6 sm:py-16 sm:px-8 lg:py-24 lg:px-48`}>
+        <div className={`${bgColor ? bgColor : "bg-gradient-to-tl from-[#1B1B1B] via-[#1b1b1bf1] to-black "} rounded-2xl shadow py-12 px-6 sm:py-16 sm:px-8 lg:py-24 lg:px-48`}>
 
           <h2 className="text-3xl sm:text-4xl lg:text-4xl font-normal leading-tight mb-8 md:mb-10 max-w-3xl text-white">
             {heading}
