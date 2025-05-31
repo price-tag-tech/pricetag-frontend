@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
               <HeaderQuickActions />
 
               {/* Desktop Navigation */}
-              <div className="hidden items-center justify-end space-x-6 h-full">
+              <div className="hidden md:flex items-center justify-end space-x-6 h-full">
                 <nav className="flex items-center space-x-6 h-full">
                   <Link
                     to="/stores"

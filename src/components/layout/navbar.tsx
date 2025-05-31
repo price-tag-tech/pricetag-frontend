@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom"
+import { useUrlStore } from "../../store/nav-store"
 
-interface IMenuItem { name: string, link: string, active: boolean, links?: IMenuItem[] }
+interface IMenuItem { name: string, link: string, links?: IMenuItem[] }
 
 const Navbar = () => {
     const items: IMenuItem[] = [
-        { name: "Home", link: "", active: true },
-        { name: "Find stores", link: "", active: false },
-        { name: "Become an agent", link: "", active: false },
-        { name: "Open a store", link: "", active: false },
-        { name: "More", link: "#", links: [], active: false }
+        { name: "Home", link: "/" },
+        { name: "Find stores", link: "/stores" },
+        { name: "Become an agent", link: "/become-agent" },
+        { name: "Open a store", link: "/open-store" },
+        { name: "More", link: "#", links: [] }
     ]
+
+    const { activeUrl, setActiveUrl } = useUrlStore()
 
     return (
         <div className="mt-4">
             <div className="flex gap-6">
                 {
                     items.map((item, _) => (
-                        <Link key={_} to={item.link} className={`hidden md:block text-lg font-light text-gray-600 ${item.active && "nav-active"} hover:nav-active flex gap-2`}>
+                        <Link key={_} to={item.link} onClick={() => setActiveUrl(item.link)} className={`hidden md:block text-lg font-light text-gray-600 ${activeUrl === item.link && "nav-active transition-all duration-500"} hover:nav-active flex gap-2`}>
                             <span>
                                 {item.name}
                             </span>
