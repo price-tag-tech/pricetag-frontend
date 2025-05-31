@@ -62,3 +62,6 @@
 .nav-active:after {
   content: "";
 }
+.thin-link {
+  @apply hover:font-normal duration-500 transition;
+}

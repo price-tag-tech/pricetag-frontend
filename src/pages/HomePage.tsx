@@ -20,6 +20,7 @@ import PopularServices from "../components/sections/services/popular-services";
 import DealsAndPromotions from "../components/sections/deals-and-promotions";
 import RecentlyViewed from "../components/sections/products/recently-viewed";
 import CallToAction from "../components/sections/call-to-action";
+import BoostYourGrowth from "../components/sections/boost-your-growth";
 
 const HomePage: React.FC = () => {
   //  store data
@@ -119,6 +120,8 @@ const HomePage: React.FC = () => {
         buttonText="Get started now"
         onButtonClick={handleGetStartedClick}
       />
+
+      <BoostYourGrowth />
 
       {/* Chat With Support */}
       <a
