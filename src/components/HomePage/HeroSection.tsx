@@ -44,19 +44,23 @@ const HeroSection = () => {
                 </div>
 
                 <div className='w-full lg:w-1/2 h-full flex flex-col gap-3'>
-                    <div className='w-full rounded-3xl bg-gray-100 h-1/2 min-h-[150pt]'>
-
+                    <div className='w-full'>
+                        <img src="/assets/hero/hero-1.jpg" alt="Hero section 1" className='rounded-3xl bg-gray-100 h-[200pt] w-full object-cover' />
                     </div>
                     <div className="flex gap-x-3">
-                        <div className='w-3/5 bg-gray-100 rounded-3xl min-h-[150pt]'>
+                        <div className='w-1/2 relative'>
+                            <img src="/assets/hero/hero-2.jpg" alt="Hero section 1" className='rounded-3xl bg-gray-100 h-[150pt] w-full object-cover' />
+                            {/* <div className='bg-white absolute h-[50pt] w-[70pt] -bottom-[2pt] -right-[2pt] rounded-tl-3xl after:contents-[""] after:absolute after:right-5 after:bg-white after:h-40 after:w-40 after:rounded-full'>
 
+                            </div> */}
                         </div>
 
-                        <div className="w-2/5 flex flex-col gap-3 items-center justify-center">
+                        <div className="w-1/2 flex flex-col gap-3 items-center justify-center">
                             <div className='flex justify-around'>
                                 {
-                                    ([0, 0, 0]).map((item: number) => <div key={item} className='h-10 md:h-20 w-10 md:w-20 rounded-full bg-gray-200'
-                                    ></div>)
+                                    (["avatar-1.png", "avatar-2.png", "avatar-3.png"]).map((item: string) => (
+                                        <img key={item} src={`/assets/hero/${item}`} alt={item} className='h-10 md:h-20 w-10 md:w-20 rounded-full bg-gray-200' />
+                                    ))
                                 }
                             </div>
                             <div className='text-center'>
