@@ -17,6 +17,8 @@ import { useStoreState } from "../store/search-store";
 import ServiceListing from "../components/sections/services/service-listing";
 import TrendingProducts from "../components/sections/products/trending-products";
 import PopularServices from "../components/sections/services/popular-services";
+import DealsAndPromotions from "../components/sections/deals-and-promotions";
+import RecentlyViewed from "../components/sections/products/recently-viewed";
 
 const HomePage: React.FC = () => {
   //  store data
@@ -102,6 +104,10 @@ const HomePage: React.FC = () => {
       <TrendingProducts />
 
       <PopularServices />
+
+      <DealsAndPromotions />
+
+      <RecentlyViewed />
 
       <PopularProducts />
 
