@@ -11,8 +11,8 @@ export interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = (props) => {
   return (
     <div className='w-full flex flex-col gap-y-4 shadow'>
-      <div className='w-full bg-gray-200 h-[150pt] relative'>
-        <img src={props.imageUrl} alt={props.name} />
+      <div className='w-full relative'>
+        <img src={props.imageUrl} alt={props.name} className='bg-gray-200 h-[150pt] object-cover w-full' />
         <div className='rounded-full p-2 text-gray-500 bg-gray-50 absolute top-[5pt] right-[5pt]'>
           <Heart />
         </div>

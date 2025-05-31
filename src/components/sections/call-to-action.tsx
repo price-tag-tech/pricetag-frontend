@@ -53,17 +53,17 @@ const CallToAction = () => {
                 <div className="w-full md:w-2/5 mt-8 md:mt-0 relative min-h-[400pt]">
                     {/* Shopping Bag Image */}
                     <img
-                        src="/bag.jpg"
+                        src="/assets/shop-smarter.jpg"
                         alt="Shopping Bag"
-                        className="absolute w-[350pt] h-[250pt] bg-gray-200 rounded-lg shadow-lg object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+                        className="absolute w-[350pt] h-[250pt] object-cover bg-gray-200 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
                     />
                     {/* Avatar Card */}
                     <div className="absolute flex items-center top-1/2 -left-3 md:-left-10 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full py-2 px-4 shadow-lg z-10">
                         <div className="flex items-center gap-2">
                             <img
-                                src="/face.jpg"
+                                src="/assets/users/avatar-2.jpg"
                                 alt="Avatar"
-                                className="w-8 h-8 rounded-full"
+                                className="w-8 h-8 rounded-full object-cover"
                             />
                             <div>
                                 <span className="font-semibold text-sm text-black py-2">
@@ -74,12 +74,12 @@ const CallToAction = () => {
                         </div>
                     </div>
                     {/* Chart Overlay */}
-                    <div className="absolute hidden md:block md:-bottom-[5%] -left-[100pt] bg-white rounded-lg p-4 shadow-lg z-8 w-[300pt] h-[150pt]">
+                    <div className="absolute hidden overflow-hidden md:block md:-bottom-[5%] -left-[100pt] bg-white rounded-lg p-4 shadow-lg z-8 w-[300pt] h-[150pt]">
                         <p className="text-sm text-gray-600">Sales Overview</p>
                         <img
-                            src="/map.webp"
+                            src="/assets/sales-overview.png"
                             alt="Sales Overview"
-                            className="w-full h-24 object-cover"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                 </div>

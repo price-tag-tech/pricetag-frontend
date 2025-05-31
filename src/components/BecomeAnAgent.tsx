@@ -29,21 +29,27 @@ const BecomeAnAgent: React.FC<BecomeAnAgentProps> = ({
   return (
     <div className="py-12 md:py-16 font-montserrat">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`${bgColor ? bgColor : "bg-gradient-to-tl from-[#1B1B1B] via-[#1b1b1bf1] to-black "} rounded-2xl shadow py-12 px-6 sm:py-16 sm:px-8 lg:py-24 lg:px-48`}>
+        <div className={`${bgColor ? bgColor : "bg-gradient-to-tl from-[#1B1B1B] via-[#1b1b1bf1] to-black "} rounded-2xl shadow`}>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-normal leading-tight mb-8 md:mb-10 max-w-3xl text-white">
-            {heading}
-          </h2>
+          <div className='flex items-center justify-between relative overflow-hidden'>
+            <div className='py-12 px-6 sm:py-16 sm:px-8 lg:py-24 lg:px-48'>
 
-          <Button
-            variant={buttonVariant}
-            size={buttonSize}
-            onClick={handleClick}
-            className='rounded-3xl border-gray-200/70 border-[1.5pt] bg-transparent font-montserrat font-semibold'
-          >
-            {buttonText}
-          </Button>
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl font-normal leading-tight mb-8 md:mb-10 max-w-3xl text-white">
+                {heading}
+              </h2>
 
+              <Button
+                variant={buttonVariant}
+                size={buttonSize}
+                onClick={handleClick}
+                className='rounded-3xl border-gray-200/70 border-[1.5pt] bg-transparent font-montserrat font-semibold'
+              >
+                {buttonText}
+              </Button>
+
+            </div>
+            <img src="/assets/become-an-agent.svg" alt="Become an agent" className='w-full md:w-2/5 object-cover absolute right-10 hidden md:block' />
+          </div>
         </div>
       </div>
     </div>

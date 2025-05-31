@@ -17,7 +17,7 @@ interface StoreData {
 const sampleStores: StoreData[] = [
   {
     id: '1',
-    owner: { name: 'Prince Godson', avatarUrl: '/face.jpg' },
+    owner: { name: 'Prince Godson', avatarUrl: '/assets/users/avatar-1.jpg' },
     storeName: 'PG Beauty and Co LTD',
     products: '270K',
     services: 'Dry Cleaning',
@@ -25,7 +25,7 @@ const sampleStores: StoreData[] = [
   },
   {
     id: '2',
-    owner: { name: 'Mary Jane', avatarUrl: '' },
+    owner: { name: 'Mary Jane', avatarUrl: '/assets/users/avatar-2.jpg' },
     storeName: 'MJ Ventures',
     products: '1K',
     services: 'Dry Cleaning',
@@ -33,7 +33,7 @@ const sampleStores: StoreData[] = [
   },
   {
     id: '1',
-    owner: { name: 'Prince Godson', avatarUrl: '' },
+    owner: { name: 'Prince Godson', avatarUrl: '/assets/users/avatar-3.jpg' },
     storeName: 'PG Beauty and Co LTD',
     products: '270K',
     services: 'Dry Cleaning',
@@ -41,7 +41,7 @@ const sampleStores: StoreData[] = [
   },
   {
     id: '2',
-    owner: { name: 'Mary Jane', avatarUrl: '' },
+    owner: { name: 'Mary Jane', avatarUrl: '/assets/users/avatar-4.jpg' },
     storeName: 'MJ Ventures',
     products: '1K',
     services: 'Dry Cleaning',
@@ -127,7 +127,7 @@ const TopStores: React.FC = () => {
               <img
                 src={store.owner.avatarUrl}
                 alt={store.owner.name && ""}
-                className="w-10 md:w-16 h-10 md:h-16 rounded-full mr-3 flex-shrink-0 bg-gray-200"
+                className="w-10 md:w-16 h-10 md:h-16 rounded-full mr-3 flex-shrink-0 bg-gray-200 object-cover"
               />
               <span className="text-md font-semibold text-gray-800 truncate">{store.owner.name}</span>
             </div>

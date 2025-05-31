@@ -29,8 +29,8 @@ const DealsAndPromotions = () => {
                     </div>
 
                     <div>
-                        <div className='w-[100pt] h-[100pt] bg-gray-200 rounded-2xl'>
-
+                        <div className='w-[100pt]'>
+                            <img src="/assets/deals-image.png" alt="Limited time offer" className='h-[100pt] object-cover w-full rounded-2xl' />
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ const DealsAndPromotions = () => {
                 <div className={`w-full md:w-1/2 bg-[#D7FFE6] shadow p-4 md:p-8 flex-between`}>
                     <div className='w-full flex flex-col gap-y-3'>
                         <h4 className='text-black font-semibold'>
-                            Limited Time Offer
+                            New Users Special
                         </h4>
                         <h6 className='uppercase text-3xl font-normal'>
                             $15 off
@@ -57,8 +57,8 @@ const DealsAndPromotions = () => {
                     </div>
 
                     <div>
-                        <div className='w-[100pt] h-[100pt] bg-gray-200 rounded-2xl'>
-
+                        <div className='w-[100pt]'>
+                            <img src="/assets/deals-2-image.png" alt="New Users Special" className='h-[100pt] object-cover w-full rounded-2xl' />
                         </div>
                     </div>
                 </div>

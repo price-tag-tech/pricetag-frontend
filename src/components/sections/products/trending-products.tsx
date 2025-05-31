@@ -5,11 +5,11 @@ import ProductGrid from '../../features/products/product-grid'
 const TrendingProducts = () => {
 
     const trendingProducts = [
-        { id: "arewa", imageUrl: "", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
-        { id: "arewa", imageUrl: "", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
-        { id: "arewa", imageUrl: "", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
-        { id: "arewa", imageUrl: "", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
-        { id: "arewa", imageUrl: "", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
+        { id: "arewa", imageUrl: "/assets/products/product-1.png", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
+        { id: "arewa", imageUrl: "/assets/products/product-2.png", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
+        { id: "arewa", imageUrl: "/assets/products/product-3.png", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
+        { id: "arewa", imageUrl: "/assets/products/product-4.png", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
+        { id: "arewa", imageUrl: "/assets/products/product-5.png", name: "Wireless Earbuds", rating: 4.3, reviews: 42, price: 49.99, store: "Tech Solutions" },
     ]
 
     return (

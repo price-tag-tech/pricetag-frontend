@@ -10,10 +10,9 @@ const PopularServices = () => {
     ]
 
     const services = [
-        { id: "arewa", name: "Dry Cleaner", imageUrl: "", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
-        { id: "arewa", name: "Dry Cleaner", imageUrl: "", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
-        { id: "arewa", name: "Dry Cleaner", imageUrl: "", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
-        { id: "arewa", name: "Dry Cleaner", imageUrl: "", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
+        { id: `${Math.random() * 99}`, name: "Dry Cleaner", imageUrl: "/assets/services/services-4.jpg", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
+        { id: `${Math.random() * 99}`, name: "Dry Cleaner", imageUrl: "/assets/services/services-5.jpg", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
+        { id: `${Math.random() * 99}`, name: "Dry Cleaner", imageUrl: "/assets/services/services-6.jpg", description: "Lorem ipsum dolor sit amet, consectetur", rating: 4.3, reviews: 10, price: 3900 },
     ]
 
     return (
@@ -40,8 +39,8 @@ const PopularServices = () => {
 
             <div className='flex flex-col md:flex-row'>
                 {services.map((service, i) => (
-                    <div className='p-4 w-full md:w-1/4'>
-                        <PopularServiceCard key={i} {...services} />
+                    <div className='p-4 w-full md:w-1/3'>
+                        <PopularServiceCard key={i} {...service} />
                     </div>
                 ))}
             </div>
