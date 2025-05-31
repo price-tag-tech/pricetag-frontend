@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import Section from "../components/layout/Section";
 import Card from "../components/common/Card";
 import PopularProducts from "../components/HomePage/PopularItems";
@@ -8,7 +8,7 @@ import {
   TagIcon,
   RocketLaunchIcon,
 } from "@heroicons/react/24/solid";
-import TopStores from "../components/HomePage/TopStores";
+import TopStores from "../components/HomePage/top-stores";
 import HelpfulGuides from "../components/HomePage/HelpfulGuides";
 import Button from "../components/common/Button";
 import BecomeAnAgent from "../components/BecomeAnAgent";
@@ -108,6 +108,8 @@ const HomePage: React.FC = () => {
       <DealsAndPromotions />
 
       <RecentlyViewed />
+
+      <TopStores />
 
       <PopularProducts />
 

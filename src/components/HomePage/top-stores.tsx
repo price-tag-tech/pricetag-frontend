@@ -47,7 +47,7 @@ const sampleStores: StoreData[] = [
     services: 'Dry Cleaning',
     priceRange: '400 - 1,500',
   },
- 
+
 ];
 
 const FilterIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
@@ -74,7 +74,7 @@ const TopStores: React.FC = () => {
   const handleLoadMoreClick = () => console.log('Load More button clicked');
 
   return (
-    <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-sm font-['Poppins']">
+    <div className="bg-white p-4 sm:p-6 md:px-24 py-10 rounded-lg shadow-sm font-montserrat">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center space-x-3 sm:space-x-4">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-800 whitespace-nowrap">Top Stores</h2>
@@ -102,13 +102,13 @@ const TopStores: React.FC = () => {
       </div>
 
       {/* Table Headers */}
-      <div className="hidden md:grid grid-cols-12 gap-x-4 items-center pb-3 mb-3 border-b border-dotted border-gray-300 text-xs font-medium text-gray-500 uppercase">
+      <div className="hidden md:grid grid-cols-12 gap-x-4 items-center pb-3 mb-3 border-b border-dashed border-gray-400 text-sm font-normal text-gray-500 capitalise">
         <div className="col-span-3 pl-2">Owner</div>
-        <div className="col-span-3">Store Name</div> 
+        <div className="col-span-3">Store Name</div>
         <div className="col-span-1 text-center">Products</div>
         <div className="col-span-2">Services</div>
-        <div className="col-span-1 text-right pr-1">Price Range (₦)</div> 
-        <div className="col-span-2"></div> 
+        <div className="col-span-1 text-right pr-1">Price Range (₦)</div>
+        <div className="col-span-2"></div>
       </div>
 
       {/* Stores List */}
@@ -118,7 +118,7 @@ const TopStores: React.FC = () => {
             key={store.id}
             className={`
               grid grid-cols-1 md:grid-cols-12 gap-x-4 items-center py-4
-              ${index < sampleStores.length - 1 ? 'border-b border-dotted border-gray-300' : ''}
+              ${index < sampleStores.length ? 'border-b border-dashed border-gray-400' : ''}
               md:py-4
             `}
           >
@@ -126,10 +126,10 @@ const TopStores: React.FC = () => {
             <div className="col-span-12 md:col-span-3 flex items-center mb-2 md:mb-0">
               <img
                 src={store.owner.avatarUrl}
-                alt={store.owner.name}
-                className="w-10 h-10 rounded-full mr-3 flex-shrink-0"
+                alt={store.owner.name && ""}
+                className="w-10 md:w-16 h-10 md:h-16 rounded-full mr-3 flex-shrink-0 bg-gray-200"
               />
-              <span className="text-sm font-medium text-gray-800 truncate">{store.owner.name}</span>
+              <span className="text-md font-semibold text-gray-800 truncate">{store.owner.name}</span>
             </div>
 
             {/* Store Name */}
