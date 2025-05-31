@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import logoImage from "../../assets/logo/logo.svg";
 import Button from "../common/Button";
 import Container from "./Container";
+import HeaderQuickActions from "../ui/header-quick-actions";
+import Navbar from "./navbar";
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -24,8 +26,8 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   return (
     <>
       {/* Sticky Header */}
-      <header 
-        className=" top-0 left-0 right-0 z-50 mt-2 transition-all duration-500 ease-out"
+      <header
+        className=" top-0 left-0 right-0 z-50 mt-2 transition-all duration-500 ease-out border-b-2 md:pb-10"
       >
         <div className="relative w-full max-w-[1434px] mx-auto transition-all duration-300 ease-out">
           <Container>
@@ -40,21 +42,18 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                   <div className="relative w-5">
                     <span
                       aria-hidden="true"
-                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${
-                        isMenuOpen ? "rotate-45" : "-translate-y-1.5"
-                      }`}
+                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? "rotate-45" : "-translate-y-1.5"
+                        }`}
                     />
                     <span
                       aria-hidden="true"
-                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${
-                        isMenuOpen ? "opacity-0" : "opacity-100"
-                      }`}
+                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? "opacity-0" : "opacity-100"
+                        }`}
                     />
                     <span
                       aria-hidden="true"
-                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${
-                        isMenuOpen ? "-rotate-45" : "translate-y-1.5"
-                      }`}
+                      className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? "-rotate-45" : "translate-y-1.5"
+                        }`}
                     />
                   </div>
                 </button>
@@ -68,8 +67,10 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                 </Link>
               </div>
 
+              <HeaderQuickActions />
+
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center justify-end space-x-6 h-full">
+              <div className="hidden items-center justify-end space-x-6 h-full">
                 <nav className="flex items-center space-x-6 h-full">
                   <Link
                     to="/stores"
@@ -167,11 +168,12 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
               </div>
             </div>
 
+            <Navbar />
+
             {/* Mobile Menu Overlay */}
             <div
-              className={`fixed inset-0 bg-white z-10 transform transition-all duration-500 ease-out lg:hidden ${
-                isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-              }`}
+              className={`fixed inset-0 bg-white z-10 transform transition-all duration-500 ease-out lg:hidden ${isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+                }`}
             >
               <div className="flex flex-col h-full pt-20 px-6 pb-6 overflow-y-auto">
                 <nav className="flex flex-col space-y-6 mb-8">
@@ -204,7 +206,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     Log In
                   </Link>
                 </nav>
-                
+
                 <Button
                   variant="outline"
                   size="md"
@@ -226,24 +228,22 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {/* Home */}
           <Link
             to="/"
-            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${
-              isActiveRoute('/') 
-                ? 'text-green-600 bg-green-50 shadow-md scale-105' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${isActiveRoute('/')
+              ? 'text-green-600 bg-green-50 shadow-md scale-105'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
-            <svg 
-              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${
-                isActiveRoute('/') ? 'transform scale-110' : ''
-              }`} 
-              fill={isActiveRoute('/') ? 'currentColor' : 'none'} 
-              stroke="currentColor" 
+            <svg
+              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${isActiveRoute('/') ? 'transform scale-110' : ''
+                }`}
+              fill={isActiveRoute('/') ? 'currentColor' : 'none'}
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
               />
             </svg>
@@ -253,24 +253,22 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {/* Stores */}
           <Link
             to="/stores"
-            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${
-              isActiveRoute('/stores') 
-                ? 'text-green-600 bg-green-50 shadow-md scale-105' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${isActiveRoute('/stores')
+              ? 'text-green-600 bg-green-50 shadow-md scale-105'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
-            <svg 
-              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${
-                isActiveRoute('/stores') ? 'transform scale-110' : ''
-              }`} 
-              fill={isActiveRoute('/stores') ? 'currentColor' : 'none'} 
-              stroke="currentColor" 
+            <svg
+              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${isActiveRoute('/stores') ? 'transform scale-110' : ''
+                }`}
+              fill={isActiveRoute('/stores') ? 'currentColor' : 'none'}
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </svg>
@@ -280,24 +278,22 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {/* Search */}
           <Link
             to="/products/search"
-            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${
-              isActiveRoute('/products/search') 
-                ? 'text-green-600 bg-green-50 shadow-md scale-105' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${isActiveRoute('/products/search')
+              ? 'text-green-600 bg-green-50 shadow-md scale-105'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
-            <svg 
-              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${
-                isActiveRoute('/products/search') ? 'transform scale-110' : ''
-              }`} 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${isActiveRoute('/products/search') ? 'transform scale-110' : ''
+                }`}
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
@@ -307,24 +303,22 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {/* Profile */}
           <Link
             to="/profile"
-            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${
-              isActiveRoute('/profile') 
-                ? 'text-green-600 bg-green-50 shadow-md scale-105' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 ${isActiveRoute('/profile')
+              ? 'text-green-600 bg-green-50 shadow-md scale-105'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
-            <svg 
-              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${
-                isActiveRoute('/profile') ? 'transform scale-110' : ''
-              }`} 
-              fill={isActiveRoute('/profile') ? 'currentColor' : 'none'} 
-              stroke="currentColor" 
+            <svg
+              className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${isActiveRoute('/profile') ? 'transform scale-110' : ''
+                }`}
+              fill={isActiveRoute('/profile') ? 'currentColor' : 'none'}
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
             </svg>
@@ -334,25 +328,23 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {/* Cart */}
           <Link
             to="/cart"
-            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 relative ${
-              isActiveRoute('/cart') 
-                ? 'text-green-600 bg-green-50 shadow-md scale-105' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300 ease-out transform hover:scale-105 relative ${isActiveRoute('/cart')
+              ? 'text-green-600 bg-green-50 shadow-md scale-105'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
             <div className="relative">
-              <svg 
-                className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${
-                  isActiveRoute('/cart') ? 'transform scale-110' : ''
-                }`} 
-                fill={isActiveRoute('/cart') ? 'currentColor' : 'none'} 
-                stroke="currentColor" 
+              <svg
+                className={`w-6 h-6 mb-1 transition-all duration-300 ease-out ${isActiveRoute('/cart') ? 'transform scale-110' : ''
+                  }`}
+                fill={isActiveRoute('/cart') ? 'currentColor' : 'none'}
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
                 />
               </svg>

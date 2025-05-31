@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100, 200, 300, 400, 500, 600, 700, 800;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +44,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.flex-x-end {
+  @apply flex items-center justify-end;
+}
+.flex-center {
+  @apply flex items-start justify-center;
+}
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.nav-active {
+  @apply relative after:absolute after:-bottom-[3px] after:left-0 after:border-t-4 after:w-[80%] after:ml-[5%] after:border-brand-800 after:rounded-3xl;
+}
+.nav-active:after {
+  content: "";
+}
+.thin-link {
+  @apply hover:font-normal duration-500 transition;
 }
