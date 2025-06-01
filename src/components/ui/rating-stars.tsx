@@ -1,19 +1,30 @@
 import { StarIcon } from "@heroicons/react/24/solid";
-import { StarHalf } from "lucide-react";
 
 const RatingStars = ({ rating }: { rating: number }) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-    return (
-        <div className="flex text-2xl ">
-            {Array.from({ length: fullStars }, (s: number) => (
-                <StarIcon key={s} className="text-yellow-500 h-4 w-4" />
-            ))}
+  return (
+    <div className="flex items-center gap-0.5">
+      {Array.from({ length: fullStars }, (_, i) => (
+        <StarIcon key={i} className="w-4 h-4 text-amber-400 drop-shadow-sm" />
+      ))}
 
-            {hasHalfStar && <StarHalf key="half" className="text-yellow-500 h-4 w-4" />}
+      {hasHalfStar && (
+        <div key="half" className="relative w-4 h-4">
+          <StarIcon className="w-4 h-4 text-gray-300 absolute" />
+          <div className="w-1/2 overflow-hidden absolute">
+            <StarIcon className="w-4 h-4 text-amber-400 drop-shadow-sm" />
+          </div>
         </div>
-    )
-}
+      )}
 
-export default RatingStars
+      {Array.from({ length: emptyStars }, (_, i) => (
+        <StarIcon key={`empty-${i}`} className="w-4 h-4 text-gray-300" />
+      ))}
+    </div>
+  );
+};
+
+export default RatingStars;
