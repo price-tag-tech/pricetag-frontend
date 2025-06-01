@@ -37,31 +37,12 @@ const Button: React.FC<ButtonProps> = ({
     disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
   `;
 
-  // Enhanced variant classes with gradients and better hover effects
+  // Variant classes
   const variantClasses = {
-    primary: `
-      bg-gradient-to-r from-[#1dbf73] to-[#17a85c] text-white 
-      hover:from-[#17a85c] hover:to-[#138a4a] hover:shadow-lg
-      ${!disableFocusRing ? 'focus:ring-[#1dbf73]/50' : ''}
-      shadow-md hover:shadow-xl
-    `,
-    secondary: `
-      bg-gradient-to-r from-[#1f1f1f] to-[#2d2d2d] text-white
-      hover:from-[#2d2d2d] hover:to-[#404040] hover:shadow-lg
-      ${!disableFocusRing ? 'focus:ring-[#1f1f1f]/50' : ''}
-      shadow-md hover:shadow-xl
-    `,
-    outline: `
-      border-2 border-[#1dbf73] text-[#1dbf73] bg-transparent
-      hover:bg-[#1dbf73] hover:text-white hover:shadow-lg
-      ${!disableFocusRing ? 'focus:ring-[#1dbf73]/50' : ''}
-      transition-all duration-300
-    `,
-    text: `
-      text-[#1dbf73] hover:text-[#17a85c] hover:bg-[#1dbf73]/5
-      ${!disableFocusRing ? 'focus:ring-[#1dbf73]/50' : ''}
-      font-semibold
-    `
+    primary: `bg-[#1dbf73] text-white hover:bg-[#19a563] ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`,
+    secondary: `bg-[#1f1f1f] text-white hover:bg-[#333] ${!disableFocusRing ? 'focus:ring-[#1f1f1f]' : ''}`,
+    outline: `border border-[#1dbf73] text-[#1dbf73] hover:bg-[#1dbf73] hover:text-white ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`,
+    text: `text-[#1dbf73] hover:underline ${!disableFocusRing ? 'focus:ring-[#1dbf73]' : ''}`
   };
 
   // Enhanced size classes
@@ -103,10 +84,10 @@ const Button: React.FC<ButtonProps> = ({
       <a href={href} className={`group ${combinedClasses}`} {...rest as any}>
         {shimmerElement}
         <span className="relative z-10 flex items-center">
-          {loadingElement}
-          {leftIcon && <span className="mr-2">{leftIcon}</span>}
-          {children}
-          {rightIcon && <span className="ml-2">{rightIcon}</span>}
+        {loadingElement}
+        {leftIcon && <span className="mr-2">{leftIcon}</span>}
+        {children}
+        {rightIcon && <span className="ml-2">{rightIcon}</span>}
         </span>
       </a>
     );
@@ -118,10 +99,10 @@ const Button: React.FC<ButtonProps> = ({
       <Link to={to} className={`group ${combinedClasses}`} {...rest as any}>
         {shimmerElement}
         <span className="relative z-10 flex items-center">
-          {loadingElement}
-          {leftIcon && <span className="mr-2">{leftIcon}</span>}
-          {children}
-          {rightIcon && <span className="ml-2">{rightIcon}</span>}
+        {loadingElement}
+        {leftIcon && <span className="mr-2">{leftIcon}</span>}
+        {children}
+        {rightIcon && <span className="ml-2">{rightIcon}</span>}
         </span>
       </Link>
     );
@@ -132,10 +113,10 @@ const Button: React.FC<ButtonProps> = ({
     <button className={`group ${combinedClasses}`} disabled={isLoading} {...rest}>
       {shimmerElement}
       <span className="relative z-10 flex items-center">
-        {loadingElement}
-        {leftIcon && <span className="mr-2">{leftIcon}</span>}
-        {children}
-        {rightIcon && <span className="ml-2">{rightIcon}</span>}
+      {loadingElement}
+      {leftIcon && <span className="mr-2">{leftIcon}</span>}
+      {children}
+      {rightIcon && <span className="ml-2">{rightIcon}</span>}
       </span>
     </button>
   );
