@@ -1,6 +1,8 @@
 import React from 'react'
 import RatingStars from '../../ui/rating-stars'
 import Button from '../../common/Button'
+import { PhoneCallIcon, StoreIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 interface PopularServiceCardProps {
     imageUrl: string,
@@ -21,7 +23,7 @@ const PopularServiceCard = (props: PopularServiceCardProps) => {
                 <div className='p-4 flex flex-col gap-y-3'>
                     <div className='flex gap-x-3 items-center'>
                         <div className='h-10 md:h-16 w-10 md:w-16 rounded-full bg-gray-200'>
-                    </div>
+                        </div>
                         <h4 className='text-xl md:text-2xl text-black font-semibold'>
                             {props.name}
                         </h4>
@@ -39,16 +41,25 @@ const PopularServiceCard = (props: PopularServiceCardProps) => {
                             ({props.reviews} Reviews)
                         </span>
                     </div>
-                    <div className='text-brand-600 font-bold text-lg md:text-2xl mt-2 font-montserrat'>
+                    <div className='text-brand-600 font-bold text-lg md:text-xl mt-2 font-montserrat'>
                         From &#8358;{props.price.toLocaleString()}
                     </div>
-                    <div className='flex gap-x-3 mt-2'>
-                        <Button variant='outline' className='border-black text-black hover:bg-black hover:text-white transition duration-300 font-semibold font-montserrat'>
+
+                    <div className="flex items-center gap-x-4 mt-2">
+                        <Button size="sm" variant='secondary' className='text-xs font-montserrat flex gap-x-2'>
+                            <PhoneCallIcon className='h-4' />
+                            Get Contact
+                        </Button>
+
+                        <Link
+                            to="/"
+                            className="relative flex items-center p-0 text-xs font-bold text-black
+                                hover:text-black/70 hover:after:w-[90%]
+                                after:content-[''] after:absolute after:bottom-[-6px] after:left-[5%] after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300"
+                        >
+                            <StoreIcon className='h-4' />
                             Visit Store
-                        </Button>
-                        <Button variant='secondary' className=' font-semibold font-montserrat'>
-                            Get Started
-                        </Button>
+                        </Link>
                     </div>
                 </div>
             </div>

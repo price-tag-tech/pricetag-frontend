@@ -80,11 +80,11 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         <div className="space-y-0.5">
           <div className="flex items-center gap-1.5">
             <span className="text-lg md:text-base font-bold text-gray-900">
-              ${props.price}
+              &#8358;{props.price.toLocaleString()}
             </span>
             {props.originalPrice && (
               <span className="text-xs md:text-[10px] text-gray-500 line-through">
-                ${props.originalPrice}
+                ₦{props.originalPrice}
               </span>
             )}
           </div>

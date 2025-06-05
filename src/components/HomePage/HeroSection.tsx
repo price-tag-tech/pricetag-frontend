@@ -24,11 +24,11 @@ const HeroSection = () => {
         <Section className=''>
             <div className='flex items-center justify-around flex-col lg:flex-row gap-4'>
                 <div className='w-full lg:w-1/2 flex flex-col gap-y-3'>
-                    <h1 className="text-5xl text-center sm:text-left sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+                    <h1 className="text-4xl text-center sm:text-left sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
                         Business at the <br className="hidden sm:block" /> speed of search
                     </h1>
 
-                    <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-sm sm:max-w-xl px-4 sm:px-0 font-bold sm:font-normal mx-auto sm:mx-0">
+                    <p className="mt-4 text-sm text-center md:text-left sm:text-lg text-gray-600 max-w-sm sm:max-w-xl px-4 sm:px-0 font-bold sm:font-normal mx-auto sm:mx-0">
                         Sell, Grow, and Compare Prices with{" "}
                         <span className="font-semibold">Price Tag</span>!
                     </p>

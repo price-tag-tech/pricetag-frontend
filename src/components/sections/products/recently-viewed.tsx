@@ -28,7 +28,7 @@ const RecentlyViewed = () => {
                                     {product.name}
                                 </h3>
                                 <span className='text-xl md:text-2xl font-semibold'>
-                                    ${product.price}
+                                    ₦{product.price.toLocaleString()}
                                 </span>
                             </div>
                         </div>
