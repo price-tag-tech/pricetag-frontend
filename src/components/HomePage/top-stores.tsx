@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../common/Button';
+import { CheckBadgeIcon } from '@heroicons/react/24/solid';
+import { RefreshCcw, StoreIcon } from 'lucide-react';
+import useToggle from '../../hooks/useToggle';
 
 
 interface StoreData {
@@ -8,41 +11,48 @@ interface StoreData {
     name: string;
     avatarUrl: string;
   };
-  storeName: string;
+  name: string;
   products: string;
   services: string;
+  distance?: string,
   priceRange: string;
+  isVerified?: boolean
 }
 
 const sampleStores: StoreData[] = [
   {
     id: '1',
     owner: { name: 'Prince Godson', avatarUrl: '/assets/users/avatar-1.jpg' },
-    storeName: 'PG Beauty and Co LTD',
+    name: 'PG Beauty and Co LTD',
     products: '270K',
     services: 'Dry Cleaning',
     priceRange: '20.00 - 100,000',
+    distance: "14km away",
+    isVerified: true
   },
   {
     id: '2',
     owner: { name: 'Mary Jane', avatarUrl: '/assets/users/avatar-2.jpg' },
-    storeName: 'MJ Ventures',
+    name: 'MJ Ventures',
     products: '1K',
     services: 'Dry Cleaning',
     priceRange: '400 - 1,500',
+    distance: "3km away"
   },
   {
     id: '1',
     owner: { name: 'Prince Godson', avatarUrl: '/assets/users/avatar-3.jpg' },
-    storeName: 'PG Beauty and Co LTD',
+    name: 'PG Beauty and Co LTD',
     products: '270K',
     services: 'Dry Cleaning',
     priceRange: '20.00 - 100,000',
+    distance: "1",
+    isVerified: true
   },
   {
     id: '2',
     owner: { name: 'Mary Jane', avatarUrl: '/assets/users/avatar-4.jpg' },
-    storeName: 'MJ Ventures',
+    name: 'MJ Ventures',
     products: '1K',
     services: 'Dry Cleaning',
     priceRange: '400 - 1,500',
@@ -69,9 +79,14 @@ const FilterIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 const TopStores: React.FC = () => {
   const handleFilterClick = () => console.log('Filters button clicked');
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleAllStoresClick = () => console.log('All Stores link clicked');
-  const handleVisitStoreClick = (storeName: string) => console.log(`Visit store clicked for: ${storeName}`);
-  const handleLoadMoreClick = () => console.log('Load More button clicked');
+  const handleVisitStoreClick = (name: string) => console.log(`Visit store clicked for: ${name}`);
+  const handleLoadMoreClick = () => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000)
+  };
 
   return (
     <div className="bg-white px-5 sm:p-6 md:px-24 py-10 rounded-lg shadow-sm font-montserrat">
@@ -103,10 +118,11 @@ const TopStores: React.FC = () => {
 
       {/* Table Headers */}
       <div className="hidden md:grid grid-cols-12 gap-x-4 items-center pb-3 mb-3 border-b border-dashed border-gray-400 text-sm font-normal text-gray-500 capitalise">
-        <div className="col-span-3 pl-2">Owner</div>
-        <div className="col-span-3">Store Name</div>
+        <div className="col-span-2 pl-2">Owner</div>
+        <div className="col-span-2">Store Name</div>
         <div className="col-span-1 text-center">Products</div>
         <div className="col-span-2">Services</div>
+        <div className="col-span-2">Distance</div>
         <div className="col-span-1 text-right pr-1">Price Range (₦)</div>
         <div className="col-span-2"></div>
       </div>
@@ -123,19 +139,24 @@ const TopStores: React.FC = () => {
             `}
           >
             {/* Owner Info */}
-            <div className="col-span-12 md:col-span-3 flex items-center mb-2 md:mb-0">
-              <img
-                src={store.owner.avatarUrl}
-                alt={store.owner.name && ""}
-                className="w-10 md:w-16 h-10 md:h-16 rounded-full mr-3 flex-shrink-0 bg-gray-200 object-cover"
-              />
+            <div className="col-span-12 md:col-span-2 flex items-center mb-2 md:mb-0">
+              <div>
+                <div className='relative'>
+                  <img
+                    src={store.owner.avatarUrl}
+                    alt={store.owner.name && ""}
+                    className="w-10 md:w-16 h-10 md:h-16 rounded-full mr-3 flex-shrink-0 bg-gray-200 object-cover"
+                  />
+                  {store.isVerified && <CheckBadgeIcon className='h-6 text-brand-600 absolute top-0 right-[4pt]' />}
+                </div>
+              </div>
               <span className="text-md font-semibold text-gray-800 truncate">{store.owner.name}</span>
             </div>
 
             {/* Store Name */}
-            <div className="col-span-12 md:col-span-3 text-sm text-gray-700 mb-1 md:mb-0">
+            <div className="col-span-12 md:col-span-2 text-sm text-gray-700 mb-1 md:mb-0">
               <span className="md:hidden font-semibold text-gray-500 text-xs mr-2">STORE:</span>
-              {store.storeName}
+              {store.name}
             </div>
 
             {/* Products */}
@@ -150,6 +171,12 @@ const TopStores: React.FC = () => {
               {store.services}
             </div>
 
+            {/* Distance to store */}
+            <div className="col-span-12 md:col-span-2 text-sm text-gray-700 mb-1 md:mb-0">
+              <span className="md:hidden font-semibold text-gray-500 text-xs mr-2">DISTANCE:</span>
+              {store.distance ?? "Near you"}
+            </div>
+
             {/* Price Range */}
             <div className="col-span-12 md:col-span-1 text-sm text-gray-700 mb-2 md:mb-0 md:text-right md:pr-1">
               <span className="md:hidden font-semibold text-gray-500 text-xs mr-2">PRICE (₦):</span>
@@ -159,8 +186,8 @@ const TopStores: React.FC = () => {
             {/* "Visit Store" Button */}
             <div className="col-span-12 md:col-span-2 flex md:justify-end mt-2 md:mt-0">
               <Button
-                size="md"
-                onClick={() => handleVisitStoreClick(store.storeName)}
+                size="sm"
+                onClick={() => handleVisitStoreClick(store.name)}
                 className={`
                   w-full md:w-auto
                   border border-gray-500
@@ -170,6 +197,7 @@ const TopStores: React.FC = () => {
                   whitespace-nowrap  
                 `}
               >
+                <StoreIcon className='h-4' />
                 Visit store
               </Button>
             </div>
@@ -182,9 +210,10 @@ const TopStores: React.FC = () => {
         <Button
           size="md"
           onClick={handleLoadMoreClick}
-          className="border border-gray-400 bg-white !text-gray-900 hover:bg-gray-100 hover:border-gray-500 py-1 px-5 sm:py-1.5 sm:px-6"
+          className="border border-gray-400 bg-white !text-gray-900 hover:bg-gray-100 hover:border-gray-500 py-1 px-5 sm:py-1.5 sm:px-6 font-montserrat"
         >
           Load More
+          {isLoading && <RefreshCcw className='h-4 animate-spin' />}
         </Button>
       </div>
     </div>
