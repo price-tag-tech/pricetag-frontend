@@ -8,8 +8,9 @@ export interface ServiceCardProps {
     rating: number,
     bookings: number,
     pricePerHour: number,
-    category: string
-    available?: boolean
+    category: string,
+    available?: boolean,
+    distance?: string
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = (props) => {
@@ -18,30 +19,29 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
             {/* Image Container */}
             <div className='relative overflow-hidden'>
                 <div className='aspect-[4/3] overflow-hidden'>
-                    <img 
-                        src={props.imageUrl} 
-                        alt={props.name} 
-                        className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110' 
+                    <img
+                        src={props.imageUrl}
+                        alt={props.name}
+                        className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110'
                     />
                 </div>
-                
+
                 {/* Gradient Overlay on Hover */}
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
-                
+
                 {/* Category Badge */}
                 <div className='absolute top-4 left-4'>
                     <span className='inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-white/95 backdrop-blur-sm text-gray-800 shadow-lg border border-white/20'>
                         {props.category}
                     </span>
                 </div>
-                
+
                 {/* Availability Indicator */}
                 <div className='absolute top-4 right-4'>
-                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm shadow-lg ${
-                        props.available 
-                            ? 'bg-emerald-500/95 text-white border border-emerald-400/30' 
-                            : 'bg-red-500/95 text-white border border-red-400/30'
-                    }`}>
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm shadow-lg ${props.available
+                        ? 'bg-emerald-500/95 text-white border border-emerald-400/30'
+                        : 'bg-red-500/95 text-white border border-red-400/30'
+                        }`}>
                         <div className={`w-2 h-2 rounded-full ${props.available ? 'bg-white animate-pulse' : 'bg-white/80'}`} />
                         {props.available ? 'Available' : 'Busy'}
                     </div>
@@ -52,7 +52,7 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
                     <div className='absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0'>
                         <div className='flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/95 backdrop-blur-sm text-white text-xs font-semibold shadow-lg border border-amber-400/30'>
                             <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                                <path d="M7 14l3-3 3 3 5-5v4h4V7h-6l5 5-3 3-3-3-5 5z"/>
+                                <path d="M7 14l3-3 3 3 5-5v4h4V7h-6l5 5-3 3-3-3-5 5z" />
                             </svg>
                             Popular
                         </div>
@@ -90,13 +90,13 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
                     <div className='space-y-1'>
                         <div className='flex items-baseline gap-1'>
                             <span className='text-2xl font-bold text-gray-900'>
-                                ${props.pricePerHour}
+                                ₦{props.pricePerHour.toLocaleString()}
                             </span>
                             <span className='text-sm text-gray-500 font-medium'>/hour</span>
                         </div>
                         <p className='text-xs text-gray-500 font-medium'>Starting price</p>
                     </div>
-                    
+
                     <div className='text-right'>
                         <div className={`text-sm font-semibold ${props.available ? 'text-emerald-600' : 'text-orange-600'}`}>
                             {props.available ? 'Available today' : 'Next: Tomorrow'}
@@ -106,15 +106,15 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <span className='font-medium'>Near you</span>
+                            <span className='font-medium'>{props.distance ?? "Near you"}</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Action Button */}
                 <div className='pt-2'>
-                    <Button 
-                        variant='primary' 
+                    <Button
+                        variant='primary'
                         className='w-full font-bold text-base py-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300'
                     >
                         Book Now

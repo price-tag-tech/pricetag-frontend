@@ -21,7 +21,7 @@ const DealsAndPromotions = () => {
                         </p>
                         <div>
                             <Link to="">
-                                <Button className={`dont-semibold font-montserrat bg-[#CA8A04] text-white hover:bg-[#CA8A04]/70 transition duration-300`}>
+                                <Button className={`font-semibold font-montserrat bg-[#CA8A04] text-white hover:bg-[#CA8A04]/70 transition duration-300`}>
                                     Shop Now
                                 </Button>
                             </Link>
@@ -42,14 +42,14 @@ const DealsAndPromotions = () => {
                             New Users Special
                         </h4>
                         <h6 className='uppercase text-3xl font-normal'>
-                            $15 off
+                            ₦500 off
                         </h6>
                         <p className='text-lg md:text-2xl font-light'>
-                            On your first order above $50
+                            On your first order above ₦5,000
                         </p>
                         <div>
                             <Link to="">
-                                <Button className={`dont-semibold font-montserrat bg-black text-white hover:bg-black/70 transition duration-300`}>
+                                <Button className={`font-semibold font-montserrat bg-black text-white hover:bg-black/70 transition duration-300`}>
                                     Shop Now
                                 </Button>
                             </Link>
