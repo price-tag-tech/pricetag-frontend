@@ -22,6 +22,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
+import UserDashboard from './pages/UserDashboard';
+import DashboardLayout from './components/layout/DashboardLayout';
 
 function App() {
   return (
@@ -40,13 +42,17 @@ function App() {
           <Route path="profile" element={<UserProfilePage />} />
           <Route path="stores" element={<Stores />} />
           <Route path="become-agent" element={<Affiliate />} />
-          
-          {/* Dashboard routes */}
-          <Route path="dashboard/*" element={<BusinessDashboard />} />
-          
+
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+        {/* Dashboard routes */}
+        <Route element={<DashboardLayout />}>
+          <Route path="dashboard/*" element={<BusinessDashboard />} />
+          <Route path="user/*" element={<UserDashboard />} />
+        </Route>
+
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="verification" element={<EmailVerification />} />
