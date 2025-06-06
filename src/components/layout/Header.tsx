@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Search className="w-6 h-6 mr-3 text-green-600" />
-                    Find Stores
+                     Stores
                   </Link>
                   <Link
                     to="/products"
@@ -192,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Package className="w-6 h-6 mr-3 text-green-600" />
-                    Find Products
+                     Products
                   </Link>
                   <Link
                     to="/services"
@@ -200,16 +200,16 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Wrench className="w-6 h-6 mr-3 text-green-600" />
-                    Find Services
+                     Services
                   </Link>
-                  <Link
+                  {/* <Link
                     to="/open-store"
                     className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
                     onClick={toggleMenu}
                   >
                     <Store className="w-6 h-6 mr-3 text-green-600" />
                     Create eStore
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/become-agent"
                     className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
