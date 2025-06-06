@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import { useUrlStore } from "../../store/nav-store"
+import { Link, useLocation } from "react-router-dom"
 
 interface IMenuItem { name: string, link: string, links?: IMenuItem[] }
 
@@ -12,14 +11,14 @@ const Navbar = () => {
         { name: "More", link: "#", links: [] }
     ]
 
-    const { activeUrl, setActiveUrl } = useUrlStore()
+    const { pathname } = useLocation()
 
     return (
         <div className="mt-4">
             <div className="flex gap-6">
                 {
                     items.map((item, _) => (
-                        <Link key={_} to={item.link} onClick={() => setActiveUrl(item.link)} className={`hidden md:block text-lg font-light text-gray-600 ${activeUrl === item.link && "nav-active"} hover:nav-active transition-all duration-1000 flex gap-2 group relative`}>
+                        <Link key={_} to={item.link} className={`hidden md:block text-lg font-light text-gray-600 ${pathname === item.link && "nav-active"} hover:nav-active transition-all duration-1000 flex gap-2 group relative`}>
                             <span className="relative z-10">
                                 {item.name}
                             </span>
