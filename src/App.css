@@ -57,7 +57,7 @@
 }
 
 .nav-active {
-  @apply relative after:absolute after:-bottom-[3px] after:left-0 after:border-t-4 after:w-[80%] after:ml-[5%] after:border-brand-800 after:rounded-3xl;
+  @apply relative after:absolute after:-bottom-[3px] after:left-0 after:border-t-[2.5pt] after:w-full after:border-brand-800 after:rounded-3xl;
 }
 .nav-active:after {
   content: "";

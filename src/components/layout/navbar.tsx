@@ -19,10 +19,11 @@ const Navbar = () => {
             <div className="flex gap-6">
                 {
                     items.map((item, _) => (
-                        <Link key={_} to={item.link} onClick={() => setActiveUrl(item.link)} className={`hidden md:block text-lg font-light text-gray-600 ${activeUrl === item.link && "nav-active transition-all duration-500"} hover:nav-active flex gap-2`}>
-                            <span>
+                        <Link key={_} to={item.link} onClick={() => setActiveUrl(item.link)} className={`hidden md:block text-lg font-light text-gray-600 ${activeUrl === item.link && "nav-active"} hover:nav-active transition-all duration-1000 flex gap-2 group relative`}>
+                            <span className="relative z-10">
                                 {item.name}
                             </span>
+                            <div className="absolute inset-0 bg-green-50 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
                         </Link>
                     ))
                 }

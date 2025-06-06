@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
               <HeaderQuickActions />
 
               {/* Desktop Navigation */}
-              <div className="hidden items-center justify-end space-x-6 h-full">
+              {/* <div className="hidden items-center justify-end space-x-6 h-full">
                 <nav className="flex items-center space-x-6 h-full">
                   <Link
                     to="/stores"
@@ -138,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     )}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Mobile Cart Icon */}
               <div className="lg:hidden flex items-center h-full z-20 group">
@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Search className="w-6 h-6 mr-3 text-green-600" />
-                     Stores
+                    Stores
                   </Link>
                   <Link
                     to="/products"
@@ -192,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Package className="w-6 h-6 mr-3 text-green-600" />
-                     Products
+                    Products
                   </Link>
                   <Link
                     to="/services"
@@ -200,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     onClick={toggleMenu}
                   >
                     <Wrench className="w-6 h-6 mr-3 text-green-600" />
-                     Services
+                    Services
                   </Link>
                   {/* <Link
                     to="/open-store"
