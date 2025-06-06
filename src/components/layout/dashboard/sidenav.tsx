@@ -38,9 +38,11 @@ const Sidenav = () => {
 
         <div className='w-[250pt]'>
             <div className='bg-gray-100 shadow w-full h-fit rounded-2xl py-10'>
-                <div className='px-10'>
-                    <img src="/logo.svg" alt="Pricetag" />
-                </div>
+                <Link to="/">
+                    <div className='px-10'>
+                        <img src="/logo.svg" alt="Pricetag" />
+                    </div>
+                </Link>
 
                 <div className='flex flex-col mt-5 divide-y-2 text-gray-800 text-sm'>
                     {links.map((_, i) => (

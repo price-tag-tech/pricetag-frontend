@@ -23,7 +23,7 @@ import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
 import UserDashboard from './pages/UserDashboard';
-import DashboardLayout from './components/layout/DashboardLayout';
+import DashboardLayout from './components/layout/dashboard/dashboard-layout';
 
 function App() {
   return (
