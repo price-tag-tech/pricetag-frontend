@@ -29,7 +29,7 @@ const HeroSection = () => {
                     </h1>
 
                     <p className="mt-4 text-sm text-center md:text-left sm:text-lg text-gray-600 max-w-sm sm:max-w-xl px-4 sm:px-0 font-bold sm:font-normal mx-auto sm:mx-0">
-                        Sell, Grow, and Compare Prices with{" "}
+                        Create e-stores, be seen, sell, grow, compare prices, shop, and earn on{" "}
                         <span className="font-semibold">Price Tag</span>!
                     </p>
 
