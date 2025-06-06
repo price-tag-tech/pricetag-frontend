@@ -6,7 +6,7 @@ import { useStoreState } from '../../store/search-store';
 
 const HeroSection = () => {
     const { stores, setFilteredStores } = useStoreState();
-    
+
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const rotatingTexts = [
         "Business at the speed of search",
@@ -27,7 +27,7 @@ const HeroSection = () => {
 
     const sampleStores = [
         "TechHub Electronics",
-        "Fresh Market Groceries", 
+        "Fresh Market Groceries",
         "Fashion Forward Boutique",
         "HomeDecor Paradise",
         "Sports Zone",
@@ -62,7 +62,7 @@ const HeroSection = () => {
         const steps = 60;
         const increment = targetCount / steps;
         let currentCount = 0;
-        
+
         const timer = setInterval(() => {
             currentCount += increment;
             if (currentCount >= targetCount) {
@@ -99,10 +99,10 @@ const HeroSection = () => {
         <Section className='overflow-hidden'>
             <div className='flex items-center justify-around flex-col lg:flex-row gap-4'>
                 <div className='w-full lg:w-1/2 flex flex-col gap-y-3'>
-                    
+
                     <div className="h-32 sm:h-40 md:h-48 flex items-center">
                         <h1 className="text-4xl text-center sm:text-left sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-                            <span 
+                            <span
                                 key={currentTextIndex}
                                 className="inline-block animate-fade-in-up"
                                 style={{
@@ -110,7 +110,7 @@ const HeroSection = () => {
                                 }}
                             >
                                 {rotatingTexts[currentTextIndex].split(' ').map((word, index) => (
-                                    <span 
+                                    <span
                                         key={index}
                                         className="inline-block mr-2 md:mr-3"
                                         style={{
@@ -143,7 +143,7 @@ const HeroSection = () => {
                                 onSearch={handleSearch}
                                 placeholder={`Search products, services, or stores...`}
                             />
-                            
+
                             <div className="absolute -top-8 left-4 hidden sm:block">
                                 <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 shadow-lg border border-gray-200/50 text-sm text-gray-600 animate-bounce">
                                     <span className="text-green-500">💡</span> Try: "{sampleStores[currentStoreIndex]}"
@@ -166,21 +166,21 @@ const HeroSection = () => {
 
                 <div className='w-full lg:w-1/2 h-full flex flex-col gap-3'>
                     <div className='w-full group'>
-                        <img 
-                            src="/assets/hero/hero-1.jpg" 
-                            alt="Hero section 1" 
-                            className='rounded-3xl bg-gray-100 h-[200pt] w-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:shadow-xl' 
+                        <img
+                            src="/assets/hero/hero-1.jpg"
+                            alt="Hero section 1"
+                            className='rounded-3xl bg-gray-100 h-[200pt] w-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:shadow-xl'
                         />
                     </div>
-                    
+
                     <div className="flex gap-x-3">
                         <div className='w-1/2 relative group'>
-                            <img 
-                                src="/assets/hero/hero-2.jpg" 
-                                alt="Hero section 2" 
-                                className='rounded-3xl bg-gray-100 h-[150pt] w-full object-cover transition-all duration-500 group-hover:scale-105' 
+                            <img
+                                src="/assets/hero/hero-2.jpg"
+                                alt="Hero section 2"
+                                className='rounded-3xl bg-gray-100 h-[150pt] w-full object-cover transition-all duration-500 group-hover:scale-105'
                             />
-                            
+
                             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg border border-gray-200/50 text-xs font-medium text-gray-700 animate-bounce">
                                 <span className="text-green-500">●</span> Live
                             </div>
@@ -189,10 +189,10 @@ const HeroSection = () => {
                         <div className="w-1/2 flex flex-col gap-3 items-center justify-center">
                             <div className='flex justify-around relative'>
                                 {(["avatar-1.png", "avatar-2.png", "avatar-3.png"]).map((item: string, index) => (
-                                    <img 
-                                        key={item} 
-                                        src={`/assets/hero/${item}`} 
-                                        alt={item} 
+                                    <img
+                                        key={item}
+                                        src={`/assets/hero/${item}`}
+                                        alt={item}
                                         className='h-10 md:h-20 w-10 md:w-20 rounded-full bg-gray-200 transition-all duration-500 hover:scale-110 hover:shadow-lg border-2 border-white shadow-md'
                                         style={{
                                             transform: `translate(${avatarPositions[index]?.x || 0}px, ${avatarPositions[index]?.y || 0}px)`,
@@ -200,14 +200,14 @@ const HeroSection = () => {
                                         }}
                                     />
                                 ))}
-                                
+
                                 <div className="absolute inset-0 pointer-events-none">
                                     <div className="absolute top-2 left-2 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
                                     <div className="absolute bottom-3 right-4 w-1 h-1 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
                                     <div className="absolute top-5 right-2 w-1 h-1 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
                                 </div>
                             </div>
-                            
+
                             <div className='text-center'>
                                 <h3 className="font-bold text-4xl md:text-6xl bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
                                     {businessCount.toLocaleString()}+
@@ -215,9 +215,9 @@ const HeroSection = () => {
                                 <p className='text-light text-xs md:text-sm leading-loose animate-pulse'>
                                     Top businesses
                                 </p>
-                                
+
                                 <div className="mt-2 w-16 h-1 bg-gray-200 rounded-full mx-auto overflow-hidden">
-                                    <div 
+                                    <div
                                         className="h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full transition-all duration-1000"
                                         style={{ width: `${(businessCount / targetCount) * 100}%` }}
                                     ></div>
