@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Search, Package, Wrench, Store, Handshake, LogIn, UserPlus } from "lucide-react";
 import logoImage from "../../assets/logo/logo.svg";
 import Button from "../common/Button";
 import Container from "./Container";
@@ -179,31 +180,51 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                 <nav className="flex flex-col space-y-6 mb-8">
                   <Link
                     to="/stores"
-                    className="text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
                     onClick={toggleMenu}
                   >
+                    <Search className="w-6 h-6 mr-3 text-green-600" />
                     Find Stores
                   </Link>
                   <Link
-                    to="/become-agent"
-                    className="text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    to="/products"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
                     onClick={toggleMenu}
                   >
-                    Become an Agent
+                    <Package className="w-6 h-6 mr-3 text-green-600" />
+                    Find Products
+                  </Link>
+                  <Link
+                    to="/services"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    onClick={toggleMenu}
+                  >
+                    <Wrench className="w-6 h-6 mr-3 text-green-600" />
+                    Find Services
                   </Link>
                   <Link
                     to="/open-store"
-                    className="text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
                     onClick={toggleMenu}
                   >
-                    Open a Store
+                    <Store className="w-6 h-6 mr-3 text-green-600" />
+                    Create eStore
+                  </Link>
+                  <Link
+                    to="/become-agent"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    onClick={toggleMenu}
+                  >
+                    <Handshake className="w-6 h-6 mr-3 text-green-600" />
+                    Become an Agent
                   </Link>
                   <Link
                     to="/login"
-                    className="text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
                     onClick={toggleMenu}
                   >
-                    Log In
+                    <LogIn className="w-6 h-6 mr-3 text-green-600" />
+                    Login
                   </Link>
                 </nav>
 
@@ -211,10 +232,11 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                   variant="outline"
                   size="md"
                   to="/register"
-                  className="w-full transition-all duration-300 ease-out hover:scale-105"
+                  className="w-full transition-all duration-300 ease-out hover:scale-105 flex items-center justify-center"
                   onClick={toggleMenu}
                 >
-                  Sign up for free
+                  <UserPlus className="w-5 h-5 mr-2 text-green-600" />
+                  Sign Up for Free
                 </Button>
               </div>
             </div>
