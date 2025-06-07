@@ -36,7 +36,7 @@ const Sidenav = () => {
     return (
         // desktop only (sliding navigation will be used for mobile view)
 
-        <div className='w-[250pt]'>
+        <div className='hidden md:block w-[250pt]'>
             <div className='bg-gray-100 shadow w-full h-fit rounded-2xl py-10'>
                 <Link to="/">
                     <div className='px-10'>
