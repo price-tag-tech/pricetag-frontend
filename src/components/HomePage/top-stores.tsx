@@ -194,7 +194,7 @@ const TopStores: React.FC = () => {
                   bg-white !text-gray-900
                   hover:bg-gray-50 hover:border-gray-600
                   py-1 px-3
-                  whitespace-nowrap  
+                  whitespace-nowrap   font-montserrat md:text-xs
                 `}
               >
                 <StoreIcon className='h-4' />
@@ -208,12 +208,12 @@ const TopStores: React.FC = () => {
       {/* Load More Button */}
       <div className="mt-8 flex justify-center">
         <Button
-          size="md"
+          size="sm"
           onClick={handleLoadMoreClick}
           className="border border-gray-400 bg-white !text-gray-900 hover:bg-gray-100 hover:border-gray-500 py-1 px-5 sm:py-1.5 sm:px-6 font-montserrat"
         >
           Load More
-          {isLoading && <RefreshCcw className='h-4 animate-spin' />}
+          {isLoading && <RefreshCcw className='h-3 animate-spin' />}
         </Button>
       </div>
     </div>

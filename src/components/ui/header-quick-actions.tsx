@@ -1,5 +1,6 @@
-import { Bell, Heart, Map, ShoppingCart, User } from 'lucide-react'
+import { Bell, Heart, Map, ShoppingCart, User, UserPlus } from 'lucide-react'
 import Button from '../common/Button'
+import { Link } from 'react-router-dom'
 
 const HeaderQuickActions = () => {
 
@@ -24,16 +25,19 @@ const HeaderQuickActions = () => {
             </div>
 
             <div className='flex justify-end gap-4'>
-                <Button variant='outline' className='flex items-center gap-x-3'>
-                    <span>
-                        <User />
-                    </span>
-                    Login
-                </Button>
+                <Link to="/login">
+                    <Button size='sm' variant='outline' className='font-montserrat'>
+                        <User className='pr-2' />
+                        Login
+                    </Button>
+                </Link>
 
-                <Button className=''>
-                    Get Started
-                </Button>
+                <Link to="/register">
+                    <Button size='sm' className='font-montserrat'>
+                        <UserPlus className='pr-2' />
+                        Get Started
+                    </Button>
+                </Link>
             </div>
         </div>
     )

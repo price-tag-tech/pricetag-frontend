@@ -22,8 +22,7 @@ const PopularServiceCard = (props: PopularServiceCardProps) => {
                 </div>
                 <div className='p-4 flex flex-col gap-y-3'>
                     <div className='flex gap-x-3 items-center'>
-                        <div className='h-10 md:h-16 w-10 md:w-16 rounded-full bg-gray-200'>
-                        </div>
+                        <img src={props.imageUrl} alt={props.name} className='h-10 md:h-16 w-10 md:w-16 rounded-full object-cover' />
                         <h4 className='text-xl md:text-2xl text-black font-semibold'>
                             {props.name}
                         </h4>
