@@ -25,6 +25,7 @@ import Affiliate from './pages/Affiliate';
 import UserDashboard from './pages/dashboard/user-dashboard.tsx';
 import DashboardLayout from './components/layout/dashboard/dashboard-layout';
 import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page';
+import NotificationsPage from './pages/dashboard/notifications-page';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="user">
             <Route index element={<UserDashboard />} />
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
+            <Route path="notifications" element={<NotificationsPage />} />
           </Route>
         </Route>
 
