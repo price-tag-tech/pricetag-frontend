@@ -12,7 +12,7 @@ const Sidenav = () => {
         {
             icon: <ShoppingCart />,
             name: "Orders & Purchases",
-            route: "/user/cart",
+            route: "/user/orders-and-purchases",
         },
         {
             icon: <Bell />,

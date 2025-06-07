@@ -10,7 +10,7 @@ interface User {
 const DashboardHeader: FC<User> = (props) => {
 
     return (
-        <div className='w-full md:px-5 flex items-center justify-between'>
+        <div className='w-full md:px-5 flex items-center justify-between mb-8 md:mb-20'>
             <div className='flex items-center gap-6'>
                 <div className='h-10 w-10 md:h-20 md:w-20 rounded-full bg-brand-900 text-white font-semibold text-xl md:text-5xl flex items-center justify-center'>
                     {props.name.substring(0, 1)}
