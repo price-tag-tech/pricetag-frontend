@@ -1,6 +1,9 @@
 import React from 'react'
 import Button from '../../components/common/Button'
 import { Printer } from 'lucide-react'
+import Input from '../../components/ui/form/input'
+import Select from '../../components/ui/form/select'
+import Label from '../../components/ui/form/label'
 
 const AffiliateWithdrawalPage = () => {
 
@@ -49,12 +52,10 @@ const AffiliateWithdrawalPage = () => {
                 Place a Withdrawal
             </h3>
             <div className='mt-4 md:mt-8 flex flex-col md:flex-row gap-8'>
-                <div className='w-full md:w-1/3 text-xs'>
+                <div className='w-full md:w-1/3'>
                     <div className='flex flex-col gap-y-1   '>
-                        <label htmlFor='amount' className='font-medium'>
-                            Enter Amount
-                        </label>
-                        <input type="number" className='py-4 p-4 border shadow-sm rounded' />
+                        <Label title="Enter Amount" />
+                        <Input type="number" name="amount" />
                     </div>
 
                     <div className='text-lg font-semibold uppercase mt-6'>
@@ -62,39 +63,23 @@ const AffiliateWithdrawalPage = () => {
                     </div>
 
                     <div className='flex flex-col gap-y-1 mt-4'>
-                        <label htmlFor='amount' className='font-medium'>
-                            Bank
-                        </label>
-                        <select className='py-4 p-4 border shadow-sm rounded bg-white'>
-                            <option>
-                                --Select Bank--
-                            </option>
-                        </select>
+                        <Label title="Bank" />
+                        <Select default='--Select Bank--' name="bank" />
                     </div>
 
                     <div className='flex flex-col gap-y-1 mt-4'>
-                        <label htmlFor='amount' className='font-medium'>
-                            Account Number
-                        </label>
-                        <input type="tel" className='py-4 p-4 border shadow-sm rounded' />
+                        <Label title="Account Number" />
+                        <Input type='tel' name="accountNumber" />
                     </div>
 
                     <div className='flex flex-col gap-y-1 mt-4'>
-                        <label htmlFor='amount' className='font-medium'>
-                            Account Name
-                        </label>
-                        <input type="text" className='py-4 p-4 border shadow-sm rounded' />
+                        <Label title="Account Name" />
+                        <Input type="text" name="accountName" />
                     </div>
 
                     <div className='flex flex-col gap-y-1 mt-4'>
-                        <label htmlFor='amount' className='font-medium'>
-                            Account Type
-                        </label>
-                        <select className='py-4 p-4 border shadow-sm rounded bg-white'>
-                            <option>
-                                --Select Account Type--
-                            </option>
-                        </select>
+                        <Label title='Account Type' />
+                        <Select default='--Select Account Type--' name="accountType" />
                     </div>
 
                     <div className='mt-4'>
