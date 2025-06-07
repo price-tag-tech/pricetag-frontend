@@ -27,6 +27,7 @@ import DashboardLayout from './components/layout/dashboard/dashboard-layout';
 import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page';
 import NotificationsPage from './pages/dashboard/notifications-page';
 import AffiliatePage from './pages/dashboard/affiliate-page';
+import AffiliateWithdrawalPage from './pages/dashboard/affiliate-withdrawal-page';
 
 function App() {
   return (
@@ -57,7 +58,10 @@ function App() {
             <Route index element={<UserDashboard />} />
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
-            <Route path="affiliate" element={<AffiliatePage />} />
+            <Route path="affiliate">
+              <Route index element={<AffiliatePage />} />
+              <Route path="withdraw" element={<AffiliateWithdrawalPage />} />
+            </Route>
           </Route>
         </Route>
 

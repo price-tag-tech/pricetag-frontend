@@ -167,25 +167,25 @@ const AffiliatePage = () => {
                     </div>
                     <div className='w-full flex flex-col py-2 md:py-4 divide-y-2'>
 
-                        {referrals.map(order => (
-                            <div key={order.id} className='grid grid-cols-1 md:grid-cols-12 gap-y-2 py-3'>
+                        {referrals.map((referral, i) => (
+                            <div key={i} className='grid grid-cols-1 md:grid-cols-12 gap-y-2 py-3'>
                                 <div className='hidden md:block md:col-span-1'>
-                                    {order.id}
+                                    {referral.id}
                                 </div>
                                 <div className='col-span-12 md:col-span-2'>
-                                    {order.name}
+                                    {referral.name}
                                 </div>
                                 <div className='col-span-12 md:col-span-2 font-semibold text-brand-700 uppercase'>
-                                    {order.store}
+                                    {referral.store}
                                 </div>
                                 <div className='col-span-12 md:col-span-2'>
-                                    {order.phoneNumber}
+                                    {referral.phoneNumber}
                                 </div>
                                 <div className='col-span-12 md:col-span-2'>
-                                    {order.dateTime}
+                                    {referral.dateTime}
                                 </div>
                                 <div className='col-span-12 md:col-span-2'>
-                                    {order.commission}
+                                    {referral.commission}
                                 </div>
                                 <div className='col-span-1'>
                                     <Button variant='outline' size='sm' className='button-outline-secondary font-medium text-xs w-full md:w-fit'>
