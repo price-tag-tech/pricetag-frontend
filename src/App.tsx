@@ -22,8 +22,9 @@ import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
-import UserDashboard from './pages/user-dashboard.tsx';
+import UserDashboard from './pages/dashboard/user-dashboard.tsx';
 import DashboardLayout from './components/layout/dashboard/dashboard-layout';
+import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page';
 
 function App() {
   return (
@@ -50,7 +51,10 @@ function App() {
         {/* Dashboard routes */}
         <Route element={<DashboardLayout />}>
           <Route path="dashboard/*" element={<BusinessDashboard />} />
-          <Route path="user/*" element={<UserDashboard />} />
+          <Route path="user">
+            <Route index element={<UserDashboard />} />
+            <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
+          </Route>
         </Route>
 
         <Route path="login" element={<LoginPage />} />
