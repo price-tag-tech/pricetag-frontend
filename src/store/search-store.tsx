@@ -26,8 +26,8 @@ export const useStoreState = create<StoreState>((set, get) => ({
     stores: [],
     isSearching: false,
 
-    setIsSearching: (state: boolean) => set({ isSearching: true }),
-    setStores: (stores: Store[]) => set({ stores }),
-    setFilteredStores: (stores: Store[]) => set({ filteredStores: stores, isSearching: true }),
-    setQuery: (query: string) => set({ query })
+    setIsSearching: (state) => set({ isSearching: state }),
+    setStores: (stores) => set({ stores }),
+    setFilteredStores: (stores) => set({ filteredStores: stores, isSearching: true }),
+    setQuery: (query) => set({ query })
 }))
