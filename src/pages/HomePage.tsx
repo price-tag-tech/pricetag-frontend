@@ -1,16 +1,6 @@
 import React from "react";
-import Section from "../components/layout/Section";
 import Card from "../components/common/Card";
-import PopularProducts from "../components/HomePage/PopularItems";
-import {
-  DevicePhoneMobileIcon,
-  ComputerDesktopIcon,
-  TagIcon,
-  RocketLaunchIcon,
-} from "@heroicons/react/24/solid";
 import TopStores from "../components/HomePage/top-stores";
-import HelpfulGuides from "../components/HomePage/HelpfulGuides";
-import Button from "../components/common/Button";
 import BecomeAnAgent from "../components/BecomeAnAgent";
 import HeroSection from "../components/HomePage/HeroSection";
 import { useStoreState } from "../store/search-store";
