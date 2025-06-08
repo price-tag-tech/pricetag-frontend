@@ -22,6 +22,12 @@ import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
+import UserDashboard from './pages/dashboard/user-dashboard.tsx';
+import DashboardLayout from './components/layout/dashboard/dashboard-layout';
+import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page';
+import NotificationsPage from './pages/dashboard/notifications-page';
+import AffiliatePage from './pages/dashboard/affiliate-page';
+import AffiliateWithdrawalPage from './pages/dashboard/affiliate-withdrawal-page';
 
 function App() {
   return (
@@ -40,13 +46,25 @@ function App() {
           <Route path="profile" element={<UserProfilePage />} />
           <Route path="stores" element={<Stores />} />
           <Route path="become-agent" element={<Affiliate />} />
-          
-          {/* Dashboard routes */}
-          <Route path="dashboard/*" element={<BusinessDashboard />} />
-          
+
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+        {/* Dashboard routes */}
+        <Route element={<DashboardLayout />}>
+          <Route path="dashboard/*" element={<BusinessDashboard />} />
+          <Route path="user">
+            <Route index element={<UserDashboard />} />
+            <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
+            <Route path="notifications" element={<NotificationsPage />} />
+            <Route path="affiliate">
+              <Route index element={<AffiliatePage />} />
+              <Route path="withdraw" element={<AffiliateWithdrawalPage />} />
+            </Route>
+          </Route>
+        </Route>
+
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="verification" element={<EmailVerification />} />
