@@ -28,6 +28,11 @@ import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page'
 import NotificationsPage from './pages/dashboard/notifications-page';
 import AffiliatePage from './pages/dashboard/affiliate';
 import AffiliateWithdrawalPage from './pages/dashboard/affiliate/affiliate-withdrawal-page';
+import ProfilePage from './pages/dashboard/profile';
+import PasswordEdit from './pages/dashboard/profile/password-edit';
+import ProfileLayout from './components/layout/dashboard/profile-layout';
+import SocialProfiles from './pages/dashboard/profile/social-profiles';
+import BankSettings from './pages/dashboard/profile/bank-settings';
 
 function App() {
   return (
@@ -61,6 +66,12 @@ function App() {
             <Route path="affiliate">
               <Route index element={<AffiliatePage />} />
               <Route path="withdraw" element={<AffiliateWithdrawalPage />} />
+            </Route>
+            <Route path="profile" element={<ProfileLayout />}>
+              <Route index element={<ProfilePage />} />
+              <Route path="password" element={<PasswordEdit />} />
+              <Route path="social-profiles" element={<SocialProfiles />} />
+              <Route path="bank-settings" element={<BankSettings />} />
             </Route>
           </Route>
         </Route>
