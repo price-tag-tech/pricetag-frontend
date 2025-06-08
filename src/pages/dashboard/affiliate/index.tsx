@@ -1,6 +1,6 @@
 import { ChevronRight, ChevronsLeft, ChevronsRight, Copy, Wallet } from 'lucide-react'
 import React from 'react'
-import Button from '../../components/common/Button'
+import Button from '../../../components/common/Button'
 
 const AffiliatePage = () => {
     const referrals = [
