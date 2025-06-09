@@ -15,8 +15,8 @@ interface SelectProps {
 
 const Select: FC<SelectProps> = (props) => {
     return (
-        <select className={`py-4 p-4 border shadow-sm rounded bg-white text-${props.size || "xs"} ${props.className}`}>
-            <option>{props.default}</option>
+        <select className={`py-4 p-4 border shadow-sm rounded bg-white text-gray-500 text-${props.size || "sm"} ${props.className}`}>
+            <option className=''>{props.default}</option>
             {props.options && props.options.map((option) => <option key={option.value} value={option.value}>
                 {option.label}
             </option>)}

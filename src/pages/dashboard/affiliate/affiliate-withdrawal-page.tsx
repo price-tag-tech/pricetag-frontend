@@ -1,9 +1,9 @@
 import React from 'react'
-import Button from '../../components/common/Button'
+import Button from '../../../components/common/Button'
 import { Printer } from 'lucide-react'
-import Input from '../../components/ui/form/input'
-import Select from '../../components/ui/form/select'
-import Label from '../../components/ui/form/label'
+import Input from '../../../components/ui/form/input'
+import Select from '../../../components/ui/form/select'
+import Label from '../../../components/ui/form/label'
 
 const AffiliateWithdrawalPage = () => {
 

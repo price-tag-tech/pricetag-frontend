@@ -10,7 +10,7 @@ interface LabelProps {
 
 const Label: FC<LabelProps> = (props) => {
     return (
-        <label htmlFor={props.for} className={`font-medium text-${props.size || 'xs'} ${props.className}`}>
+        <label htmlFor={props.for} className={`font-medium text-${props.size || 'sm'} ${props.className}`}>
             {props.title || props.children}
         </label>
     )
