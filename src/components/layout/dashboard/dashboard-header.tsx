@@ -2,40 +2,45 @@ import { Link } from "react-router-dom"
 import SearchBar from "../../common/SearchBar"
 import Button from "../../common/Button"
 import { useCartStore } from "../../../store/cart-store"
+import { LogOut, Menu, X } from "lucide-react"
+import { useState } from "react"
 
 const DashboardHeader = () => {
     const menu = [
         { label: "Find Stores", path: "" },
         { label: "Become an Agent", path: "" },
         { label: "Open a Store", path: "" },
-        { label: "Logout", path: "" },
     ]
 
     const { count: cartItemCount } = useCartStore()
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <div className="flex items-center justify-between mb-8 md:mb-16">
-            <div className="flex gap-x-3 items-center">
+        <div className="flex items-center justify-between mb-5 md:mb-8 px-5 md:px-10">
+            <div className="flex gap-x-6 items-center">
                 <div>
-                    <img src="/logo.svg" alt="Pricetag" />
+                    <img src="/logo.svg" className="h-12" alt="Pricetag" />
                 </div>
-                <div>
+                <div className="hidden md:block">
                     <SearchBar
                         placeholder={`Search products, services, or stores...`}
                     />
                 </div>
             </div>
-            <div className="text-md font-medium flex items-center gap-x-5">
-                {menu.map(link => (
-                    <Link to={link.path} key={link.path}>
-                        {link.label}
-                    </Link>
-                ))}
-                <Button size="sm" variant="outline" className="font-montserrat">
-                    Sig up for free
-                </Button>
+            <div className="text-sm lg:text-md font-medium flex items-center gap-x-5">
+                <div className="hidden md:flex items-center gap-x-5">
+                    {menu.map(link => (
+                        <Link to={link.path} key={link.path}>
+                            {link.label}
+                        </Link>
+                    ))}
+                    <Button size="sm" variant="outline" className="font-montserrat">
+                        <LogOut className="h-4" />
+                        Logout
+                    </Button>
+                </div>
                 <div className="flex items-center h-full z-20 group">
-                    <div className="relative flex-shrink-0 w-[1.375rem] h-[1.3125rem] cursor-pointer transition-transform duration-300 ease-out group-hover:scale-110">
+                    <div className="relative flex items-center justify-center flex-shrink-0 w-[1.375rem] h-[1.3125rem] cursor-pointer transition-transform duration-300 ease-out group-hover:scale-110">
                         <div className="flex flex-shrink-0 justify-center items-center w-3.5 h-[0.8125rem]">
                             <svg
                                 width="14"
@@ -58,6 +63,44 @@ const DashboardHeader = () => {
                                 </span>
                             </div>
                         )}
+                    </div>
+                </div>
+
+                <div className="md:hidden flex items-center">
+                    <Button onClick={() => setIsMenuOpen(true)} variant="outline" size="sm" className="button-secondary-outline">
+                        <Menu />
+                    </Button>
+                </div>
+
+                {/* Mobile Menu Overlay */}
+                <div
+                    className={`fixed inset-0 bg-white z-20 transform transition-all duration-500 ease-out lg:hidden ${isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+                        }`}
+                >
+
+                    <div className="flex flex-col h-full pt-20 px-6 pb-6 overflow-y-auto">
+                        <div className="w-full flex justify-end">
+                            <Button onClick={() => setIsMenuOpen(false)} variant="outline" size="sm" className="button-outline-secondary">
+                                <X />
+                            </Button>
+                        </div>
+                        <nav className="flex flex-col space-y-6 mb-8">
+
+                            {menu.map(link => (
+                                <Link
+                                    to={link.path}
+                                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+
+                        <Button size="md" variant="outline" className="font-montserrat">
+                            <LogOut className="h-4" />
+                            Logout
+                        </Button>
                     </div>
                 </div>
             </div>

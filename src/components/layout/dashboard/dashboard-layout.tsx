@@ -6,11 +6,11 @@ import DashboardHeader from './dashboard-header'
 
 const DashboardLayout: FC = () => {
     return (
-        <div className='min-h-screen flex flex-col overflow-x-hidden font-montserrat'>
+        <div className='min-h-screen flex flex-col overflow-x-hidden font-montserrat py-5'>
+            <DashboardHeader />
             <div className='flex flex-col md:flex-row p-4 md:p-10'>
                 <Sidenav />
                 <main className='px-5 md:px-10 w-full'>
-                    <DashboardHeader />
                     <Outlet />
                 </main>
             </div>
