@@ -39,16 +39,12 @@ const UserDashboard = () => {
                                 <Button variant='outline' onClick={() => setIsProfileMenuOpen(prev => !prev)} size="sm" to="" className='button-outline-secondary'>
                                     <MoreHorizontal className='h-4 md:h-auto' />
                                 </Button>
-                                <div className={`${!isProfileMenuOpen && "hidden"} absolute left-0 mt-1 w-44 rounded-xl border bg-white shadow-lg z-10 py-2`}>
-                                    <Link to="/user/profile">
-                                        <button className="w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">
-                                            Edit Account
-                                        </button>
+                                <div className={`${!isProfileMenuOpen && "hidden"} absolute left-0 mt-1 w-44 rounded-xl border bg-white shadow-lg z-10 py-2 flex flex-col text-sm`}>
+                                    <Link to="/user/profile" className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
+                                        Edit Account
                                     </Link>
-                                    <Link to="">
-                                        <button className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50">
-                                            Delete Account
-                                        </button>
+                                    <Link to="" className="w-full text-left px-4 py-2 text-red-500 hover:bg-red-50">
+                                        Delete Account
                                     </Link>
                                 </div>
                             </div>
@@ -82,7 +78,7 @@ const UserDashboard = () => {
                 </div>
             </div>
             <LatestOrderAndPurchase />
-        </div>
+        </div >
     )
 }
 

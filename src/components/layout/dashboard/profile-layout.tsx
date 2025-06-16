@@ -27,12 +27,12 @@ const ProfileLayout = () => {
     })
 
     return (
-        <div className='px-5 md:px-10'>
+        <div className='md:px-10'>
             {breadcrumbs.length > 0 ? breadcrumbs : <h4 className='text-lg md:text-2xl font-semibold text-black'>
                 Profile Settings / Edit Profile
             </h4>}
 
-            <div className='mt-6 md:mt-12 flex flex-col md:flex-row px-5'>
+            <div className='mt-6 md:mt-12 flex flex-col md:flex-row md:px-5'>
                 <div className='w-full md:w-1/5 flex flex-col gap-y-5 text-md font-light font-montserrat'>
                     {
                         subnavs.map((nav => (
@@ -43,7 +43,7 @@ const ProfileLayout = () => {
                     }
                 </div>
 
-                <div className='w-full md:w-4/5'>
+                <div className='w-full md:w-4/5 my-16 md:my-0'>
                     <div className='w-full md:w-4/5'>
                         <Outlet />
                     </div>
