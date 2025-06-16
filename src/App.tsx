@@ -34,6 +34,7 @@ import ProfileLayout from './components/layout/dashboard/profile-layout';
 import SocialProfiles from './pages/dashboard/profile/social-profiles';
 import BankSettings from './pages/dashboard/profile/bank-settings';
 import ContactUsPage from './pages/ContactUsPage';
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="stores" element={<Stores />} />
           <Route path="become-agent" element={<Affiliate />} />
           <Route path="contact" element={<ContactUsPage />} />
+          <Route path="terms-conditions" element={<TermsAndConditionsPage />} />
 
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
