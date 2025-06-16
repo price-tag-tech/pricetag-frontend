@@ -33,6 +33,7 @@ import PasswordEdit from './pages/dashboard/profile/password-edit';
 import ProfileLayout from './components/layout/dashboard/profile-layout';
 import SocialProfiles from './pages/dashboard/profile/social-profiles';
 import BankSettings from './pages/dashboard/profile/bank-settings';
+import ContactUsPage from './pages/ContactUsPage';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="profile" element={<UserProfilePage />} />
           <Route path="stores" element={<Stores />} />
           <Route path="become-agent" element={<Affiliate />} />
+          <Route path="contact" element={<ContactUsPage />} />
 
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
