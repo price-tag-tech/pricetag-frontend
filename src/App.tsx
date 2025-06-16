@@ -44,6 +44,7 @@ import AddStorePage from './pages/dashboard/business/add-store-page';
 import AddServicePage from './pages/dashboard/business/add-service-page';
 import SuccessPage from './pages/dashboard/business/success-page';
 import PricingPage from './pages/PricingPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
           <Route path="contact" element={<ContactUsPage />} />
           <Route path="terms-conditions" element={<TermsAndConditionsPage />} />
           <Route path="pricing" element={<PricingPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
 
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFoundPage />} />
