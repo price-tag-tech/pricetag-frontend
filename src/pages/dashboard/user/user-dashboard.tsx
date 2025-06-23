@@ -1,6 +1,6 @@
 import { Copy, Menu, MoreHorizontal, Pen, Store } from 'lucide-react'
-import LatestOrderAndPurchase from "../../components/sections/user-dashboard/latest-order-and-purchases"
-import Button from '../../components/common/Button'
+import LatestOrderAndPurchase from "../../../components/sections/user-dashboard/latest-order-and-purchases"
+import Button from '../../../components/common/Button'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
