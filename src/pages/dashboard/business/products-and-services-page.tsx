@@ -78,7 +78,6 @@ const ProductsAndServicesPage = () => {
                         "Date / Time",
                         "Category",
                         "Status",
-                        "Action",
                     ]} data={tableData}
                         action={true}
                         serialized={true}

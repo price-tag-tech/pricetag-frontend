@@ -11,7 +11,7 @@ interface InputProps {
 
 const Input: FC<InputProps> = (props) => {
     return (
-        <input type={props.type ?? 'text'} value={props.value} placeholder={props.placeholder} className={`py-4 p-4 border shadow-sm rounded text-${props.size || "sm"} ${props.className}`} />
+        <input type={props.type ?? 'text'} value={props.value} placeholder={props.placeholder} className={`py-4 p-4 border shadow-sm rounded w-full text-${props.size || "sm"} ${props.className}`} />
     )
 }
 
