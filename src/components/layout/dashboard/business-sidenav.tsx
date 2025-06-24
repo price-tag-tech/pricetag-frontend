@@ -15,8 +15,7 @@ export function BusinessSidenav() {
     const { pathname } = useLocation()
 
     return (
-        <div className="hidden md:flex flex-col  w-[250pt] bg-white border-r h-screen pt-5 text-gray-600">
-            {/* User Profile Section */}
+        <div className="hidden md:flex flex-col  w-[300pt] bg-white border-r h-screen pt-5 text-gray-600">
             <div className="border-b">
 
                 <div className="flex items-center space-x-2 mb-4 border-b-2 border-b-gray-200 px-5 py-2">
@@ -35,7 +34,7 @@ export function BusinessSidenav() {
                             <p className="text-xs text-gray-500">Starter Spark Plan</p>
                         </div>
                         <div className="flex items-center space-x-2 text-gray-500">
-                            
+
                             <ChevronDown />
                             <Bell />
                         </div>

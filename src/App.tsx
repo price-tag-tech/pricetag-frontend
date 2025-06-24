@@ -9,7 +9,6 @@ import MainLayout from './components/layout/MainLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import BusinessDashboard from './pages/BusinessDashboard';
 import StorefrontPage from './pages/StorefrontPage';
 import ProductListingPage from './pages/ProductListingPage';
 import SearchResultsPage from './pages/SearchResultsPage';
@@ -22,10 +21,10 @@ import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
-import UserDashboard from './pages/dashboard/user-dashboard.tsx';
-import DashboardLayout from './components/layout/dashboard/dashboard-layout';
-import OrdersAndPurchasesPage from './pages/dashboard/orders-and-purchases-page';
-import NotificationsPage from './pages/dashboard/notifications-page';
+import UserDashboard from './pages/dashboard/user/user-dashboard';
+import DashboardLayout from './components/layout/dashboard/user-layout';
+import OrdersAndPurchasesPage from './pages/dashboard/user/orders-and-purchases-page';
+import NotificationsPage from './pages/dashboard/user/notifications-page';
 import AffiliatePage from './pages/dashboard/affiliate';
 import AffiliateWithdrawalPage from './pages/dashboard/affiliate/affiliate-withdrawal-page';
 import ProfilePage from './pages/dashboard/profile';
@@ -35,6 +34,9 @@ import SocialProfiles from './pages/dashboard/profile/social-profiles';
 import BankSettings from './pages/dashboard/profile/bank-settings';
 import ContactUsPage from './pages/ContactUsPage';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
+import BusinessDashboard from './pages/dashboard/business/business-dashboard';
+import BusinessLayout from './components/layout/dashboard/business-layout';
+import ProductAndServicesPage from './pages/dashboard/business/products-and-services-page';
 
 function App() {
   return (
@@ -61,9 +63,8 @@ function App() {
         </Route>
 
         {/* Dashboard routes */}
-        <Route element={<DashboardLayout />}>
-          <Route path="dashboard/*" element={<BusinessDashboard />} />
-          <Route path="user">
+        <Route path="user">
+          <Route element={<DashboardLayout />}>
             <Route index element={<UserDashboard />} />
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
@@ -77,6 +78,12 @@ function App() {
               <Route path="social-profiles" element={<SocialProfiles />} />
               <Route path="bank-settings" element={<BankSettings />} />
             </Route>
+          </Route>
+        </Route>
+        <Route path="business">
+          <Route element={<BusinessLayout />}>
+            <Route index element={<BusinessDashboard />} />
+            <Route path="products" element={<ProductAndServicesPage />} />
           </Route>
         </Route>
 
