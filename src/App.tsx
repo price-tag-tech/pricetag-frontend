@@ -39,6 +39,7 @@ import BusinessLayout from './components/layout/dashboard/business-layout';
 import ProductAndServicesPage from './pages/dashboard/business/products-and-services-page';
 import OrdersPage from './pages/dashboard/business/orders-page';
 import InventoryPage from './pages/dashboard/business/inventory-page';
+import UploadProductPage from './pages/dashboard/business/upload-product-page';
 
 function App() {
   return (
@@ -85,7 +86,10 @@ function App() {
         <Route path="business">
           <Route element={<BusinessLayout />}>
             <Route index element={<BusinessDashboard />} />
-            <Route path="products" element={<ProductAndServicesPage />} />
+            <Route path="products">
+              <Route index element={<ProductAndServicesPage />} />
+              <Route path='upload' element={<UploadProductPage />} />
+            </Route>
             <Route path="orders" element={<OrdersPage />} />
             <Route path="inventory" element={<InventoryPage />} />
           </Route>
