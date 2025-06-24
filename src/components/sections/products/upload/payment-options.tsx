@@ -1,11 +1,11 @@
-import React from 'react'
+import { FormEvent } from 'react'
 import Label from '../../../ui/form/label'
 import Select from '../../../ui/form/select'
 import Input from '../../../ui/form/input'
 import Button from '../../../common/Button'
 
 interface Props {
-    action: () => void
+    action: (e: FormEvent) => void
 }
 
 const PaymentOptions = ({ action }: Props) => {

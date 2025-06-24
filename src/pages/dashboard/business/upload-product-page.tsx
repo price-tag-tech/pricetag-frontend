@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import ProductInformation from '../../../components/sections/products/upload/product-information'
 import PricingDetails from '../../../components/sections/products/upload/pricing-details'
 import ShippingAndDelivery from '../../../components/sections/products/upload/shipping-details'
@@ -7,8 +7,9 @@ import PaymentOptions from '../../../components/sections/products/upload/payment
 const UploadProductPage = () => {
     const [active, setActive] = useState(0)
 
-    const handleSubmit = () => {
-        return true;
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        window.location.href = "/business/products/upload-success"
     }
 
     const handleNext = () => {
