@@ -2,10 +2,14 @@ import { X } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const MAX_UPLOADS = 7;
+interface Props {
+    maxUploads?: number;
+}
 
-const FileUpload = () => {
+const FileUpload = ({ maxUploads }: Props) => {
     const [files, setFiles] = useState<File[]>([]);
+
+    const MAX_UPLOADS = maxUploads || 7;
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         if (files.length + acceptedFiles.length > MAX_UPLOADS) return;
@@ -23,7 +27,7 @@ const FileUpload = () => {
     });
 
     return (
-        <>
+        <div className="w-full flex flex-col gap-y-3">
             <div
                 {...getRootProps()}
                 className={`border-2 border-dashed rounded-lg p-6 h-44 w-full flex flex-col items-center justify-center text-center transition-all duration-300 cursor-pointer ${isDragActive ? 'bg-green-50 border-green-400' : 'bg-white border-gray-300'
@@ -54,8 +58,8 @@ const FileUpload = () => {
                     ))}
                 </div>
             )}
-            <p className='text-xs text-red-500 mt-1'>{files.length >= MAX_UPLOADS && 'Max of 7 uploads reached'}</p>
-        </>
+            <p className='text-xs text-red-500 mt-2 font-bold'>{files.length >= MAX_UPLOADS && `Max of ${MAX_UPLOADS} uploads reached`}</p>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
-import { ShoppingCart, Users, MessageSquare, Bell, Copy, ChevronDown, Home, ShoppingBag, LineChart, UserCircle } from "lucide-react"
+import { ShoppingCart, Users, MessageSquare, Bell, Copy, ChevronDown, Home, ShoppingBag, LineChart, UserCircle, Plus } from "lucide-react"
 import Button from "../../common/Button"
 import { Link, useLocation } from "react-router-dom"
+import { useState } from "react"
 
 const menuItems = [
     { icon: Home, label: "Dashboard", href: "/business" },
@@ -14,6 +15,8 @@ const menuItems = [
 export function BusinessSidenav() {
     const { pathname } = useLocation()
 
+    const [isAddStoreVisible, setIsAddStoreVisible] = useState(false)
+
     return (
         <div className="hidden md:flex flex-col  w-[300pt] bg-white border-r h-screen pt-5 text-gray-600">
             <div className="border-b">
@@ -24,7 +27,7 @@ export function BusinessSidenav() {
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-3 p-5">
+                <div className="flex items-center space-x-3 p-5 relative">
                     <div className="h-16 w-20 bg-brand-200 rounded-lg flex items-center justify-center text-brand-800 font-semibold">
                         PG
                     </div>
@@ -33,10 +36,33 @@ export function BusinessSidenav() {
                             <h3 className="text-xl text-gray-800">PG Store</h3>
                             <p className="text-xs text-gray-500">Starter Spark Plan</p>
                         </div>
-                        <div className="flex items-center space-x-2 text-gray-500">
+                        <div className="flex items-center space-x-2 text-gray-500 relative">
 
-                            <ChevronDown />
+                            <div onClick={() => setIsAddStoreVisible(prev => !prev)} className="p-2 cursor-pointer">
+                                <ChevronDown className={`${isAddStoreVisible && "rotate-180"} transition-all duration-300 ease-in-out`} />
+                            </div>
                             <Bell />
+                        </div>
+
+                    </div>
+                    <div className={`${isAddStoreVisible ? "block" : "hidden"} absolute top-20 right-0 p-2 shadow-md w-full z-50 transition-all duration-500 ease-in-out`}>
+                        <div className="bg-white rounded-lg shadow-lg border px-6 py-10 flex flex-col gap-y-4">
+                            <div className="flex items-center gap-4">
+                                <div className="h-12 w-16 bg-brand-200 rounded-lg flex items-center justify-center text-brand-800 font-semibold">
+                                    PG
+                                </div>
+                                <div>
+                                    <h3 className="text-xl text-gray-800">PG Store</h3>
+                                    <p className="text-xs text-gray-500">Starter Spark Plan</p>
+                                </div>
+                            </div>
+                            <div>
+                                <Link to="/business/store/add">
+                                    <Button leftIcon={<Plus />} variant="text" className="bg-gray-100 text-gray-600 w-full shadow-inner font-bold font-montserrat hover:no-underline hover:bg-gray-50 transition-all duration-500 hover:shadow">
+                                        Add a Store
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

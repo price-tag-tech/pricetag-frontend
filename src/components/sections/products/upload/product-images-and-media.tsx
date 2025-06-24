@@ -9,7 +9,7 @@ interface Props {
 const ProductImagesAndMedia = ({ action }: Props) => {
     return (
         <div className='flex flex-wrap flex-col md:flex-row'>
-            <FileUpload />
+            <FileUpload maxUploads={4} />
 
             <div className='w-full mt-4'>
                 <Button
