@@ -24,7 +24,7 @@ const ProductsAndServicesPage = () => {
                 <span className='w-fit'>Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot</span>
             </div>,
             "000123", 10, "₦3,900", "3/18/2025 - 6:39 AM", "Men Shoes",
-            <Status state="rejected" />
+            <Status state="error" label='Rejected' />
         ],
         [
             <div className="flex items-center gap-2 md:min-w-60">
@@ -34,7 +34,7 @@ const ProductsAndServicesPage = () => {
                 <span className='w-fit'>Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot</span>
             </div>,
             "000123", 10, "₦3,900", "3/18/2025 - 6:39 AM", "Men Shoes",
-            <Status state="approved" />
+            <Status state="success" label='Approved' />
         ],
     ];
 

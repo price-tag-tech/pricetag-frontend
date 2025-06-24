@@ -14,10 +14,10 @@ const ResponsiveTable: FC<TableProps> = ({ cols, data, action, serialized }) => 
             {/* desktop view */}
             <table className="hidden md:block w-full table-auto text-sm overflow-x-auto">
                 <thead>
-                    <tr className="border-b text-left text-gray-800 font-semibold">
+                    <tr className="border-b text-left text-gray-800 font-semibold uppercase">
                         {serialized && <th className="py-3 px-4 w-10">S/N</th>}
                         {cols.map((col, i) => (
-                            <th key={i} className="py-3 px-4">{col}</th>
+                            <th key={i} className="py-3 px-4 min-w-28 max-w-56">{col}</th>
                         ))}
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@ const ResponsiveTable: FC<TableProps> = ({ cols, data, action, serialized }) => 
                         <tr key={i}>
                             {serialized && <td key={i} className="py-3 px-4 min-w-16">{i + 1}</td>}
                             {row.map((cell, j) => (
-                                <td key={j} className="py-3 px-4 min-w-20">{cell}</td>
+                                <td key={j} className="py-3 px-4">{cell}</td>
                             ))}
                             {action && (
                                 <td className="py-3 px-4 flex gap-3">

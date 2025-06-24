@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 interface Props {
-    state: 'pending' | 'approved' | 'rejected' | 'default';
+    state: 'pending' | 'success' | 'error' | 'default';
     label?: string;
 }
 
@@ -13,10 +13,10 @@ const Status = (props: Props) => {
             case 'pending':
                 setColor('text-yellow-700 bg-yellow-100/30');
                 break;
-            case 'approved':
+            case 'success':
                 setColor('text-green-700 bg-green-100/30');
                 break;
-            case 'rejected':
+            case 'error':
                 setColor('text-red-700 bg-red-100/30');
                 break;
             default:
