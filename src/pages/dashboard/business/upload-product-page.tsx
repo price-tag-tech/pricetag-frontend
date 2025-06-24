@@ -3,6 +3,7 @@ import ProductInformation from '../../../components/sections/products/upload/pro
 import PricingDetails from '../../../components/sections/products/upload/pricing-details'
 import ShippingAndDelivery from '../../../components/sections/products/upload/shipping-details'
 import PaymentOptions from '../../../components/sections/products/upload/payment-options'
+import ProductImagesAndMedia from '../../../components/sections/products/upload/product-images-and-media'
 
 const UploadProductPage = () => {
     const [active, setActive] = useState(0)
@@ -19,7 +20,7 @@ const UploadProductPage = () => {
     const tabs = [
         { title: "Product Information", component: <ProductInformation action={handleNext} /> },
         { title: "Pricing Details", component: <PricingDetails action={handleNext} /> },
-        { title: "Product Images & Media", component: "" },
+        { title: "Product Images & Media", component: <ProductImagesAndMedia action={handleNext} /> },
         { title: "Shipping & Delivery", component: <ShippingAndDelivery action={handleNext} /> },
         { title: "Payment Options", component: <PaymentOptions action={handleSubmit} /> },
     ]
