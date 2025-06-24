@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import ProductInformation from '../../../components/sections/products/upload/product-information'
 import PricingDetails from '../../../components/sections/products/upload/pricing-details'
+import ShippingAndDelivery from '../../../components/sections/products/upload/shipping-details'
+import PaymentOptions from '../../../components/sections/products/upload/payment-options'
 
 const UploadProductPage = () => {
-    const tabs = [
-        { title: "Product Information", component: <ProductInformation /> },
-        { title: "Pricing Details", component: <PricingDetails /> },
-        { title: "Product Images & Media", component: "" },
-        { title: "Shipping & Delivery", component: "" },
-        { title: "Payment Options", component: "" },
-    ]
-
     const [active, setActive] = useState(0)
+
+    const handleSubmit = () => {
+        return true;
+    }
+
+    const handleNext = () => {
+        setActive(() => active + 1)
+    }
+
+    const tabs = [
+        { title: "Product Information", component: <ProductInformation action={handleNext} /> },
+        { title: "Pricing Details", component: <PricingDetails action={handleNext} /> },
+        { title: "Product Images & Media", component: "" },
+        { title: "Shipping & Delivery", component: <ShippingAndDelivery action={handleNext} /> },
+        { title: "Payment Options", component: <PaymentOptions action={handleSubmit} /> },
+    ]
 
     return (
         <div className="w-full p-4 md:p-8">
@@ -44,9 +54,9 @@ const UploadProductPage = () => {
             <div className='mt-10 w-full md:w-5/6'>
                 <div className='w-full md:w-4/6 mx-auto text-gray-700'>
                     <h3 className='text-2xl font-bold'>{tabs[active].title}</h3>
-                    <div className='mt-4'>
+                    <form className='mt-4' onSubmit={handleSubmit}>
                         {tabs[active].component}
-                    </div>
+                    </form>
                 </div>
             </div>
 

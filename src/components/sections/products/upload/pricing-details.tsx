@@ -3,7 +3,11 @@ import Input from '../../../ui/form/input'
 import Select from '../../../ui/form/select'
 import Button from '../../../common/Button'
 
-const PricingDetails = () => {
+interface Props {
+    action: () => void
+}
+
+const PricingDetails = ({ action }: Props) => {
     return (
         <div className='flex flex-wrap flex-col md:flex-row'>
             <div className='w-full md:w-1/2 p-2'>
@@ -22,7 +26,11 @@ const PricingDetails = () => {
             </div>
 
             <div className='w-full mt-4'>
-                <Button variant='secondary'>
+                <Button
+                    onClick={action}
+                    variant='secondary'
+                    className='font-montserrat'
+                >
                     Next
                 </Button>
             </div>

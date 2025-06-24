@@ -4,7 +4,11 @@ import Input from '../../../ui/form/input'
 import Label from '../../../ui/form/label'
 import Select from '../../../ui/form/select'
 
-const ProductInformation = () => {
+interface Props {
+    action: () => void
+}
+
+const ProductInformation = ({ action }: Props) => {
     return (
         <div className='flex flex-wrap flex-col md:flex-row'>
             <div className='w-full md:w-1/2 p-2'>
@@ -32,7 +36,11 @@ const ProductInformation = () => {
                 <Input type="text" placeholder='Gucci Brand' />
             </div>
             <div className='w-full p-2'>
-                <Button variant='secondary' className='font-montserrat'>
+                <Button
+                    onClick={action}
+                    variant='secondary'
+                    className='font-montserrat'
+                >
                     Next
                 </Button>
             </div>
