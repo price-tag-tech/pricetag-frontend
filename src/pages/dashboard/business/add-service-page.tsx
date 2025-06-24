@@ -5,7 +5,7 @@ import Textarea from '../../../components/ui/form/textarea';
 import Button from '../../../components/common/Button';
 import FileUpload from '../../../components/ui/form/file-upload';
 
-const AddService = () => {
+const AddServicePage = () => {
 
     return (
         <div className='w-full p-4'>
@@ -72,4 +72,4 @@ const AddService = () => {
     );
 };
 
-export default AddService;
+export default AddServicePage;
