@@ -1,40 +1,37 @@
-import { ChevronsLeft, ChevronsRight, SortDesc } from 'lucide-react'
 import React from 'react'
 import Button from '../../../components/common/Button'
+import { ChevronsLeft, ChevronsRight, SortDesc } from 'lucide-react'
 import ResponsiveTable from '../../../components/ui/responsive-table'
 import Status from '../../../components/ui/status'
 
-const OrdersPage = () => {
-    const orders = [
+const InventoryPage = () => {
+    const inventory = [
         [
-            <div className="flex items-center gap-2 md:min-w-60">
+            <div className="flex items-center gap-2 md:max-w-96">
                 <div className='w-16'>
                     <img src="/assets/users/avatar-5.jpg" alt="" className="w-12 h-12 rounded-full" />
                 </div>
                 <span className='w-fit'>Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot</span>
             </div>,
-            "000123", 10, "₦3,900", "Prince Godson", "09037494084", "3/18/2025 - 6:39 AM",
-            <Status state="success" label="Successful" />
+            "Men Shoes", "00091", "400", "200", "200", <Status state="success" label="Active" />
         ],
         [
-            <div className="flex items-center gap-2 md:min-w-60">
+            <div className="flex items-center gap-2 md:max-w-96">
                 <div className='w-16'>
                     <img src="/assets/users/avatar-5.jpg" alt="" className="w-12 h-12 rounded-full" />
                 </div>
                 <span className='w-fit'>Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot</span>
             </div>,
-            "000123", 10, "₦3,900", "Prince Godson", "09037494084", "3/18/2025 - 6:39 AM",
-            <Status state="success" label="Successful" />
+            "Men Shoes", "00091", "400", "200", "200", <Status state="error" label="Out of Stock" />
         ],
         [
-            <div className="flex items-center gap-2 md:min-w-60">
+            <div className="flex items-center gap-2 md:max-w-96">
                 <div className='w-16'>
                     <img src="/assets/users/avatar-5.jpg" alt="" className="w-12 h-12 rounded-full" />
                 </div>
                 <span className='w-fit'>Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot</span>
             </div>,
-            "000123", 10, "₦3,900", "Prince Godson", "09037494084", "3/18/2025 - 6:39 AM",
-            <Status state="pending" />
+            "Men Shoes", "00091", "400", "200", "200", <Status state="error" label="Out of Stock" />
         ],
     ]
 
@@ -43,11 +40,8 @@ const OrdersPage = () => {
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center divide-x-2'>
                     <h2 className='text-2xl font-medium'>
-                        Orders
+                        Inventory
                     </h2>
-                    <p className='pl-3 text-gray-500'>
-                        You have <b>20</b> pending orders
-                    </p>
                 </div>
 
                 <div>
@@ -59,8 +53,8 @@ const OrdersPage = () => {
 
             <div className='mt-10 bg-white w-full shadow-sm border p-5 rounded-lg'>
                 <ResponsiveTable
-                    cols={['Orders', 'Product Code', 'Quantity', 'Amount', 'Client Name', 'Phone No.', 'Date/Time', 'Status']}
-                    data={orders}
+                    cols={['Product', 'Category', 'Poduct Code', 'Total Quantity', 'Quantity Sold', 'Quantity Remaining.', 'Status']}
+                    data={inventory}
                     serialized={true}
                 />
             </div>
@@ -80,4 +74,4 @@ const OrdersPage = () => {
     )
 }
 
-export default OrdersPage
+export default InventoryPage
