@@ -1,5 +1,5 @@
 import React from 'react'
-import NotificationCard from '../../components/ui/notification-card'
+import NotificationCard from '../../../components/ui/notification-card'
 
 const NotificationsPage = () => {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import OrderAndPurchasesTable from '../../components/features/dashboard/order-and-purchase-table'
+import OrderAndPurchasesTable from '../../../components/features/dashboard/order-and-purchase-table'
 
 const OrdersAndPurchasesPage = () => {
     const orders = [

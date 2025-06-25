@@ -1,7 +1,7 @@
 import { Bell, Cog, ShoppingCart, Grid2X2, ExternalLink } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
-const Sidenav = () => {
+const UserSidenav = () => {
 
     const links = [
         {
@@ -67,4 +67,4 @@ const Sidenav = () => {
     )
 }
 
-export default Sidenav
+export default UserSidenav

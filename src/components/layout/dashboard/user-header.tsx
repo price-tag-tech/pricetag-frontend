@@ -5,7 +5,7 @@ import { useCartStore } from "../../../store/cart-store"
 import { LogOut, Menu, X } from "lucide-react"
 import { useState } from "react"
 
-const DashboardHeader = () => {
+const UserHeader = () => {
     const menu = [
         { label: "Find Stores", path: "" },
         { label: "Become an Agent", path: "" },
@@ -109,4 +109,4 @@ const DashboardHeader = () => {
     )
 }
 
-export default DashboardHeader
+export default UserHeader
