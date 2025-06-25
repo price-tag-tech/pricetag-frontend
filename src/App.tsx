@@ -40,9 +40,9 @@ import ProductAndServicesPage from './pages/dashboard/business/products-and-serv
 import OrdersPage from './pages/dashboard/business/orders-page';
 import InventoryPage from './pages/dashboard/business/inventory-page';
 import UploadProductPage from './pages/dashboard/business/upload-product-page';
-import UploadSuccess from './pages/dashboard/business/upload-success';
 import AddStorePage from './pages/dashboard/business/add-store-page';
 import AddServicePage from './pages/dashboard/business/add-service-page';
+import SuccessPage from './pages/dashboard/business/success-page';
 
 function App() {
   return (
@@ -92,7 +92,6 @@ function App() {
             <Route path="products">
               <Route index element={<ProductAndServicesPage />} />
               <Route path='upload' element={<UploadProductPage />} />
-              <Route path="upload-success" element={<UploadSuccess />} />
             </Route>
             <Route path="services">
               <Route path="add" element={<AddServicePage />} />
@@ -102,6 +101,7 @@ function App() {
             </Route>
             <Route path="orders" element={<OrdersPage />} />
             <Route path="inventory" element={<InventoryPage />} />
+            <Route path="success" element={<SuccessPage />} />
           </Route>
         </Route>
 

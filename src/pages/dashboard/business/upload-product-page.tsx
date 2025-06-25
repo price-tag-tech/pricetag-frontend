@@ -4,13 +4,21 @@ import PricingDetails from '../../../components/sections/products/upload/pricing
 import ShippingAndDelivery from '../../../components/sections/products/upload/shipping-details'
 import PaymentOptions from '../../../components/sections/products/upload/payment-options'
 import ProductImagesAndMedia from '../../../components/sections/products/upload/product-images-and-media'
+import { useNavigate } from 'react-router-dom'
 
 const UploadProductPage = () => {
     const [active, setActive] = useState(0)
+    const navigator = useNavigate()
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        window.location.href = "/business/products/upload-success"
+        navigator("/business/success", {
+            state: {
+                title: "Product Upload Successful!",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                illustration: "celebrate.svg"
+            }
+        })
     }
 
     const handleNext = () => {
