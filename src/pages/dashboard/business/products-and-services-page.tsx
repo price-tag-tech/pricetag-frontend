@@ -69,7 +69,7 @@ const ProductsAndServicesPage = () => {
                     </div>
                 </div>
 
-                <div className='mt-10 bg-white w-full p-5 shadow'>
+                <div className='mt-10 bg-gray-50 md:bg-white w-full py-4 px-2 shadow'>
                     <ResponsiveTable cols={[
                         "Product / Services",
                         "Product Code",

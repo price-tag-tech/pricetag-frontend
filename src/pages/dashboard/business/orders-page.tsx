@@ -39,7 +39,7 @@ const OrdersPage = () => {
     ]
 
     return (
-        <div className='w-full p-4'>
+        <div className='w-full py-4'>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center divide-x-2'>
                     <h2 className='text-2xl font-medium'>
@@ -57,7 +57,7 @@ const OrdersPage = () => {
                 </div>
             </div>
 
-            <div className='mt-10 bg-white w-full shadow-sm border p-5 rounded-lg'>
+            <div className='mt-10 bg-gray-50 md:bg-white w-full shadow-sm border py-4 px-2 rounded-lg'>
                 <ResponsiveTable
                     cols={['Orders', 'Product Code', 'Quantity', 'Amount', 'Client Name', 'Phone No.', 'Date/Time', 'Status']}
                     data={orders}

@@ -45,7 +45,7 @@ export function BusinessHeader() {
                 <span>Logout</span>
             </Button>
 
-            <Button variant="outline" size="sm" className="block md:hidden button-outline-dark">
+            <Button onClick={() => setIsMenuOpen(true)} variant="outline" size="sm" className="block md:hidden button-outline-dark">
                 <Menu />
             </Button>
 
