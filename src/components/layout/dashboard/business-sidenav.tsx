@@ -3,13 +3,13 @@ import Button from "../../common/Button"
 import { Link, useLocation } from "react-router-dom"
 import { useState } from "react"
 
-const menuItems = [
-    { icon: Home, label: "Dashboard", href: "/business" },
-    { icon: ShoppingBag, label: "Products/Services", href: "/business/products" },
-    { icon: ShoppingCart, label: "Orders", href: "/business/orders" },
-    { icon: LineChart, label: "Inventory", href: "/business/inventory" },
-    { icon: Users, label: "Customers", href: "/business/customers" },
-    { icon: MessageSquare, label: "Messages", href: "/business/messages" },
+export const businessNavItems = [
+    { icon: Home, name: "Dashboard", route: "/business" },
+    { icon: ShoppingBag, name: "Products/Services", route: "/business/products" },
+    { icon: ShoppingCart, name: "Orders", route: "/business/orders" },
+    { icon: LineChart, name: "Inventory", route: "/business/inventory" },
+    { icon: Users, name: "Customers", route: "/business/customers" },
+    { icon: MessageSquare, name: "Messages", route: "/business/messages" },
 ]
 
 export function BusinessSidenav() {
@@ -87,19 +87,19 @@ export function BusinessSidenav() {
             {/* Navigation Menu */}
             <nav className="flex-1 p-5">
                 <ul className="space-y-2">
-                    {menuItems.map((item) => {
-                        const isActive = pathname === item.href
+                    {businessNavItems.map((item) => {
+                        const isActive = pathname === item.route
                         return (
-                            <li key={item.href}>
+                            <li key={item.route}>
                                 <Link
-                                    to={item.href}
+                                    to={item.route}
                                     className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-colors ${isActive
                                         ? "bg-gray-200 text-gray-900 font-medium"
                                         : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
                                         }`}
                                 >
                                     <item.icon className="h-5 w-5" />
-                                    <span>{item.label}</span>
+                                    <span>{item.name}</span>
                                 </Link>
                             </li>
                         )
