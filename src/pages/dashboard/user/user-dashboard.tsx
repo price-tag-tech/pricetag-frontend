@@ -21,7 +21,7 @@ const UserDashboard = () => {
                     <div className='h-10 w-10 md:h-20 md:w-20 rounded-full bg-brand-900 text-white font-semibold text-xl md:text-5xl flex items-center justify-center'>
                         {user.name.substring(0, 1)}
                     </div>
-                    <div className='hidden md:flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4'>
                         <h4 className='font-bold text-3xl hidden md:block'>
                             {user.name}
                         </h4>
@@ -69,12 +69,6 @@ const UserDashboard = () => {
                             My Store
                         </Button>
                     </div>
-                </div>
-
-                <div className='md:hidden'>
-                    <Button variant='outline' size='sm' className='button-outline-secondary'>
-                        <Menu />
-                    </Button>
                 </div>
             </div>
             <LatestOrderAndPurchase />
