@@ -10,7 +10,7 @@ const BusinessLayout: FC = () => {
             <BusinessSidenav />
             <div className="flex flex-col w-full">
                 <BusinessHeader />
-                <main className="flex-1 p-5">
+                <main className="flex-1 py-5 px-4 md:p-5">
                     <Outlet />
                 </main>
             </div>

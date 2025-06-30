@@ -1,9 +1,13 @@
-import { Search, LogOut, Menu } from "lucide-react"
+import { Search, LogOut, Menu, X } from "lucide-react"
 import Input from "../../ui/form/input"
 import Button from "../../common/Button"
 import RatingStars from "../../ui/rating-stars"
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import { businessNavItems } from "./business-sidenav"
 
 export function BusinessHeader() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
         <div className="flex items-center justify-between w-full px-6 py-4 bg-white md:bg-transparent shadow md:shadow-none">
             <div className="flex items-center">
@@ -41,9 +45,42 @@ export function BusinessHeader() {
                 <span>Logout</span>
             </Button>
 
-            <Button variant="outline" size="sm" className="block md:hidden button-outline-dark">
+            <Button onClick={() => setIsMenuOpen(true)} variant="outline" size="sm" className="block md:hidden button-outline-dark">
                 <Menu />
             </Button>
+
+            {/* Mobile Menu Overlay */}
+            <div
+                className={`fixed inset-0 bg-white z-20 transform transition-all duration-500 ease-out lg:hidden ${isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+                    }`}
+            >
+
+                <div className="flex flex-col h-full pt-20 px-6 pb-6 overflow-y-auto">
+                    <div className="w-full flex justify-end">
+                        <Button onClick={() => setIsMenuOpen(false)} variant="outline" size="sm" className="button-outline-secondary">
+                            <X />
+                        </Button>
+                    </div>
+                    <nav className="flex flex-col space-y-6 mb-8">
+
+                        {businessNavItems.map(link => (
+                            <Link
+                                to={link.route}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center text-black text-left font-montserrat text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <Button size="md" variant="outline" className="font-montserrat">
+                        <LogOut className="h-4" />
+                        Logout
+                    </Button>
+                </div>
+            </div>
         </div>
     )
 }

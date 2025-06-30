@@ -51,7 +51,7 @@ const BusinessDashboard = () => {
     ]
 
     return (
-        <div className='w-full py-10 px-4'>
+        <div className='w-full py-10 md:px-4'>
             <div className='flex md:items-center justify-between flex-col md:flex-row gap-4'>
                 <div className='flex flex-col md:flex-row md:gap-4 md:items-center md:divide-x-2'>
                     <h2 className='text-2xl font-semibold'>
@@ -148,12 +148,12 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
 
-                <div className='w-full md:w-3/4 px-3'>
+                <div className='w-full md:w-3/4 md:px-3'>
                     <div className='bg-white border shadow p-10 rounded-md w-full h-fit'>
                         <WeeklySalesChart />
                     </div>
 
-                    <div className='mt-4 bg-white shadow border rounded-xl py-4'>
+                    <div className='mt-4 bg-gray-50 md:bg-white shadow md:border rounded-xl py-4 px-2'>
                         <div className='w-full flex items-center justify-between px-4'>
                             <h3 className='font-bold'>
                                 Latest Orders

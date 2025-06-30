@@ -36,7 +36,7 @@ const InventoryPage = () => {
     ]
 
     return (
-        <div className='w-full p-4'>
+        <div className='w-full'>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center divide-x-2'>
                     <h2 className='text-2xl font-medium'>
@@ -51,7 +51,7 @@ const InventoryPage = () => {
                 </div>
             </div>
 
-            <div className='mt-10 bg-white w-full shadow-sm border p-5 rounded-lg'>
+            <div className='mt-10 bg-gray-50 md:bg-white w-full shadow-sm border px-4 py-2 rounded-lg'>
                 <ResponsiveTable
                     cols={['Product', 'Category', 'Poduct Code', 'Total Quantity', 'Quantity Sold', 'Quantity Remaining.', 'Status']}
                     data={inventory}

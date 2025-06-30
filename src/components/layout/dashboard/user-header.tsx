@@ -4,12 +4,13 @@ import Button from "../../common/Button"
 import { useCartStore } from "../../../store/cart-store"
 import { LogOut, Menu, X } from "lucide-react"
 import { useState } from "react"
+import { userNavLinks } from "./user-sidenav"
 
 const UserHeader = () => {
     const menu = [
-        { label: "Find Stores", path: "" },
-        { label: "Become an Agent", path: "" },
-        { label: "Open a Store", path: "" },
+        { name: "Find Stores", route: "" },
+        { name: "Become an Agent", route: "" },
+        { name: "Open a Store", route: "" },
     ]
 
     const { count: cartItemCount } = useCartStore()
@@ -30,8 +31,8 @@ const UserHeader = () => {
             <div className="text-sm lg:text-md font-medium flex items-center gap-x-5">
                 <div className="hidden md:flex items-center gap-x-5">
                     {menu.map(link => (
-                        <Link to={link.path} key={link.path}>
-                            {link.label}
+                        <Link to={link.route} key={link.route}>
+                            {link.name}
                         </Link>
                     ))}
                     <Button size="sm" variant="outline" className="font-montserrat">
@@ -86,13 +87,14 @@ const UserHeader = () => {
                         </div>
                         <nav className="flex flex-col space-y-6 mb-8">
 
-                            {menu.map(link => (
+                            {userNavLinks.map(link => (
                                 <Link
-                                    to={link.path}
-                                    className="flex items-center text-black text-left font-['Poppins'] text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
+                                    to={link.route}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center text-black text-left font-montserrat text-lg font-[500] leading-normal hover:text-green-600 transition-all duration-300 ease-out transform hover:translate-x-2"
 
                                 >
-                                    {link.label}
+                                    {link.name}
                                 </Link>
                             ))}
                         </nav>

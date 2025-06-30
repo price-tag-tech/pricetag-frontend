@@ -1,35 +1,36 @@
 import { Bell, Cog, ShoppingCart, Grid2X2, ExternalLink } from 'lucide-react'
+import { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-const UserSidenav = () => {
+export const userNavLinks: { icon: ReactNode, name: string, route: string }[] = [
+    {
+        icon: <Grid2X2 />,
+        name: "Dashboard Overview",
+        route: "/user"
+    },
+    {
+        icon: <ShoppingCart />,
+        name: "Orders & Purchases",
+        route: "/user/orders-and-purchases",
+    },
+    {
+        icon: <Bell />,
+        name: "Notifications",
+        route: "/user/notifications"
+    },
+    {
+        icon: <ExternalLink />,
+        name: "Affiate Earnings",
+        route: "/user/affiliate"
+    },
+    {
+        icon: <Cog />,
+        name: "Profile Settings",
+        route: "/user/profile"
+    }
+]
 
-    const links = [
-        {
-            icon: <Grid2X2 />,
-            name: "Dashboard Overview",
-            route: "/user"
-        },
-        {
-            icon: <ShoppingCart />,
-            name: "Orders & Purchases",
-            route: "/user/orders-and-purchases",
-        },
-        {
-            icon: <Bell />,
-            name: "Notifications",
-            route: "/user/notifications"
-        },
-        {
-            icon: <ExternalLink />,
-            name: "Affiate Earnings",
-            route: "/user/affiliate"
-        },
-        {
-            icon: <Cog />,
-            name: "Profile Settings",
-            route: "/user/profile"
-        }
-    ]
+const UserSidenav = () => {
 
     const { pathname } = useLocation()
 
@@ -45,7 +46,7 @@ const UserSidenav = () => {
                 </Link>
 
                 <div className='flex flex-col mt-5 divide-y-2 text-gray-800 text-sm'>
-                    {links.map((_, i) => (
+                    {userNavLinks.map((_, i) => (
                         <Link
                             key={i}
                             to={_.route}
