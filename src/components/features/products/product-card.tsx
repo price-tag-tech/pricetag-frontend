@@ -17,29 +17,32 @@ export interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = (props) => {
   return (
-    <div className="relative bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden">
+    <div className="group relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover-lift transition-all duration-300 hover:shadow-2xl hover:border-[#1dbf73]/20">
       <div className="relative overflow-hidden aspect-square">
         <img
           src={props.imageUrl}
           alt={props.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
         {props.discount && (
-          <div className="absolute top-2 left-2">
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] md:text-[9px] font-bold bg-red-500 text-white shadow-lg">
-              -{props.discount}%
-            </span>
+          <div className="absolute top-3 left-3 z-10">
+            <div className="relative">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-red-500 to-red-600 text-white shadow-xl animate-pulse">
+                -{props.discount}%
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 rounded-full blur opacity-50 animate-pulse"></div>
+            </div>
           </div>
         )}
 
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-3 right-3 z-10">
           <button
-            title="btn"
-            className="w-7 h-7 md:w-6 md:h-6 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors duration-200"
+            title="Add to wishlist"
+            className="w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white hover:scale-110 transition-all duration-300 group/heart"
           >
             <svg
-              className="w-3 h-3 md:w-2.5 md:h-2.5 text-gray-700"
+              className="w-5 h-5 text-gray-600 group-hover/heart:text-red-500 transition-colors duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -54,11 +57,13 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
           </button>
         </div>
 
-        <div className="absolute bottom-2 left-2">
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] md:text-[9px] font-medium bg-white/90 backdrop-blur-sm text-gray-800 shadow-lg">
+        <div className="absolute bottom-3 left-3 z-10">
+          <span className="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/95 backdrop-blur-md text-gray-800 shadow-xl border border-white/50">
             {props.store}
           </span>
         </div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       <div className="p-3 md:p-3 space-y-2 md:space-y-2">
@@ -80,18 +85,18 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         <div className="space-y-0.5">
           <div className="flex items-center gap-1.5">
             <span className="text-lg md:text-base font-bold text-gray-900">
-              &#8358;{props.price.toLocaleString()}
+              ₦{props.price.toLocaleString()}
             </span>
             {props.originalPrice && (
               <span className="text-xs md:text-[10px] text-gray-500 line-through">
-                ₦{props.originalPrice}
+                ₦{props.originalPrice.toLocaleString()}
               </span>
             )}
           </div>
           {props.discount && (
             <div className="flex items-center justify-between">
               <p className="text-xs md:text-[10px] text-emerald-600 font-medium">
-                Save ${(props.originalPrice! - props.price).toFixed(2)}
+                Save ₦{(props.originalPrice! - props.price).toLocaleString()}
               </p>
               <Button className="px-1.5 py-1.5 rounded-md">
                 <ShoppingCartIcon className="h-4 w-4" />

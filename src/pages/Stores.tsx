@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 interface Store {
@@ -63,11 +64,11 @@ const LocationSelector: React.FC<{
           <span className="text-[#1f1f1f] font-['Poppins'] text-sm truncate flex-1 text-left">
             {formatLocationDisplay(selectedLocation)}
           </span>
-          <svg 
-            width={10} 
-            height={6} 
-            viewBox="0 0 10 6" 
-            fill="none" 
+          <svg
+            width={10}
+            height={6}
+            viewBox="0 0 10 6"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={`transition-transform duration-200 flex-shrink-0 ${isDropdownOpen ? 'rotate-180' : ''}`}
           >
@@ -81,11 +82,10 @@ const LocationSelector: React.FC<{
               <button
                 key={`${location.state}-${location.city}`}
                 onClick={() => handleLocationSelect(location)}
-                className={`w-full px-4 py-3 text-left text-[#1f1f1f] font-['Poppins'] text-sm hover:bg-gray-50 transition-colors first:rounded-t-[0.625rem] last:rounded-b-[0.625rem] ${
-                  selectedLocation.state === location.state && selectedLocation.city === location.city
-                    ? 'bg-[#1dbf73] bg-opacity-10 text-[#1dbf73]'
-                    : ''
-                }`}
+                className={`w-full px-4 py-3 text-left text-[#1f1f1f] font-['Poppins'] text-sm hover:bg-gray-50 transition-colors first:rounded-t-[0.625rem] last:rounded-b-[0.625rem] ${selectedLocation.state === location.state && selectedLocation.city === location.city
+                  ? 'bg-[#1dbf73] bg-opacity-10 text-[#1dbf73]'
+                  : ''
+                  }`}
               >
                 {formatLocationDisplay(location)}
               </button>
@@ -215,13 +215,13 @@ const Stores: React.FC = () => {
 
   // Filter stores based on selected location
   const filteredStores = allStores.filter(store => {
-    const matchesLocation = store.location.state === selectedLocation.state && 
-                           store.location.city === selectedLocation.city;
-    const matchesSearch = searchQuery === "" || 
-                         store.storeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         store.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         store.services.toLowerCase().includes(searchQuery.toLowerCase());
-    
+    const matchesLocation = store.location.state === selectedLocation.state &&
+      store.location.city === selectedLocation.city;
+    const matchesSearch = searchQuery === "" ||
+      store.storeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      store.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      store.services.toLowerCase().includes(searchQuery.toLowerCase());
+
     return matchesLocation && matchesSearch;
   });
 
@@ -230,7 +230,7 @@ const Stores: React.FC = () => {
 
   const handleLoadMore = () => {
     setIsLoading(true);
-    
+
     setTimeout(() => {
       setVisibleStores(prev => Math.min(prev + 5, filteredStores.length));
       setIsLoading(false);
@@ -238,7 +238,7 @@ const Stores: React.FC = () => {
   };
 
   const handleVisitStore = (storeId: string) => {
-    console.log(`Visiting store with ID: ${storeId}`);
+    window.location.href = `/store/${storeId}`
   };
 
   return (
@@ -249,7 +249,7 @@ const Stores: React.FC = () => {
           onLocationChange={handleLocationChange}
           className="lg:flex-shrink-0"
         />
-        
+
         {/* Search and Filter Section */}
         <div className="flex gap-3 lg:flex-shrink-0 lg:w-auto">
           <div className="flex-1 sm:flex-initial">
@@ -278,13 +278,12 @@ const Stores: React.FC = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Filter Button - Icon only on mobile, full button on larger screens */}
           <button
             onClick={handleFilterToggle}
-            className={`flex-shrink-0 w-10 h-10 sm:w-[6.25rem] rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors ${
-              isFilterOpen ? 'bg-[#1dbf73] bg-opacity-10 border-[#1dbf73]' : ''
-            }`}
+            className={`flex-shrink-0 w-10 h-10 sm:w-[6.25rem] rounded-[0.625rem] border border-[#e7e7e9] bg-white flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors ${isFilterOpen ? 'bg-[#1dbf73] bg-opacity-10 border-[#1dbf73]' : ''
+              }`}
             title="Filters"
           >
             <svg width={16} height={9} viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -297,141 +296,72 @@ const Stores: React.FC = () => {
         </div>
       </div>
 
-      {/* Desktop Table View - Hidden on mobile */}
-      <div className="hidden md:block bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="w-full border-b border-dashed border-[#676565] bg-gray-50">
-          <div className="flex items-center px-6 py-4">
-            <div className="flex-1 min-w-[250px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Owner
-            </div>
-            <div className="flex-1 min-w-[200px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Store Name
-            </div>
-            <div className="flex-1 min-w-[120px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Products
-            </div>
-            <div className="flex-1 min-w-[180px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Price Range (₦)
-            </div>
-            <div className="flex-1 min-w-[150px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Services
-            </div>
-            <div className="w-[140px] text-[#6e6e6e] font-['Poppins'] text-sm font-medium">
-              Action
-            </div>
-          </div>
-        </div>
-
-        {/* Table Body */}
-        <div className="divide-y divide-dashed divide-[#676565]">
-          {displayedStores.map((store, index) => (
-            <div key={store.id} className="w-full">
-              <div className="flex items-center px-6 py-4 hover:bg-gray-50 transition-colors">
-                <div className="flex-1 min-w-[250px] flex items-center">
-                  <div className="w-[3.125rem] h-[3.125rem] rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
-                    <img
-                      src={store.ownerImage}
-                      alt={store.owner}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(store.owner)}&background=1dbf73&color=fff&size=50`;
-                      }}
-                    />
-                  </div>
-                  <span className="text-[#1f1f1f] font-['Poppins'] text-sm font-semibold">
-                    {store.owner}
-                  </span>
-                </div>
-
-                <div className="flex-1 min-w-[200px]">
-                  <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
-                    {store.storeName}
-                  </span>
-                </div>
-
-                <div className="flex-1 min-w-[120px]">
-                  <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
-                    {store.productCount}
-                  </span>
-                </div>
-
-                <div className="flex-1 min-w-[180px]">
-                  <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
-                    {store.priceRange}
-                  </span>
-                </div>
-
-                <div className="flex-1 min-w-[150px]">
-                  <span className="text-[#1f1f1f] font-['Poppins'] text-xs">
-                    {store.services}
-                  </span>
-                </div>
-
-                <div className="w-[140px] flex justify-center">
-                  <button
-                    onClick={() => handleVisitStore(store.id)}
-                    className="w-24 h-[2.3125rem] rounded-lg border border-[#1f1f1f] text-[#1f1f1f] font-['Poppins'] text-[.8125rem] font-medium hover:bg-[#1f1f1f] hover:text-white transition-colors flex items-center justify-center"
-                  >
-                    Visit store
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="md:hidden space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {displayedStores.map((store) => (
-          <div key={store.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-            <div className="flex items-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
+          <div
+            key={store.id}
+            className="relative bg-white rounded-2xl border border-[#e7e7e9] shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-200 ease-in-out overflow-hidden flex flex-col"
+          >
+            <div className="h-28 bg-gradient-to-tr from-[#e0f7ec] via-[#c2f0da] to-[#1dbf73]/20 relative">
+              <div className="absolute -bottom-6 left-5 w-16 h-16 rounded-full bg-white border border-[#e7e7e9] overflow-hidden shadow-md backdrop-blur-sm">
                 <img
                   src={store.ownerImage}
                   alt={store.owner}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(store.owner)}&background=1dbf73&color=fff&size=48`;
+                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(store.owner)}&background=1dbf73&color=fff&size=64`;
                   }}
                 />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-[#1f1f1f] font-['Poppins'] text-sm font-semibold truncate">
-                  {store.owner}
-                </h3>
-                <p className="text-[#6e6e6e] font-['Poppins'] text-xs truncate">
+            </div>
+
+            <div className="pt-10 px-5 pb-5 flex flex-col justify-between flex-1">
+              <div className="mb-3">
+                <h3 className="text-[#1f1f1f] font-['Poppins'] text-base font-semibold truncate">
                   {store.storeName}
+                </h3>
+                <p className="text-[#6e6e6e] font-['Poppins'] text-xs truncate mt-0.5">
+                  By {store.owner}
+                </p>
+                <p className="text-[#6e6e6e] font-['Poppins'] text-xs mt-1">
+                  {store.location.city}, {store.location.state}
                 </p>
               </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div>
-                <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Products</p>
-                <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.productCount}</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[#1f1f1f] font-['Poppins'] text-sm mb-5">
+                <div>
+                  <p className="text-[#a0a0a0] text-xs mb-1">Products</p>
+                  <p>{store.productCount}</p>
+                </div>
+                <div>
+                  <p className="text-[#a0a0a0] text-xs mb-1">Services</p>
+                  <p>{store.services}</p>
+                </div>
+                <div>
+                  <p className="text-[#a0a0a0] text-xs mb-1">Price Range</p>
+                  <p>₦{store.priceRange}</p>
+                </div>
+                <div>
+                  <p className="text-[#a0a0a0] text-xs mb-1">Store ID</p>
+                  <p>{store.id}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Services</p>
-                <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.services}</p>
-              </div>
-            </div>
 
-            <div className="mb-4">
-              <p className="text-[#6e6e6e] font-['Poppins'] text-xs font-medium mb-1">Price Range (₦)</p>
-              <p className="text-[#1f1f1f] font-['Poppins'] text-sm">{store.priceRange}</p>
+              <Link
+                to={`/store/${store.id}`}
+              >
+                <button
+                  className="w-full h-10 rounded-lg border border-[#1f1f1f] text-[#1f1f1f] font-['Poppins'] text-sm font-medium hover:bg-[#1f1f1f] hover:text-white active:scale-[.98] transition-all"
+                >
+                  Visit store
+                </button>
+              </Link>
             </div>
-
-            <button
-              onClick={() => handleVisitStore(store.id)}
-              className="w-full h-10 rounded-lg border border-[#1f1f1f] text-[#1f1f1f] font-['Poppins'] text-sm font-medium hover:bg-[#1f1f1f] hover:text-white transition-colors flex items-center justify-center"
-            >
-              Visit store
-            </button>
           </div>
         ))}
       </div>
+
 
       {hasMoreStores && (
         <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
@@ -465,13 +395,13 @@ const Stores: React.FC = () => {
       {filteredStores.length === 0 && (
         <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="text-[#6e6e6e] font-['Poppins'] text-lg mb-4">
-            {searchQuery ? 
+            {searchQuery ?
               `No stores found for "${searchQuery}" in ${selectedLocation.state}, ${selectedLocation.city}` :
               `No stores available in ${selectedLocation.state}, ${selectedLocation.city}`
             }
           </div>
           <p className="text-[#6e6e6e] font-['Poppins'] text-sm">
-            {searchQuery ? 
+            {searchQuery ?
               "Try adjusting your search terms or selecting a different location" :
               "Try selecting a different location"
             }
