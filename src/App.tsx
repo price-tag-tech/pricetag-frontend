@@ -97,6 +97,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="products" element={<ProductListingPage />} />
           <Route path="products/search" element={<SearchResultsPage />} />
+          <Route path="product/:id" element={<ProductDetail />} />
           <Route path="category/:categoryId" element={<CategoryPage />} />
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="subscription" element={<SubscriptionPage />} />

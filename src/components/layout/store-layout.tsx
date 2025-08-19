@@ -11,6 +11,7 @@ import {
     XMarkIcon,
     ChevronDownIcon
 } from '@heroicons/react/24/outline'
+import { ShoppingCart } from 'lucide-react'
 
 interface Navigation {
     name: string,
@@ -30,7 +31,7 @@ const StoreLayout = () => {
         {
             name: "Find Stores",
             route: "/stores",
-            icon: <MagnifyingGlassIcon className="w-4 h-4" />,
+            icon: <MagnifyingGlassIcon className="h-4 w-4" />,
             hasDropdown: true,
             dropdownItems: [
                 { name: "Browse All Stores", route: "/stores" },
@@ -42,17 +43,12 @@ const StoreLayout = () => {
         {
             name: "Become an Agent",
             route: "/agent",
-            icon: <UserPlusIcon className="w-4 h-4" />
+            icon: <UserPlusIcon className="h-4 w-4" />,
         },
-        {
+        { 
             name: "Open a Store",
             route: "/open-store",
-            icon: <BuildingStorefrontIcon className="w-4 h-4" />
-        },
-        {
-            name: "Login",
-            route: "/login",
-            icon: <UserIcon className="w-4 h-4" />
+            icon: <BuildingStorefrontIcon className="h-4 w-4" />,
         },
     ]
 
@@ -95,11 +91,10 @@ const StoreLayout = () => {
                                                 }`}
                                         />
                                     </div>
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-[#1dbf73] to-[#17a866] rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                                 </div>
                                 <div className={`font-bold text-xl transition-colors duration-300 ${isScrolled ? 'text-gray-900' : 'text-white'
                                     }`}>
-                                    MarketPlace
+                                    PGodon Store
                                 </div>
                             </Link>
                         </div>
@@ -147,6 +142,17 @@ const StoreLayout = () => {
                         </nav>
 
                         <div className="flex items-center space-x-4">
+                            <Link
+                                to="/login"
+                                className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${isScrolled
+                                    ? 'text-gray-700 hover:text-[#1dbf73] hover:bg-gray-50'
+                                    : 'text-gray-200 hover:text-white hover:bg-white/10'
+                                    }`}
+                            >
+                                <UserIcon />
+                                <span>Login</span>
+                            </Link>
+
                             <Button
                                 variant="outline"
                                 size="sm"
@@ -222,6 +228,13 @@ const StoreLayout = () => {
                                     Sign up for free
                                 </Button>
                             </div>
+
+                            <button className="relative p-2 text-gray-700 hover:text-gray-900">
+                                <ShoppingCart className="h-6 w-6" />
+                                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                                    3
+                                </span>
+                            </button>
                         </nav>
                     </div>
                 </div>
