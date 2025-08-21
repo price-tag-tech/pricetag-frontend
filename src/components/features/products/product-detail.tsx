@@ -1,300 +1,173 @@
-import { HeartIcon, PhoneIcon, RefreshCcw, ShieldCheck, TruckIcon, Twitter } from "lucide-react";
-import { useState } from "react";
-import Button from "../../common/Button";
-import ProgressBar from "@ramonak/react-progress-bar";
-import { FaWhatsapp } from 'react-icons/fa'
-import { IconType } from "react-icons";
+import React, { useState } from "react";
+import ProductImageGallery from "./components/product-image-gallery";
+import ProductInfo from "./components/product-info";
+import ProductActions from "./components/product-actions";
+import DeliveryInfo from "./components/delivery-info";
+import SellerInfo from "./components/seller-info";
+import SimilarProducts from "./components/similar-products";
 
-const ProductDetail = () => {
+// Mock data - in real app this would come from props or API
+const mockProduct = {
+  id: "1",
+  name: "Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot",
+  price: 36900,
+  originalPrice: 69000,
+  discount: 47,
+  rating: 4.5,
+  reviewCount: 128,
+  productCode: "33309",
+  category: "Men Shoes",
+  description: "Experience ultimate comfort and style with these premium Nike shoes. Featuring a striking blue colorway with light blue accents, these shoes are perfect for both casual wear and athletic activities.",
+  images: [
+    "/assets/products/product-1.png",
+    "/assets/products/product-2.png",
+    "/assets/products/product-3.png",
+    "/assets/products/product-4.png",
+  ],
+  inStock: true,
+  stockCount: 15,
+  seller: {
+    name: "Prince G Shop",
+    avatar: "/assets/users/avatar-1.jpg",
+    description: "Official store & good pricing",
+    rating: 4.8,
+    totalSales: "180.42K",
+    deliveryRate: 95,
+    phone: "08032454684"
+  },
+  specifications: {
+    brand: "Nike",
+    material: "Synthetic Leather",
+    color: "Blue",
+    sizes: ["40", "41", "42", "43", "44", "45"],
+    weight: "0.8kg",
+    origin: "Vietnam"
+  }
+};
+
+const similarProducts = [
+  {
+    id: 1,
+    name: "Nike Shoe",
+    price: "36,900",
+    oldPrice: "69,000",
+    image: "/assets/products/product-1.png",
+    store: "Prince G Shop",
+    rating: 4.3,
+    reviews: 89
+  },
+  {
+    id: 2,
+    name: "Blue Sneakers",
+    price: "36,900",
+    oldPrice: "69,000",
+    image: "/assets/products/product-2.png",
+    store: "Prince G Shop",
+    rating: 4.1,
+    reviews: 67
+  },
+  {
+    id: 3,
+    name: "White Trainers",
+    price: "36,900",
+    oldPrice: "69,000",
+    image: "/assets/products/product-3.png",
+    store: "Prince G Shop",
+    rating: 4.6,
+    reviews: 134
+  },
+  {
+    id: 4,
+    name: "Pink Runners",
+    price: "36,900",
+    oldPrice: "69,000",
+    image: "/assets/products/product-4.png",
+    store: "Prince G Shop",
+    rating: 4.2,
+    reviews: 78
+  },
+];
+
+const ProductDetail: React.FC = () => {
+  const [selectedSize, setSelectedSize] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
 
-  const WhatsappIcon = FaWhatsapp as IconType
-
-  const similarProducts = [
-    {
-      id: 1,
-      name: "Nike Shoe",
-      price: "36,900",
-      oldPrice: "69,000",
-      image: "/assets/products/product-1.png",
-      store: "Prince G Shop",
-    },
-    {
-      id: 2,
-      name: "Blue Sneakers",
-      price: "36,900",
-      oldPrice: "69,000",
-      image: "/assets/products/product-2.png",
-      store: "Prince G Shop",
-    },
-    {
-      id: 3,
-      name: "White Trainers",
-      price: "36,900",
-      oldPrice: "69,000",
-      image: "/assets/products/product-3.png",
-      store: "Prince G Shop",
-    },
-    {
-      id: 4,
-      name: "Pink Runners",
-      price: "36,900",
-      oldPrice: "69,000",
-      image: "/assets/products/product-4.png",
-      store: "Prince G Shop",
-    },
-  ];
-
   return (
-    <div className="w-full px-4 sm:px-8 md:px-16 py-8">
-      {/* Product details grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left: product images */}
-        <div className="lg:col-span-4 flex flex-col gap-4">
-          <img
-            src="/assets/products/product-1.png"
-            alt="Nike Shoe"
-            className="rounded-xl border border-[#e7e7e9] h-[400pt] object-cover"
-          />
-          <div className="flex gap-3">
-            {similarProducts.map(
-              (product, i) => (
-                <img
-                  key={i}
-                  src={product.image}
-                  alt="Thumb"
-                  className="w-16 h-16 rounded-lg border border-[#e7e7e9] object-cover cursor-pointer hover:border-[#1dbf73] transition"
-                />
-              )
-            )}
-          </div>
-          <div className=" mt-2">
-            <p className="text-gray-500">
-              Call store owner for enquiries:{" "}
-              <span className="font-medium text-[#1dbf73]">
-                08032454684
-              </span>
-            </p>
-            <div className="flex gap-3">
-              <div className="flex items-center gap-2">
-                <HeartIcon className="h-7 w-7" />
-                Save for later
-              </div>
+    <div className="w-full bg-white">
+      <div className="mx-auto px-4 sm:px-8 md:px-16 py-8">
+        {/* Breadcrumb */}
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+          <span className="hover:text-[#1dbf73] cursor-pointer transition-colors">Home</span>
+          <span>/</span>
+          <span className="hover:text-[#1dbf73] cursor-pointer transition-colors">Men Shoes</span>
+          <span>/</span>
+          <span className="text-gray-900 font-medium">Nike Shoes</span>
+        </nav>
 
-              <div className="p-3 rounded-xl border shadow">
-                <Twitter className="h-7 w-7" />
-              </div>
-              <div className="p-3 rounded-xl border shadow">
-                <PhoneIcon className="h-7 w-7" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Center: product info */}
-        <div className="lg:col-span-3 flex flex-col gap-4 ">
-          <h1 className="text-2xl font-semibold text-[#1f1f1f]">
-            Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot
-          </h1>
-          <div className="text-md grid gap-2 text-[#6e6e6e]">
-            <p>Product Code: 33309</p>
-            <p>Category: Men Shoes</p>
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-[#1dbf73]">₦36,900</p>
-            <p className="line-through text-sm text-[#a0a0a0]">₦69,000</p>
-          </div>
-
-          {/* Quantity */}
-          <div className="flex items-center gap-3">
-            <p className="text-sm text-[#6e6e6e]">Quantity:</p>
-            <div className="flex items-center border rounded-md overflow-hidden">
-              <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="px-3 py-1 hover:bg-[#f5f5f5]"
-              >
-                -
-              </button>
-              <span className="px-4">{quantity}</span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="px-3 py-1 hover:bg-[#f5f5f5]"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          {/* CTA buttons */}
-          <div className="flex gap-3 mt-2">
-            <Button variant="outline">
-              Add to Cart
-            </Button>
-            <Button variant="secondary">
-              Proceed with Payment
-            </Button>
-          </div>
-        </div>
-        {/* Center: product info */}
-        <div className="lg:col-span-2 flex flex-col gap-4">
-          <div className="grid grid-cols-4 md:flex gap-3 md:flex-col items-center">
-            {similarProducts.map(
-              (product, i) => (
-                <img
-                  key={i}
-                  src={product.image}
-                  alt="Thumb"
-                  className="w-20 md:w-36 h-20 md:h-36 rounded-2xl border border-[#e7e7e9] object-cover cursor-pointer hover:border-[#1dbf73] transition"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        <div className="lg:col-span-3 flex flex-col gap-6">
-          <div className="border rounded-xl p-4 px-6 md:px-10 text-sm text-[#1f1f1f] grid gap-4">
-            <h3 className="font-semibold mb-2 text-2xl">Delivery & Returns</h3>
-            <div className="flex flex-col gap-y-3">
-              <div>
-                <div className="flex items-center gap-3 my-2">
-                  <span className="text-brand-600">
-                    <TruckIcon />
-                  </span>
-                  <h5 className="text-lg font-semibold">Delivery</h5>
-                </div>
-                <ul className="list-none list-inside text-[#4a4a4a] space-y-3">
-                  <li>Estimated delivery time: 1-9 business days</li>
-                  <li>Express Delivery Available</li>
-                  <li>
-                    <b>For Same-Day-Delivery:</b>
-                    {' '}Please place your order before 11AM
-                  </li>
-                  <li>
-                    <b>Next-Day-Delivery:</b>
-                    {' '}Orders placed after 11AM will be delivered the next day
-                  </li>
-                  <li>
-                    <b>Note:</b>
-                    {' '} Availability may vary by location
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 my-2">
-                  <span className="text-brand-600">
-                    <RefreshCcw />
-                  </span>
-                  <h5 className="text-lg font-semibold">Return Policy</h5>
-                </div>
-
-                <ul className="list-none list-inside text-[#4a4a4a] space-y-3">
-                  <li>Guaranteed 7-Day Return Policy</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 my-2">
-                  <span className="text-brand-600">
-                    <ShieldCheck />
-                  </span>
-                  <h5 className="text-lg font-semibold">Warranty</h5>
-                </div>
-
-                <ul className="list-none list-inside text-[#4a4a4a] space-y-3">
-                  <li>Warranty information unavailable for this item</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border rounded-xl p-4 text-sm">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="font-semibold mb-2">Seller Information</h3>
-              <Button size="sm" variant="outline" className="p-2 text-xs">
-                Visit Store
-              </Button>
-
-            </div>
-            <div className="flex items-center gap-3 mb-2">
-              <img
-                src="/assets/users/avatar-1.jpg"
-                alt="Seller"
-                className="w-10 h-10 rounded-full object-cover border"
-              />
-              <div>
-                <p className="text-sm font-medium">Prince G Shop</p>
-                <p className="text-xs text-[#6e6e6e]">
-                  Official store & good pricing
-                </p>
-              </div>
-            </div>
-
+        {/* Product details grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Left: product images */}
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <ProductImageGallery images={mockProduct.images} productName={mockProduct.name} />
             <div className="mt-2">
-              <h3 className="text-md font-semibold mb-1">Number of Sales</h3>
-              <div className="flex items-center gap-2 w-full">
-                <div className="flex flex-col w-full md:w-1/2">
-                  <h5 className="font-bold text-xl">
-                    180.42K
-                  </h5>
-                  <p className="text-gray-600 text-sm">
-                    Successful sales
-                  </p>
+              <p className="text-gray-500">
+                Call store owner for enquiries:{" "}
+                <span className="font-medium text-[#1dbf73]">
+                  {mockProduct.seller.phone}
+                </span>
+              </p>
+              <div className="flex gap-3 mt-2">
+                <div className="flex items-center gap-2">
+                  <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                  Save for later
                 </div>
 
-                <div className="w-full md:w-1/2">
-                  <h4 className="font-light mb-2">
-                    delivery rate
-                  </h4>
-                  <ProgressBar completed={80} height='20px' bgColor='#1DBF73' labelSize='13px' labelAlignment='left' customLabelStyles={{ paddingLeft: "20px" }} className='text-sm' />
+                <div className="p-3 rounded-xl border shadow">
+                  <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                  </svg>
                 </div>
-
-
+                <div className="p-3 rounded-xl border shadow">
+                  <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
               </div>
             </div>
-            <p className="text-xs text-[#6e6e6e] mt-1">180.42K successful sales</p>
+          </div>
+
+          {/* Center: product info */}
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <ProductInfo
+              product={mockProduct}
+              selectedSize={selectedSize}
+              setSelectedSize={setSelectedSize}
+            />
+            <ProductActions
+              product={mockProduct}
+              quantity={quantity}
+              setQuantity={setQuantity}
+              selectedSize={selectedSize}
+            />
+          </div>
+
+
+
+          {/* Seller Info */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <DeliveryInfo />
+
+            <SellerInfo seller={mockProduct.seller} />
           </div>
         </div>
-      </div>
 
-      {/* Similar products */}
-      <div className="mt-12">
-        <h2 className="text-xl font-semibold mb-4">Similar Products</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {similarProducts.map((product) => (
-            <div
-              key={product.id}
-              className="border rounded-xl overflow-hidden hover:shadow-md transition bg-white"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <p className="text-sm font-medium text-[#1f1f1f] mb-1">
-                  {product.name}
-                </p>
-                <p className="text-xs text-[#6e6e6e] mb-1">{product.store}</p>
-                <p className="text-[#1dbf73] font-semibold">₦{product.price}</p>
-                <p className="line-through text-xs text-[#a0a0a0]">
-                  ₦{product.oldPrice}
-                </p>
-                <div className="flex gap-2 mt-3">
-                  <Button variant="outline">
-                    Visit store
-                  </Button>
-                  <Button variant="secondary">
-                    Add to cart
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Similar Products */}
+        <SimilarProducts products={similarProducts} />
       </div>
     </div>
   );
-}
+};
 
-export default ProductDetail
+export default ProductDetail;
