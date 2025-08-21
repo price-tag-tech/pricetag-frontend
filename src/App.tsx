@@ -87,6 +87,7 @@ import RevenueOverview from "./pages/dashboard/admin/revenue-overview";
 import ExpensesManagement from "./pages/dashboard/admin/expenses-management";
 import PaymentGateways from "./pages/dashboard/admin/payment-gateways";
 import { ToastContainer } from "react-toastify";
+import ProductDetail from "./components/features/products/product-detail";
 
 function App() {
   return (
@@ -115,7 +116,7 @@ function App() {
         </Route>
 
         <Route path="/store/:id">
-          <Route element={<StoreLayout />}>
+          <Route element={<BusinessLayout />}>
             <Route index element={<StorefrontPage />} />
           </Route>
         </Route>
