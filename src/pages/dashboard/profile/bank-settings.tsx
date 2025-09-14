@@ -9,7 +9,7 @@ const BankSettings = () => {
         <div className='w-full md:w-1/2 flex flex-col gap-y-6'>
             <div className='flex flex-col gap-y-2'>
                 <Label title='Bank' />
-                <Select default='--Select Bank--' />
+                <Select placeholder='--Select Bank--' />
             </div>
             <div className='flex flex-col gap-y-2'>
                 <Label title='Account Number' />
@@ -21,7 +21,7 @@ const BankSettings = () => {
             </div>
             <div className='flex flex-col gap-y-2'>
                 <Label title='Account Type' />
-                <Select default='--Select Account Type--' />
+                <Select placeholder='--Select Account Type--' />
             </div>
             <div>
                 <Button variant='secondary' className='w-full font-montserrat'>
