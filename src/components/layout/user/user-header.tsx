@@ -17,10 +17,10 @@ const UserHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <div className="flex items-center justify-between mb-5 md:mb-8 px-5 md:px-10">
+        <div className="flex items-center justify-between mb-6 px-4 md:px-8 py-4 bg-white shadow-sm border-b border-gray-100">
             <div className="flex gap-x-6 items-center">
                 <div>
-                    <img src="/logo.svg" className="h-12" alt="Pricetag" />
+                    <img src="/logo.svg" className="h-10" alt="Pricetag" />
                 </div>
                 <div className="hidden md:block">
                     <SearchBar

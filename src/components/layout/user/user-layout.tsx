@@ -1,20 +1,18 @@
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import Footer from '../Footer'
 import UserHeader from './user-header'
 import UserSidenav from './user-sidenav'
 
 const UserLayout: FC = () => {
     return (
-        <div className='min-h-screen flex flex-col overflow-x-hidden font-montserrat py-5'>
+        <div className='min-h-screen flex flex-col overflow-x-hidden font-montserrat bg-gradient-to-br from-gray-50 to-gray-100'>
             <UserHeader />
-            <div className='flex flex-col md:flex-row p-4 md:p-10'>
+            <div className='flex flex-col md:flex-row flex-1 p-4 md:p-8 gap-6'>
                 <UserSidenav />
-                <main className='px-5 md:px-10 w-full'>
+                <main className='flex-1 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 min-h-[calc(100vh-200px)]'>
                     <Outlet />
                 </main>
             </div>
-            <Footer />
         </div>
     )
 }

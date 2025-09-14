@@ -57,7 +57,7 @@ export function BusinessSidenav() {
                                 </div>
                             </div>
                             <div>
-                                <Link to="/business/store/add">
+                                <Link to="/store/store/add">
                                     <Button leftIcon={<Plus />} variant="text" className="bg-gray-100 text-gray-600 w-full shadow-inner font-bold font-montserrat hover:no-underline hover:bg-gray-50 transition-all duration-500 hover:shadow">
                                         Add a Store
                                     </Button>
@@ -110,7 +110,7 @@ export function BusinessSidenav() {
             {/* Profile Section */}
             <div className="p-5 border-t">
                 <Link
-                    to="/profile"
+                    to="/user/profile"
                     className={`flex items-center space-x-3 py-2 rounded-lg text-sm transition-colors ${pathname === "/profile"
                         ? "bg-gray-100 text-gray-900 font-medium"
                         : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
