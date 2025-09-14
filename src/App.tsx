@@ -1,11 +1,15 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Import Layout
 import MainLayout from './components/layout/MainLayout';
+import DashboardLayout from './components/layout/user/user-layout';
+import AdminLayout from './components/layout/admin/admin-layout';
+import BusinessLayout from './components/layout/business/business-layout';
+import ProfileLayout from './components/layout/profile-layout';
 
 // Import Pages
+// public pages
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -21,6 +25,12 @@ import NotFoundPage from './pages/NotFoundPage';
 import EmailVerification from './pages/EmailVerification';
 import Stores from './pages/Stores';
 import Affiliate from './pages/Affiliate';
+import ContactUsPage from './pages/ContactUsPage';
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
+import PricingPage from './pages/PricingPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+
+// user dashboard
 import UserDashboard from './pages/dashboard/user/user-dashboard';
 import DashboardLayout from './components/layout/dashboard/user-layout';
 import OrdersAndPurchasesPage from './pages/dashboard/user/orders-and-purchases-page';
@@ -32,10 +42,9 @@ import PasswordEdit from './pages/dashboard/profile/password-edit';
 import ProfileLayout from './components/layout/dashboard/profile-layout';
 import SocialProfiles from './pages/dashboard/profile/social-profiles';
 import BankSettings from './pages/dashboard/profile/bank-settings';
-import ContactUsPage from './pages/ContactUsPage';
-import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
-import BusinessDashboard from './pages/dashboard/business/business-dashboard';
-import BusinessLayout from './components/layout/dashboard/business-layout';
+import UserStores from './pages/dashboard/user/stores';
+
+// business dashboard
 import ProductAndServicesPage from './pages/dashboard/business/products-and-services-page';
 import OrdersPage from './pages/dashboard/business/orders-page';
 import InventoryPage from './pages/dashboard/business/inventory-page';
@@ -43,8 +52,8 @@ import UploadProductPage from './pages/dashboard/business/upload-product-page';
 import AddStorePage from './pages/dashboard/business/add-store-page';
 import AddServicePage from './pages/dashboard/business/add-service-page';
 import SuccessPage from './pages/dashboard/business/success-page';
-import PricingPage from './pages/PricingPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import BusinessDashboard from './pages/dashboard/business/business-dashboard';
+
 
 function App() {
   return (
@@ -75,6 +84,8 @@ function App() {
         {/* Dashboard routes */}
         <Route path="user">
           <Route element={<DashboardLayout />}>
+            <Route index element={<UserDashboard />} />
+            <Route path="stores" element={<UserStores />} />
             <Route index element={<UserDashboard />} />
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />

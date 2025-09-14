@@ -83,6 +83,8 @@ const UserDashboard = () => {
                                 </Button>
                             </div>
                         </div>
+                        <Button to="/user/stores" variant='outline' size="sm" className='bg-white border-brand-300 text-brand-700 hover:bg-brand-50 w-full lg:w-auto'>
+                            <Store className='h-4 w-4 mr-2' />
                             My Store
                         </Button>
                     </div>
