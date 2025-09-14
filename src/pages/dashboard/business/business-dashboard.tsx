@@ -1,4 +1,3 @@
-import React from 'react'
 import Button from '../../../components/common/Button'
 import { Ellipsis, Plus, Upload } from 'lucide-react'
 import ProgressBar from '@ramonak/react-progress-bar'
