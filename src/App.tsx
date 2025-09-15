@@ -63,6 +63,17 @@ import PlatformSettings from './pages/dashboard/admin/platform-settings';
 import ActivityLogs from './pages/dashboard/admin/activity-logs';
 import ReportsAnalytics from './pages/dashboard/admin/report-and-analytics';
 import SuperAdminDashboard from './pages/dashboard/admin/superadmin-dashboard';
+// user registration admin
+import ProfileViewPage from './pages/dashboard/admin/profile-view-page';
+import NewUsersRequest from './pages/dashboard/admin/new-users-requests';
+import ProfileViewPage from './pages/dashboard/admin/profile-view-page';
+import PendingKYCsPage from './pages/dashboard/admin/pending-kycs-page';
+import SingleKycReviewPage from './pages/dashboard/admin/single-kyc-review';
+import BusinessVerificationPage from './pages/dashboard/admin/business-verification-page';
+import BusinessVerificationListPage from './pages/dashboard/admin/business-verification-list';
+import EmailsAndReminders from './pages/dashboard/admin/email-and-reminders';
+import SingleReminder from './pages/dashboard/admin/single-reminder';
+import NewReminderPage from './pages/dashboard/admin/send-reminder-page';
 
 
 function App() {
@@ -146,6 +157,16 @@ function App() {
             <Route path="settings">
               <Route path="platform" element={<PlatformSettings />} />
             </Route>
+
+            {/* new-user-registration admin routes */}
+            <Route path="users/requests" element={<NewUsersRequest />} />
+            <Route path='kycs' element={<PendingKYCsPage />} />
+            <Route path='kyc/:id' element={<SingleKycReviewPage />} />
+            <Route path="businesses" element={<BusinessVerificationListPage />} />
+            <Route path="businesses/:id" element={<BusinessVerificationPage />} />
+            <Route path="reminders" element={<EmailsAndReminders />} />
+            <Route path="reminder/new" element={<NewReminderPage />} />
+            <Route path="reminder/:id" element={<SingleReminder />} />
 
           </Route>
         </Route>
