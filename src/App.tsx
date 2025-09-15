@@ -54,6 +54,16 @@ import AddServicePage from './pages/dashboard/business/add-service-page';
 import SuccessPage from './pages/dashboard/business/success-page';
 import BusinessDashboard from './pages/dashboard/business/business-dashboard';
 
+// admin dashboard
+import UsersManagementPage from './pages/dashboard/admin/users-managment';  
+import AdminManagement from './pages/dashboard/admin/admin-management';
+import BroadcastCentre from './pages/dashboard/admin/broadcast-centre';
+import NewBroadcast from './pages/dashboard/admin/new-broadcast';
+import PlatformSettings from './pages/dashboard/admin/platform-settings';
+import ActivityLogs from './pages/dashboard/admin/activity-logs';
+import ReportsAnalytics from './pages/dashboard/admin/report-and-analytics';
+import SuperAdminDashboard from './pages/dashboard/admin/superadmin-dashboard';
+
 
 function App() {
   return (
@@ -117,6 +127,26 @@ function App() {
             <Route path="orders" element={<OrdersPage />} />
             <Route path="inventory" element={<InventoryPage />} />
             <Route path="success" element={<SuccessPage />} />
+          </Route>
+        </Route>
+
+        <Route path="admin">
+          <Route element={<AdminLayout />}>
+            {/* super admin routes */}
+            <Route index element={<SuperAdminDashboard />} />
+            <Route path='users' element={<UsersManagementPage />} />
+            <Route path="user/:id" element={<ProfileViewPage />} />
+            <Route path='admins' element={<AdminManagement />} />
+            <Route path='broadcast' element={<BroadcastCentre />} />
+            <Route path='broadcast/new' element={<NewBroadcast />} />
+            <Route path='logs' element={<ActivityLogs />} />
+            <Route path='reports' element={<ReportsAnalytics />} />
+
+            {/* settings group */}
+            <Route path="settings">
+              <Route path="platform" element={<PlatformSettings />} />
+            </Route>
+
           </Route>
         </Route>
 

@@ -8,6 +8,6 @@ interface ProfileInterface {
 }
 
 export const useProfileStore = create<ProfileInterface>((set, get) => ({
-  role: "finance-admin",
+  role: "super-admin",
   setRole: (role: string) => set({ role }),
 }));
