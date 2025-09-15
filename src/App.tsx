@@ -32,14 +32,12 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 // user dashboard
 import UserDashboard from './pages/dashboard/user/user-dashboard';
-import DashboardLayout from './components/layout/dashboard/user-layout';
 import OrdersAndPurchasesPage from './pages/dashboard/user/orders-and-purchases-page';
 import NotificationsPage from './pages/dashboard/user/notifications-page';
 import AffiliatePage from './pages/dashboard/affiliate';
 import AffiliateWithdrawalPage from './pages/dashboard/affiliate/affiliate-withdrawal-page';
 import ProfilePage from './pages/dashboard/profile';
 import PasswordEdit from './pages/dashboard/profile/password-edit';
-import ProfileLayout from './components/layout/dashboard/profile-layout';
 import SocialProfiles from './pages/dashboard/profile/social-profiles';
 import BankSettings from './pages/dashboard/profile/bank-settings';
 import UserStores from './pages/dashboard/user/stores';
@@ -80,7 +78,14 @@ import Messages from './pages/dashboard/admin/messages';
 import MessageThread from './pages/dashboard/admin/message-thread';
 import ReviewsPage from './pages/dashboard/admin/reviews';
 import SatisfactionReportsPage from './pages/dashboard/admin/satisfaction-report';
-
+// finance admin
+import PayoutRequests from './pages/dashboard/admin/payouts-request';
+import SinglePayoutRequest from './pages/dashboard/admin/single-payout';
+import AffiliateManagement from './pages/dashboard/admin/affiliate-management';
+import SingleAffiliate from './pages/dashboard/admin/single-affiliate';
+import RevenueOverview from './pages/dashboard/admin/revenue-overview';
+import ExpensesManagement from './pages/dashboard/admin/expenses-management';
+import PaymentGateways from './pages/dashboard/admin/payment-gateways';
 
 function App() {
   return (
@@ -113,7 +118,6 @@ function App() {
           <Route element={<DashboardLayout />}>
             <Route index element={<UserDashboard />} />
             <Route path="stores" element={<UserStores />} />
-            <Route index element={<UserDashboard />} />
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="affiliate">
@@ -181,6 +185,15 @@ function App() {
             <Route path="message/:id" element={<MessageThread />} />
             <Route path="reviews" element={<ReviewsPage />} />
             <Route path="satisfaction" element={<SatisfactionReportsPage />} />
+
+            {/* finance admin routes */}
+            <Route path="payouts" element={<PayoutRequests />} />
+            <Route path="payout/:id" element={<SinglePayoutRequest />} />
+            <Route path="affiliate" element={<AffiliateManagement />} />
+            <Route path="affiliate/:id" element={<SingleAffiliate />} />
+            <Route path="revenue" element={<RevenueOverview />} />
+            <Route path="expenses" element={<ExpensesManagement />} />
+            <Route path="gateways" element={<PaymentGateways />} />
           </Route>
         </Route>
 
