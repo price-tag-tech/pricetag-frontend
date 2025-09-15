@@ -55,7 +55,7 @@ import SuccessPage from './pages/dashboard/business/success-page';
 import BusinessDashboard from './pages/dashboard/business/business-dashboard';
 
 // admin dashboard
-import UsersManagementPage from './pages/dashboard/admin/users-managment';  
+import UsersManagementPage from './pages/dashboard/admin/users-managment';
 import AdminManagement from './pages/dashboard/admin/admin-management';
 import BroadcastCentre from './pages/dashboard/admin/broadcast-centre';
 import NewBroadcast from './pages/dashboard/admin/new-broadcast';
@@ -64,7 +64,6 @@ import ActivityLogs from './pages/dashboard/admin/activity-logs';
 import ReportsAnalytics from './pages/dashboard/admin/report-and-analytics';
 import SuperAdminDashboard from './pages/dashboard/admin/superadmin-dashboard';
 // user registration admin
-import ProfileViewPage from './pages/dashboard/admin/profile-view-page';
 import NewUsersRequest from './pages/dashboard/admin/new-users-requests';
 import ProfileViewPage from './pages/dashboard/admin/profile-view-page';
 import PendingKYCsPage from './pages/dashboard/admin/pending-kycs-page';
@@ -74,6 +73,13 @@ import BusinessVerificationListPage from './pages/dashboard/admin/business-verif
 import EmailsAndReminders from './pages/dashboard/admin/email-and-reminders';
 import SingleReminder from './pages/dashboard/admin/single-reminder';
 import NewReminderPage from './pages/dashboard/admin/send-reminder-page';
+// support admin
+import SupportTickets from './pages/dashboard/admin/support-tickets';
+import SingleTicketPage from './pages/dashboard/admin/single-ticket-page';
+import Messages from './pages/dashboard/admin/messages';
+import MessageThread from './pages/dashboard/admin/message-thread';
+import ReviewsPage from './pages/dashboard/admin/reviews';
+import SatisfactionReportsPage from './pages/dashboard/admin/satisfaction-report';
 
 
 function App() {
@@ -168,6 +174,13 @@ function App() {
             <Route path="reminder/new" element={<NewReminderPage />} />
             <Route path="reminder/:id" element={<SingleReminder />} />
 
+            {/* support admin routes */}
+            <Route path="tickets" element={<SupportTickets />} />
+            <Route path="ticket/:id" element={<SingleTicketPage />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="message/:id" element={<MessageThread />} />
+            <Route path="reviews" element={<ReviewsPage />} />
+            <Route path="satisfaction" element={<SatisfactionReportsPage />} />
           </Route>
         </Route>
 
