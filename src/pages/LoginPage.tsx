@@ -6,32 +6,37 @@ import facebookImage from "../assets/icons/facebook.svg";
 import googleImage from "../assets/icons/google.svg";
 import banner from "../assets/images/banner.svg";
 import { Button } from "@headlessui/react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { loginService } from "../services/authService";
+import { toast } from "react-toastify";
 
-interface LoginFormData {
-  emailOrUsername: string;
-  password: string;
-}
+const LoginSchema = z.object({
+  email: z.string().min(3, "Email is too short").email("Invalid email address"),
+  password: z.string().min(6, "Password is too short")
+})
+
+type LoginType = z.infer<typeof LoginSchema>
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [formData, setFormData] = useState<LoginFormData>({
-    emailOrUsername: "",
-    password: "",
-  });
 
-  const handleInputChange = (field: keyof LoginFormData, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<LoginType>({
+    resolver: zodResolver(LoginSchema)
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // login logic here
-    console.log("Login data:", formData);
-  };
+  const onSubmit: SubmitHandler<LoginType> = async (data) => {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    const response = await loginService(data)
+
+    if (response.status === "success") {
+      toast.success("Login successful. Please wait while we redirect you to your dahboard")
+      return;
+    }
+    toast.error(response.message)
+  }
 
   const handleSocialLogin = (provider: "google" | "facebook" | "apple") => {
     // login logic here
@@ -90,21 +95,19 @@ const LoginPage: React.FC = () => {
                 Continue with your email or username
               </h1>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="flex flex-col">
                   <label className="text-[#444] font-['Poppins'] text-sm font-medium mb-2">
                     Email or username
                   </label>
                   <input
+                    {...register("email")}
                     title="input"
                     type="text"
-                    value={formData.emailOrUsername}
-                    onChange={(e) =>
-                      handleInputChange("emailOrUsername", e.target.value)
-                    }
                     className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                     required
                   />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                 </div>
 
                 <div className="flex flex-col">
@@ -113,12 +116,15 @@ const LoginPage: React.FC = () => {
                   </label>
                   <div className="relative">
                     <input
+                      {...register("password", {
+                        required: "Password is required",
+                        min: {
+                          value: 6,
+                          message: "Password is too short"
+                        }
+                      })}
                       title="inpute"
                       type={showPassword ? "text" : "password"}
-                      value={formData.password}
-                      onChange={(e) =>
-                        handleInputChange("password", e.target.value)
-                      }
                       className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 pr-12 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                       required
                     />
@@ -146,6 +152,8 @@ const LoginPage: React.FC = () => {
                     </button>
                   </div>
 
+                  {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+
                   <Link
                     to="/forgot-password"
                     className="text-[#1f1f1f] font-['Poppins'] text-xs underline mt-2 hover:text-[#1dbf73] transition-colors self-start"
@@ -156,9 +164,10 @@ const LoginPage: React.FC = () => {
 
                 <Button
                   type="submit"
-                  className="w-full h-[2.8125rem] rounded-[0.3125rem] bg-[#1f1f1f] text-white font-['Poppins'] text-sm font-semibold hover:bg-black transition-colors"
+                  disabled={isSubmitting}
+                  className={`w-full h-[2.8125rem] rounded-[0.3125rem] bg-[#1f1f1f] text-white font-['Poppins'] text-sm font-semibold hover:bg-black transition-colors flex items-center justify-center ${isSubmitting ? "bg-[#1f1f1faa]" : "bg-[#1f1f1f]"}`}
                 >
-                  Log In
+                  {isSubmitting ? <div className="w-5 h-5 rounded-full border-white border-2 border-t-0 border-l-0 animate-spin" /> : "Log In"}
                 </Button>
 
                 <div className="relative flex items-center justify-center h-[1.875rem]">

@@ -1,7 +1,6 @@
 import React from "react";
 import logoImage from "../../assets/logo/logo.svg";
 import { Link } from "react-router-dom";
-import Container from "./Container";
 import Button from "../common/Button";
 
 interface FooterProps {
@@ -25,12 +24,12 @@ const Footer: React.FC<FooterProps> = () => {
     {
       name: "businesses",
       links: [
-        { link: '', name: 'Sell on Pricetag', },
+        { link: '/open-store', name: 'Sell on Pricetag', },
         { link: '', name: 'Business Resources', },
-        { link: '', name: 'Affiliate Program', },
+        { link: '/become-agent', name: 'Affiliate Program', },
         { link: '', name: 'Advertising', },
-        { link: '', name: 'Pricing Plans', },
-        { link: '', name: 'Business Support' },
+        { link: '/pricing', name: 'Pricing Plans', },
+        { link: '/store/messages', name: 'Business Support' },
       ]
     },
     {
@@ -40,8 +39,8 @@ const Footer: React.FC<FooterProps> = () => {
         { link: "", name: 'News & Blog', },
         { link: "", name: 'Career', },
         { link: "", name: 'Investor Relations', },
-        { link: "", name: 'Terms of Service', },
-        { link: "", name: 'Privacy Policy' },
+        { link: "terms-conditions", name: 'Terms of Service', },
+        { link: "/privacy-policy", name: 'Privacy Policy' },
       ]
     }
   ]
@@ -136,11 +135,11 @@ const Footer: React.FC<FooterProps> = () => {
               © {new Date().getFullYear()} Pricetag. All rights reserved.
             </p>
             <div className="flex items-center gap-x-5">
-              <Link to="#" className="thin-link">
+              <Link to="/privacy-policy" className="thin-link">
                 Privacy
               </Link>
 
-              <Link to="#" className="thin-link">
+              <Link to="/terms-conditions" className="thin-link">
                 Terms
               </Link>
 

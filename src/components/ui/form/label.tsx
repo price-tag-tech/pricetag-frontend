@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 
 interface LabelProps {
     for?: string
-    title: string
+    title?: string
     className?: string
     children?: ReactNode
     size?: "xs" | "sm" | "md" | "lg"

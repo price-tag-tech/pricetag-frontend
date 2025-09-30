@@ -13,7 +13,7 @@ const PaymentOptions = ({ action }: Props) => {
         <div className='flex flex-wrap flex-col md:flex-row'>
             <div className='w-full p-2'>
                 <Label title='Mode of Payment' />
-                <Select default='--Select Mode of Payment--' options={[]} />
+                <Select placeholder='--Select Mode of Payment--' options={[]} />
             </div>
 
             <div className='mt-4 w-full'>

@@ -45,7 +45,9 @@ const ProductsAndServicesPage = () => {
                 {/* Header */}
                 <div className="flex md:items-center justify-between flex-col md:flex-row w-full gap-5">
                     <div className="flex items-center justify-between md:justify-start w-full gap-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Products/Services</h1>
+                        <h2 className='text-2xl font-medium'>
+                            Products/Services
+                        </h2>
                         <Button
                             variant='outline'
                             size='sm'
@@ -96,7 +98,7 @@ const ProductsAndServicesPage = () => {
                     </Button>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 

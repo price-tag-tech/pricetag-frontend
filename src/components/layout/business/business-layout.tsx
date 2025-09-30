@@ -1,7 +1,7 @@
 import type React from "react"
 import { Outlet } from "react-router-dom"
-import { BusinessHeader } from "./business-header"
 import { FC } from "react"
+import { BusinessHeader } from "./business-header"
 import { BusinessSidenav } from "./business-sidenav"
 
 const BusinessLayout: FC = () => {

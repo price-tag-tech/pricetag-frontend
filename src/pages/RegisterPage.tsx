@@ -4,6 +4,12 @@ import logoImage from "../assets/logo/logo.svg";
 import appleImage from "../assets/icons/apple.svg";
 import facebookImage from "../assets/icons/facebook.svg";
 import googleImage from "../assets/icons/google.svg";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { registrationService } from "../services/authService";
+import { toast } from "react-toastify";
+import Button from "../components/common/Button";
 
 interface FormData {
   email: string;
@@ -15,33 +21,37 @@ interface FormData {
   confirmPassword: string;
 }
 
+const RegisterSchema = z.object({
+  firstName: z.string().min(3, "Name is too short"),
+  lastName: z.string().min(3, "Name is too short"),
+  username: z.string().min(3),
+  email: z.string().min(3, "Email is too short").email("Invalid email address"),
+  phoneNumber: z.string().min(10, "Phone number is too short"),
+  password: z.string().min(6, "Password is too short"),
+  confirmPassword: z.string(),
+}).refine(data => data.password === data.confirmPassword, { message: "Passwords do not match", path: ["confirmPassword"] });
+
+type RegisterFormType = z.infer<typeof RegisterSchema>
+
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    userName: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegisterFormType>({ resolver: zodResolver(RegisterSchema) })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    //  registration logic here
-    console.log("Registration data:", formData);
-  };
+  const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    const response = await registrationService(data)
+
+    if (response.status === "success") {
+      toast.success(response.message)
+      navigate("/login")
+    }
+    else {
+      toast.error(response.message)
+    }
+  }
 
   const handleSocialLogin = (provider: "google" | "facebook" | "apple") => {
     // login logic here
@@ -93,20 +103,19 @@ const RegisterPage: React.FC = () => {
           </h1>
 
           {/* Registration Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Email */}
             <div className="flex flex-col">
               <label className="text-[#444] font-['Poppins'] text-sm font-medium mb-2">
                 Email
               </label>
               <input
+                {...register("email")}
                 title="#"
                 type="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
                 className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
-                required
               />
+              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
             </div>
 
             {/* First Name and Last Name */}
@@ -116,30 +125,26 @@ const RegisterPage: React.FC = () => {
                   First Name
                 </label>
                 <input
+                  {...register("firstName")}
                   title="#"
                   type="text"
-                  value={formData.firstName}
-                  onChange={(e) =>
-                    handleInputChange("firstName", e.target.value)
-                  }
                   className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                   required
                 />
+                {errors.firstName && <p className="text-sm text-red-500">{errors.firstName.message}</p>}
               </div>
               <div className="flex-1">
                 <label className="text-[#444] font-['Poppins'] text-sm font-medium mb-2 block">
                   Last Name
                 </label>
                 <input
+                  {...register("lastName")}
                   title="#"
                   type="text"
-                  value={formData.lastName}
-                  onChange={(e) =>
-                    handleInputChange("lastName", e.target.value)
-                  }
                   className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                   required
                 />
+                {errors.lastName && <p className="text-sm text-red-500">{errors.lastName.message}</p>}
               </div>
             </div>
 
@@ -149,13 +154,13 @@ const RegisterPage: React.FC = () => {
                 Username
               </label>
               <input
+                {...register("username")}
                 title="#"
                 type="text"
-                value={formData.userName}
-                onChange={(e) => handleInputChange("userName", e.target.value)}
                 className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                 required
               />
+              {errors.username && <p className="text-sm text-red-500">{errors.username.message}</p>}
             </div>
 
             {/* Phone Number */}
@@ -164,15 +169,13 @@ const RegisterPage: React.FC = () => {
                 Phone Number
               </label>
               <input
+                {...register("phoneNumber")}
                 title="#"
                 type="tel"
-                value={formData.phoneNumber}
-                onChange={(e) =>
-                  handleInputChange("phoneNumber", e.target.value)
-                }
                 className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                 required
               />
+              {errors.phoneNumber && <p className="text-sm text-red-500">{errors.phoneNumber.message}</p>}
             </div>
 
             {/* Password */}
@@ -182,12 +185,9 @@ const RegisterPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
+                  {...register("password")}
                   title="password"
                   type={showPassword ? "text" : "password"}
-                  value={formData.password}
-                  onChange={(e) =>
-                    handleInputChange("password", e.target.value)
-                  }
                   className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 pr-12 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                   required
                 />
@@ -214,6 +214,7 @@ const RegisterPage: React.FC = () => {
                   </svg>
                 </button>
               </div>
+              {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
             </div>
 
             {/* Confirm Password */}
@@ -223,19 +224,16 @@ const RegisterPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
+                  {...register("confirmPassword")}
                   title="#"
-                  type={showConfirmPassword ? "text" : "password"}
-                  value={formData.confirmPassword}
-                  onChange={(e) =>
-                    handleInputChange("confirmPassword", e.target.value)
-                  }
+                  type={showPassword ? "text" : "password"}
                   className="w-full h-[2.8125rem] rounded-[0.3125rem] border border-[#e1e1e1] px-4 pr-12 text-sm font-['Poppins'] focus:outline-none focus:border-[#1dbf73] transition-colors"
                   required
                 />
                 <button
                   title="#"
                   type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#868686] hover:text-[#444] transition-colors"
                 >
                   <svg
@@ -255,6 +253,7 @@ const RegisterPage: React.FC = () => {
                   </svg>
                 </button>
               </div>
+              {errors.confirmPassword && <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>}
             </div>
 
             {/* Terms and Conditions */}
@@ -278,12 +277,13 @@ const RegisterPage: React.FC = () => {
             </div>
 
             {/* Submit Button */}
-            <button
+            <Button
               type="submit"
-              className="w-full h-[2.8125rem] rounded-[0.3125rem] bg-[#1f1f1f] text-white font-['Poppins'] text-sm font-semibold hover:bg-black transition-colors"
+              disabled={isSubmitting}
+              className={`w-full h-[2.8125rem] rounded-[0.3125rem] text-white font-['Poppins'] text-sm font-semibold transition-colors ${isSubmitting ? "bg-[#1f1f1faa] hover:bg-black/50" : "bg-[#1f1f1f] hover:bg-black flex items-center justify-center"}`}
             >
-              Create Pricetag account
-            </button>
+              {isSubmitting ? <div className="w-5 h-5 rounded-full animate-spin border-2 border-b-0 border-l-0 border-white mx-auto" /> : "Create Pricetag account"}
+            </Button>
 
             {/* Divider */}
             <div className="relative flex items-center justify-center h-[1.875rem]">
@@ -340,14 +340,14 @@ const RegisterPage: React.FC = () => {
                 to="/login"
                 className="font-['Poppins'] text-xs font-medium hover:text-[#16a863] transition-colors"
               >
-                Already have a Pricetag account? 
+                Already have a Pricetag account?
               </Link>
               <Link
-                  to="/login"
-                  className="font-['Poppins'] text-xs font-medium text-[#1dbf73] hover:text-[#16a863] transition-colors"
-                >
-                  Log In
-                </Link>
+                to="/login"
+                className="font-['Poppins'] text-xs font-medium text-[#1dbf73] hover:text-[#16a863] transition-colors"
+              >
+                Log In
+              </Link>
             </div>
           </form>
         </div>
@@ -359,14 +359,14 @@ const RegisterPage: React.FC = () => {
           <span>© Price Tag. {new Date().getFullYear()}</span>
           <div className="space-x-6">
             <Link to="/terms" className="hover:text-[#1dbf73] transition-colors">
-            Terms and Conditions
-          </Link>
-          <Link
-            to="/privacy"
-            className="hover:text-[#1dbf73] transition-colors"
-          >
-            Privacy Policy
-          </Link>
+              Terms and Conditions
+            </Link>
+            <Link
+              to="/privacy"
+              className="hover:text-[#1dbf73] transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>

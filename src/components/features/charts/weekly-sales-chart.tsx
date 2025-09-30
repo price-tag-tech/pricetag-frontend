@@ -7,7 +7,7 @@ import {
     ResponsiveContainer,
     CartesianGrid
 } from 'recharts'
-import { formatCurrency } from '../../../libs/number-formatter'
+import { formatCurrencyForCharts } from '../../../utils/number-formatter'
 
 const data = [
     { day: 'Monday', revenue: 0 },
@@ -36,13 +36,13 @@ const WeeklySalesChart = () => {
                     <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#f3f4f6" />
                     <XAxis dataKey="day" tick={{ fontSize: 12 }} axisLine={false} />
                     <YAxis
-                        tickFormatter={formatCurrency}
+                        tickFormatter={formatCurrencyForCharts}
                         tick={{ fontSize: 12 }}
                         axisLine={false}
                         ticks={[0, 200000, 400000, 600000, 800000, 1000000]}
                     />
                     <Tooltip
-                        formatter={(value: number) => formatCurrency(value)}
+                        formatter={formatCurrencyForCharts}
                         contentStyle={{
                             borderRadius: 8,
                             borderColor: '#22c55e',

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const useToggle = (initial: boolean) => {
+const useToggle = (initial: boolean): [boolean, () => void] => {
   const [state, setState] = useState(initial);
 
   const toggle = () => setState((prev) => !prev);

@@ -18,7 +18,7 @@ const ShippingAndDelivery = ({ action }: Props) => {
 
             <div className='w-full md:w-1/2 p-2'>
                 <Label title='Express Delivery' size='md' className='font-medium' />
-                <Select name='express-delivery' default='--Select Express Delivery--' options={[]} />
+                <Select name='express-delivery' placeholder='--Select Express Delivery--' options={[]} />
             </div>
 
             <div className='w-full md:w-1/2 p-2'>
