@@ -11,6 +11,7 @@ import z from "zod";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginService } from "../services/authService";
 import { toast } from "react-toastify";
+import { useProfileStore } from "../store/profile-store";
 
 const LoginSchema = z.object({
   email: z.string().min(3, "Email is too short").email("Invalid email address"),
@@ -23,6 +24,8 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
+  const { setUser } = useProfileStore()
+
   const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<LoginType>({
     resolver: zodResolver(LoginSchema)
   })
@@ -33,6 +36,8 @@ const LoginPage: React.FC = () => {
 
     if (response.status === "success") {
       toast.success(response.message)
+      setUser(response.data.user)
+
       navigate("/user")
       return;
     }
@@ -166,9 +171,9 @@ const LoginPage: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full h-[2.8125rem] rounded-[0.3125rem] bg-[#1f1f1f] text-white font-['Poppins'] text-sm font-semibold hover:bg-black transition-colors flex items-center justify-center ${isSubmitting ? "bg-[#1f1f1faa]" : "bg-[#1f1f1f]"}`}
+                  className={`w-full h-[2.8125rem] rounded-[0.3125rem] text-white font-['Poppins'] text-sm font-semibold transition-colors ${isSubmitting ? "bg-[#1f1f1faa] hover:bg-black/50" : "bg-[#1f1f1f] hover:bg-black flex items-center justify-center"}`}
                 >
-                  {isSubmitting ? <div className="w-5 h-5 rounded-full border-white border-2 border-t-0 border-l-0 animate-spin" /> : "Log In"}
+                  {isSubmitting ? <div className="w-5 h-5 rounded-full animate-spin border-2 border-b-0 border-l-0 border-white mx-auto" /> : "Login"}
                 </Button>
 
                 <div className="relative flex items-center justify-center h-[1.875rem]">

@@ -30,7 +30,6 @@ const UploadProductPage = () => {
         { title: "Pricing Details", component: <PricingDetails action={handleNext} /> },
         { title: "Product Images & Media", component: <ProductImagesAndMedia action={handleNext} /> },
         { title: "Shipping & Delivery", component: <ShippingAndDelivery action={handleNext} /> },
-        { title: "Payment Options", component: <PaymentOptions action={handleSubmit} /> },
     ]
 
     return (

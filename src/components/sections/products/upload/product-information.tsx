@@ -11,14 +11,14 @@ interface Props {
 const ProductInformation = ({ action }: Props) => {
     return (
         <div className='flex flex-wrap flex-col md:flex-row'>
-            <div className='w-full md:w-1/2 p-2'>
+            <div className='w-full p-2'>
                 <Label title='Product Name' size='md' className='font-medium' />
                 <Input type="text" placeholder='E.g., "Nike Shoe"' />
             </div>
 
-            <div className='w-full md:w-1/2 p-2'>
+            <div className='w-full p-2'>
                 <Label title='Product Description' size='md' className='font-medium' />
-                <Input type="text" placeholder='A brief but detailed description of the product' />
+                <textarea  placeholder='A brief but detailed description of the product'></textarea>
             </div>
 
             <div className='w-full md:w-1/2 p-2'>
