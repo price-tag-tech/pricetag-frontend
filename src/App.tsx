@@ -86,6 +86,7 @@ import SingleAffiliate from './pages/dashboard/admin/single-affiliate';
 import RevenueOverview from './pages/dashboard/admin/revenue-overview';
 import ExpensesManagement from './pages/dashboard/admin/expenses-management';
 import PaymentGateways from './pages/dashboard/admin/payment-gateways';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -201,6 +202,8 @@ function App() {
         <Route path="register" element={<RegisterPage />} />
         <Route path="verification" element={<EmailVerification />} />
       </Routes>
+
+      <ToastContainer />
     </Router>
   );
 }
