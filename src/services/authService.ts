@@ -76,26 +76,36 @@ export const loginService = async ({
   password: string;
 }): Promise<IResponse> => {
   try {
-    const res = await axios.post(`${API_URL}/v1/auth/login`, {
+    const response = await fetch(`${API_URL}/v1/auth/login`, {
       headers: {
         "Content-Type": "application/json",
       },
-      data: { email, password },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      method: "POST",
+      credentials: "include",
     });
 
-    if (res.status !== 200) {
+    const res = await response.json();
+
+    if (res.status === true || res.status === "success") {
       return {
-        status: "fail",
-        code: res.status || 400,
-        message: res.data.error,
+        status: "success",
+        code: 200,
+        message: "Login successful!",
+        data: {
+          user: res.data,
+          token: res.accessToken,
+        },
       };
     }
 
     return {
-      status: "success",
-      code: 200,
-      message: "Login successful",
-      data: res.data,
+      status: "fail",
+      code: res.status || 400,
+      message: res.message,
     };
   } catch (error: any) {
     return {

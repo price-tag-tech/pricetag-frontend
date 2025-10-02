@@ -32,7 +32,8 @@ const LoginPage: React.FC = () => {
     const response = await loginService(data)
 
     if (response.status === "success") {
-      toast.success("Login successful. Please wait while we redirect you to your dahboard")
+      toast.success(response.message)
+      navigate("/user")
       return;
     }
     toast.error(response.message)
