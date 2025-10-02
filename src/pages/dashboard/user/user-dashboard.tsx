@@ -2,17 +2,24 @@ import { Copy, MoreHorizontal, Pen, Store } from 'lucide-react'
 import LatestOrderAndPurchase from "../../../components/sections/user-dashboard/latest-order-and-purchases"
 import Button from '../../../components/common/Button'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useProfileStore } from '../../../store/profile-store'
+import { toast } from 'react-toastify'
 
 const UserDashboard = () => {
-    const user = {
-        name: "Prince Godson",
-        referral: {
-            link: "https://pricetag.ng/c/67d859bc-b2b4"
-        }
-    }
+    const { user } = useProfileStore()
+    const [referralLink, setReferralLink] = useState('')
 
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+
+    useEffect(() => {
+        setReferralLink(`${window.location.origin}/${user.referralCode}`)
+    }, [user.referralCode])
+
+    const copyReferralLink = () => {
+        navigator.clipboard.writeText(referralLink)
+        toast.info("Copied referral link")
+    }
 
     return (
         <div className="space-y-8">
@@ -21,7 +28,8 @@ const UserDashboard = () => {
                     <div className='flex items-center gap-6'>
                         <div className='relative'>
                             <div className='h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white font-bold text-2xl md:text-3xl flex items-center justify-center shadow-lg'>
-                                {user.name.substring(0, 1)}
+                                {user.firstName.substring(0, 1)}
+                                {user.lastName.substring(0, 1)}
                             </div>
                             <div className='absolute -bottom-1 -right-1 h-6 w-6 bg-green-400 rounded-bufull border-2 border-white flex items-center justify-center'>
                                 <div className='h-2 w-2 bg-white rounded-full'></div>
@@ -30,7 +38,7 @@ const UserDashboard = () => {
                         <div className='flex flex-col gap-3'>
                             <div>
                                 <h1 className='font-bold text-2xl md:text-3xl text-gray-900 mb-1'>
-                                    Welcome back, {user.name}!
+                                    Welcome back, {user.firstName} {user.lastName}!
                                 </h1>
                                 <p className='text-gray-600 text-sm md:text-base'>
                                     Manage your orders, track purchases, and grow your network
@@ -75,10 +83,10 @@ const UserDashboard = () => {
                                 <input
                                     type="text"
                                     disabled
-                                    value={`${user.referral.link.substring(0, 25)}...`}
+                                    value={`${referralLink.substring(0, 25)}...`}
                                     className='text-gray-600 bg-gray-50 rounded-lg px-3 py-2 text-xs flex-1 border border-gray-200'
                                 />
-                                <Button variant='secondary' size="sm" className='px-3 py-2'>
+                                <Button onClick={copyReferralLink} variant='secondary' size="sm" className='px-3 py-2'>
                                     <Copy className='h-3 w-3' />
                                 </Button>
                             </div>
