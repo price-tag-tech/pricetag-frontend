@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authorize } from '../services/authService';
+import { authorize, signout } from '../services/authService';
+import { toast } from 'react-toastify';
 
 type AuthContextType = {
   user: any;
   isAuthenticated: boolean;
+  logout: () => void
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -13,7 +15,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const navigate = useNavigate();
   const [user, setUser] = useState()
 
-  const isAuthenticated = localStorage.getItem('session');
+  const isAuthenticated = !!localStorage.getItem('session');
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -28,9 +30,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [isAuthenticated]);
 
+  const logout = async () => {
+    const status = await signout()
+
+    if (status === "failed") {
+      toast.error("Failed to sign you out")
+      return;
+    }
+
+    toast.success("Signing you out")
+    navigate('/login')
+  }
+
   const value = {
     user: isAuthenticated ? user : null,
-    isAuthenticated: !!isAuthenticated,
+    isAuthenticated,
+    logout
   };
 
   return (

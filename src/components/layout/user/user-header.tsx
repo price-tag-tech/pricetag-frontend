@@ -5,6 +5,7 @@ import { useCartStore } from "../../../store/cart-store"
 import { LogOut, Menu, X } from "lucide-react"
 import { useState } from "react"
 import { userNavLinks } from "./user-sidenav"
+import { useAuth } from "../../../contexts/AuthContext"
 
 const UserHeader = () => {
     const menu = [
@@ -15,6 +16,7 @@ const UserHeader = () => {
 
     const { count: cartItemCount } = useCartStore()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { logout } = useAuth()
 
     return (
         <div className="flex items-center justify-between mb-6 px-4 md:px-8 py-4 bg-white shadow-sm border-b border-gray-100">
@@ -35,7 +37,7 @@ const UserHeader = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <Button size="sm" variant="outline" className="font-montserrat">
+                    <Button onClick={logout} size="sm" variant="outline" className="font-montserrat">
                         <LogOut className="h-4" />
                         Logout
                     </Button>
