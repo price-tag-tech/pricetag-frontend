@@ -13,7 +13,24 @@ const LatestOrderAndPurchase = () => {
             setLoading(true)
             try {
                 const data = await myOrders()
-                setOrders(data.data)
+                const flattenedPurchases = data.data?.flatMap((order: any) =>
+                    order.items.map((item: any) => ({
+                        id: item.id,
+                        orderId: order.id,
+                        order: item.product.name,
+                        imageUrl: item.product.imageUrl,
+                        productCode: item.product.id.substring(0, 8).toUpperCase(),
+                        quantity: item.quantity,
+                        amount: parseFloat(item.price) * item.quantity,
+                        store: 'Store',
+                        phoneNumber: order.user.phone,
+                        date: new Date(order.createdAt).toLocaleString(),
+                        status: order.status,
+                        paymentMethod: order.paymentMethod,
+                        total: parseFloat(order.total)
+                    }))
+                )
+                setOrders(flattenedPurchases?.slice(0, 5))
             } finally {
                 setLoading(false)
             }
@@ -24,9 +41,8 @@ const LatestOrderAndPurchase = () => {
         <div>
             <OrderAndPurchasesTable
                 title="Latest Orders & Purchases"
-                orders={orders || []}
+                orders={orders?.slice(0, 5) || []}
                 isLoading={loading}
-                isEmpty={!loading && orders?.length === 0}
             />
         </div>
     )
