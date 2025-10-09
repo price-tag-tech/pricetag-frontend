@@ -3,18 +3,18 @@ import LatestOrderAndPurchase from "../../../components/sections/user-dashboard/
 import Button from '../../../components/common/Button'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useProfileStore } from '../../../store/profile-store'
 import { toast } from 'react-toastify'
+import { useAuth } from '../../../contexts/AuthContext'
 
 const UserDashboard = () => {
-    const { user } = useProfileStore()
+    const { user } = useAuth()
     const [referralLink, setReferralLink] = useState('')
 
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
 
     useEffect(() => {
-        setReferralLink(`${window.location.origin}/${user.referralCode}`)
-    }, [user.referralCode])
+        setReferralLink(`${window.location.origin}/register?referral=${user?.referralCode}`)
+    }, [user])
 
     const copyReferralLink = () => {
         navigator.clipboard.writeText(referralLink)
@@ -28,8 +28,8 @@ const UserDashboard = () => {
                     <div className='flex items-center gap-6'>
                         <div className='relative'>
                             <div className='h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white font-bold text-2xl md:text-3xl flex items-center justify-center shadow-lg'>
-                                {user.firstName.substring(0, 1)}
-                                {user.lastName.substring(0, 1)}
+                                {user?.firstname.substring(0, 1)}
+                                {user?.lastname.substring(0, 1)}
                             </div>
                             <div className='absolute -bottom-1 -right-1 h-6 w-6 bg-green-400 rounded-bufull border-2 border-white flex items-center justify-center'>
                                 <div className='h-2 w-2 bg-white rounded-full'></div>
@@ -38,7 +38,7 @@ const UserDashboard = () => {
                         <div className='flex flex-col gap-3'>
                             <div>
                                 <h1 className='font-bold text-2xl md:text-3xl text-gray-900 mb-1'>
-                                    Welcome back, {user.firstName} {user.lastName}!
+                                    Welcome back, {user?.firstname} {user?.lastname}!
                                 </h1>
                                 <p className='text-gray-600 text-sm md:text-base'>
                                     Manage your orders, track purchases, and grow your network

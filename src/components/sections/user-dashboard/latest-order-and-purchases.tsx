@@ -1,15 +1,33 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import OrderAndPurchasesTable from '../../features/dashboard/order-and-purchase-table'
+import { useAuth } from '../../../contexts/AuthContext'
+import { myOrders } from '../../../services/orders'
 
 const LatestOrderAndPurchase = () => {
-    const orders = [
-        { id: 1, order: "Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot", imageUrl: "/assets/users/avatar-1.jpg", productCode: "000123", quantity: 2, amount: 3900, store: "PG Stores", phoneNumber: "09037494084", date: "3/18/2025 - 6:39 AM" },
-        { id: 2, order: "Quality Blue color Nike shoe with a fancy Light blue printing indicator on the foot", imageUrl: "/assets/users/avatar-2.jpg", productCode: "000123", quantity: 2, amount: 3900, store: "PG Stores", phoneNumber: "09037494084", date: "3/18/2025 - 6:39 AM" }
-    ]
+    const { user } = useAuth()
+    const [orders, setOrders] = useState<Record<string, any>[]>()
+    const [loading, setLoading] = useState(true)
 
+    useEffect(() => {
+        const fetchOrders = async () => {
+            setLoading(true)
+            try {
+                const data = await myOrders()
+                setOrders(data.data)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchOrders()
+    }, [user])
     return (
         <div>
-            <OrderAndPurchasesTable title="Latest Orders & Purchases" orders={orders} />
+            <OrderAndPurchasesTable
+                title="Latest Orders & Purchases"
+                orders={orders || []}
+                isLoading={loading}
+                isEmpty={!loading && orders?.length === 0}
+            />
         </div>
     )
 }
