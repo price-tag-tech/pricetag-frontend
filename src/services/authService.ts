@@ -91,6 +91,8 @@ export const loginService = async ({
     const res = await response.json();
 
     if (res.status === true || res.status === "success") {
+      localStorage.setItem("session", res?.accessToken.token);
+
       return {
         status: "success",
         code: 200,
@@ -115,4 +117,34 @@ export const loginService = async ({
       data: error,
     };
   }
+};
+
+export const authorize = async (): Promise<IResponse> => {
+  const token = localStorage.getItem("session");
+
+  const response = await fetch(`${API_URL}/v1/auth/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "Application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    credentials: "include",
+  });
+
+  const res = await response.json();
+
+  if (res.status) {
+    console.log({ user: res.data });
+    return {
+      status: "success",
+      code: 200,
+      data: res.data,
+    };
+  }
+
+  return {
+    status: "fail",
+    code: 400,
+    message: res.message || "Failed to fetch user data",
+  };
 };
