@@ -39,3 +39,10 @@ export interface Product {
 }
 
 // Add other interfaces as needed
+
+export interface IResponse {
+  status: "success" | "fail" | "error";
+  code: number;
+  message?: string;
+  data?: any;
+}

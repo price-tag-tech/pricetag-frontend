@@ -1,44 +1,25 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Crown, LineChart, PlusCircle, Sparkles, Star, Store, TrendingUp } from 'lucide-react'
 import Button from '../../../components/common/Button'
-
-// Dummy data for user's stores
-interface IStores {
-    id: string
-    name: string
-    category: string
-    sales: number
-    rating: number
-}
-
-const dummyStores: IStores[] = [
-    // {
-    //     id: 's1',
-    //     name: 'Nova Mart',
-    //     category: 'Electronics',
-    //     sales: 1280,
-    //     rating: 4.8,
-    // },
-    // {
-    //     id: 's2',
-    //     name: 'Urban Threads',
-    //     category: 'Fashion',
-    //     sales: 920,
-    //     rating: 4.6,
-    // },
-    // {
-    //     id: 's3',
-    //     name: 'GreenBite',
-    //     category: 'Groceries',
-    //     sales: 1540,
-    //     rating: 4.9,
-    // },
-]
+import { useAuth } from '../../../contexts/AuthContext'
+import { myStores } from '../../../services/storeService'
 
 const UserStores: React.FC = () => {
-    const stores = dummyStores
-    const hasStores = stores.length > 0
+    const [stores, setStores] = useState<Record<string, any>[]>([])
+
+    const { user } = useAuth()
+
+    useEffect(() => {
+        const fetchStores = async () => {
+            const data = await myStores()
+            setStores(data?.data || [])
+        }
+
+        if (user) {
+            fetchStores()
+        }
+    }, [user])
 
     return (
         <div className="relative">
@@ -51,7 +32,7 @@ const UserStores: React.FC = () => {
                     <p className="text-gray-600 mt-1 text-sm">Manage all your storefronts and jump into your business dashboard in one click.</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                    {hasStores && (
+                    {stores.length > 0 && (
                         <Button to="/subscription" variant="outline" className="bg-white border-brand-200 text-brand-700 group">
                             <Crown className="h-4 w-4 mr-2 text-brand-500 group-hover:text-white" /> Upgrade Plan
                         </Button>
@@ -62,7 +43,7 @@ const UserStores: React.FC = () => {
                 </div>
             </div>
 
-            {hasStores ? (
+            {stores.length > 0 ? (
                 <div className="space-y-8">
                     <div className="relative overflow-hidden rounded-2xl border bg-white shadow-sm">
                         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 p-6">

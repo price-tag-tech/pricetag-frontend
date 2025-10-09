@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { IResponse } from "../types"
 interface RegisterProp {
   firstName: string;
   lastName: string;
@@ -8,13 +8,6 @@ interface RegisterProp {
   password: string;
   confirmPassword: string;
   phoneNumber: string;
-}
-
-interface IResponse {
-  status: "success" | "fail" | "error";
-  code: number;
-  message?: string;
-  data?: any;
 }
 
 const API_URL =
