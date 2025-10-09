@@ -1,32 +1,36 @@
-import React, { createContext, useContext, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useProfileStore } from '../store/profile-store';
-import { User } from '../types';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { authorize } from '../services/authService';
 
-interface AuthContextType {
-  user: User | null;
+type AuthContextType = {
+  user: any;
   isAuthenticated: boolean;
-  role: string;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navigate = useNavigate();
-  const { user, role } = useProfileStore();
+  const [user, setUser] = useState()
 
-  const isAuthenticated = user && user.id;
+  const isAuthenticated = localStorage.getItem('session');
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
     }
-  }, [isAuthenticated, navigate]);
+    else {
+      const profileData = async () => {
+        const profile = await authorize()
+        setUser(profile.data)
+      }
+      profileData()
+    }
+  }, [isAuthenticated]);
 
-  const value: AuthContextType = {
-    user: isAuthenticated ? user as User : null,
+  const value = {
+    user: isAuthenticated ? user : null,
     isAuthenticated: !!isAuthenticated,
-    role,
   };
 
   return (
