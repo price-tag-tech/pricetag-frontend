@@ -1,31 +1,31 @@
-import { FC } from 'react'
+import { TextareaHTMLAttributes, forwardRef } from 'react'
 import { getTextSize, TextSize } from '../../../utils/get-text-size'
 
-interface TextareaProps {
-    className?: string
-    name?: string
-    placeholder?: string
-    value?: string
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     size?: TextSize
     change?: (value: string) => void
-    rows?: number
 }
 
-const Textarea: FC<TextareaProps> = (props) => {
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+    const { size, change, className, onChange, children, ...rest } = props
 
-    const sizeClass = getTextSize(props.size!, 'sm')
+    const sizeClass = getTextSize(size ?? 'sm')
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onChange?.(e)
+        change?.(e.target.value)
+    }
 
     return (
         <textarea
-            onChange={e => props.change?.(e.target.value)}
-            value={props.value}
-            placeholder={props.placeholder}
-            rows={props.rows || 4}
-            className={`py-4 p-4 border shadow-sm rounded w-full ${sizeClass} ${props.className}`}
+            ref={ref}
+            onChange={handleChange}
+            className={`py-4 p-4 border shadow-sm rounded w-full ${sizeClass} ${className}`}
+            {...rest}
         >
-            {props.value && props.value}
+            {children}
         </textarea>
     )
-}
+})
 
 export default Textarea
