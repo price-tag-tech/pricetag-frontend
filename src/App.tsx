@@ -118,7 +118,10 @@ function App() {
         <Route path="user">
           <Route element={<DashboardLayout />}>
             <Route index element={<UserDashboard />} />
-            <Route path="stores" element={<UserStores />} />
+            <Route path="stores">
+              <Route index element={<UserStores />} />
+              <Route path="add" element={<AddStorePage />} />
+            </Route>
             <Route path="orders-and-purchases" element={<OrdersAndPurchasesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="affiliate">
@@ -142,9 +145,6 @@ function App() {
             </Route>
             <Route path="services">
               <Route path="add" element={<AddServicePage />} />
-            </Route>
-            <Route path="store">
-              <Route path="add" element={<AddStorePage />} />
             </Route>
             <Route path="orders" element={<OrdersPage />} />
             <Route path="inventory" element={<InventoryPage />} />

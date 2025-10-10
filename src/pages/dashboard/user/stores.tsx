@@ -37,7 +37,7 @@ const UserStores: React.FC = () => {
                             <Crown className="h-4 w-4 mr-2 text-brand-500 group-hover:text-white" /> Upgrade Plan
                         </Button>
                     )}
-                    <Button to="/business/store/add" variant="primary">
+                    <Button to="/user/stores/add" variant="primary">
                         <PlusCircle className="h-4 w-4 mr-2" /> Create Store
                     </Button>
                 </div>
@@ -118,7 +118,7 @@ const UserStores: React.FC = () => {
                         <p className="mt-2 text-gray-600 text-sm">Create a stunning storefront in minutes and start selling. Pick a plan now or upgrade later.</p>
 
                         <div className="mt-6 flex flex-wrap gap-3">
-                            <Button to="/business/store/add" variant="primary">
+                            <Button to="/user/stores/add" variant="primary">
                                 <PlusCircle className="h-4 w-4 mr-2" /> Create your first store
                             </Button>
                             <Button to="/pricing" variant="outline" className="bg-white border-brand-200 text-brand-700 group">
