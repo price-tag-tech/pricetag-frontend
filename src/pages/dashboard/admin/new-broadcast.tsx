@@ -28,7 +28,7 @@ export default function NewBroadcast() {
                 <div className="flex flex-col gap-y-2">
                     <Label size="md">Subject</Label>
                     <Input
-                        type="text" size="md"
+                        type="text" textSize="md"
                         placeholder="e.g. New Feature Announcement"
                     />
                 </div>

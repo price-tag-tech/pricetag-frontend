@@ -5,17 +5,10 @@ import Select from '../../../components/ui/form/select'
 import Textarea from '../../../components/ui/form/textarea'
 import Input from '../../../components/ui/form/input'
 import Button from '../../../components/common/Button'
+import { useAuth } from '../../../contexts/AuthContext'
 
 const ProfilePage = () => {
-    const currentUser: ProfileData = {
-        id: 'me',
-        name: 'Prince Godson',
-        email: 'princegodson24@gmail.com',
-        phone: '09037494084',
-        country: 'NG',
-        stateCity: 'Lagos',
-        address: '',
-    }
+    const { user } = useAuth()
 
     const handleSubmit = (data: ProfileData) => {
         console.log('Save user profile:', data)
@@ -29,22 +22,22 @@ const ProfilePage = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div className='md:col-span-2'>
                     <Label title='Email Address' />
-                    <Input type='email' value="princegodson24@gmail.com" className='mt-2' />
+                    <Input type='email' value={user?.email} className='mt-2' />
                 </div>
 
                 <div>
                     <Label title='First Name' />
-                    <Input type="text" value="Prince" className='mt-2' />
+                    <Input type="text" value={user?.firsname} className='mt-2' />
                 </div>
 
                 <div>
                     <Label title='Last Name' />
-                    <Input type="text" value="Godson" className='mt-2' />
+                    <Input type="text" value={user?.lastname} className='mt-2' />
                 </div>
 
                 <div className='md:col-span-2'>
                     <Label title="Phone Number" />
-                    <Input type='text' value='09037494084' className='mt-2' />
+                    <Input type='text' value={user?.phone} className='mt-2' />
                 </div>
 
                 <div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { IResponse } from "../types";
 interface RegisterProp {
   firstName: string;
   lastName: string;
@@ -8,13 +8,6 @@ interface RegisterProp {
   password: string;
   confirmPassword: string;
   phoneNumber: string;
-}
-
-interface IResponse {
-  status: "success" | "fail" | "error";
-  code: number;
-  message?: string;
-  data?: any;
 }
 
 const API_URL =
@@ -147,4 +140,23 @@ export const authorize = async (): Promise<IResponse> => {
     code: 400,
     message: res.message || "Failed to fetch user data",
   };
+};
+
+export const signout = async (): Promise<"success" | "failed"> => {
+  try {
+    const response = await fetch(`${API_URL}/v1/auth/logout`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("session")}`,
+      },
+    });
+
+    if (!response.ok) throw new Error("Failed to sign you out");
+
+    localStorage.removeItem("session");
+
+    return "success";
+  } catch (error: any) {
+    return "failed";
+  }
 };

@@ -4,23 +4,11 @@ import FilterIcon from '../../ui/filter-icon'
 import { ChevronsLeft, ChevronsRight, Package, ShoppingCart } from 'lucide-react'
 
 type Order = Record<string, any>
-// {
-//     id: number,
-//     imageUrl: string,
-//     order: string,
-//     productCode: string,
-//     quantity: number,
-//     amount: number,
-//     store: string,
-//     phoneNumber: string,
-//     date: string,
-// }
 
 interface Props {
     title: string,
     orders: Order[],
-    isLoading?: boolean,
-    isEmpty?: boolean
+    isLoading?: boolean
 }
 
 const OrderAndPurchasesTable: FC<Props> = (props) => {
@@ -109,7 +97,7 @@ const OrderAndPurchasesTable: FC<Props> = (props) => {
                                     </div>
                                 </div>
                             ))
-                        ) : props.orders.length === 0 ? (
+                        ) : props.orders?.length === 0 ? (
                             // Empty State
                             <div className='text-center py-12'>
                                 <div className='mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4'>
@@ -184,7 +172,7 @@ const OrderAndPurchasesTable: FC<Props> = (props) => {
                     </div>
                 </div>
 
-                {!props.isLoading && !props.isEmpty && (
+                {!props.isLoading && props.orders?.length > 0 && (
                     <div className='flex justify-between items-center mt-6 pt-4 border-t border-gray-200'>
                         <p className='text-sm text-gray-600'>
                             Showing {props.orders.length} of {props.orders.length} orders

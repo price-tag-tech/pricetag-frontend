@@ -45,7 +45,7 @@ const EditModal: FC<Props> = (props) => {
                                     {type === "select" ? (
                                         <Select size='sm' change={val => handleChange(field, val)} name={label} options={options} />
                                     ) : (
-                                        <Input value={data[field]} size='sm' change={val => handleChange(field, val)} type={type} name={name} />
+                                        <Input value={data[field]} textSize='sm' change={val => handleChange(field, val)} type={type} name={name} />
                                     )}
                                 </div>
                             )
