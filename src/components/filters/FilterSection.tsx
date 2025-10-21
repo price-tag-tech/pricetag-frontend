@@ -16,30 +16,30 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   const [isExpanded, setIsExpanded] = useState<boolean>(defaultExpanded);
 
   return (
-    <div className="border-t border-[#e7e7e9]">
+    <div className="border-t border-gray-200 first:border-t-0">
       <button
-        className="w-full flex items-center justify-between px-4 py-3 focus:outline-none"
+        className="w-full flex items-center justify-between px-4 py-4 focus:outline-none group hover:bg-gray-50 transition-colors duration-200"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center">
-          <div className="mr-2">{icon}</div>
-          <span className="text-[#1f1f1f] font-['Poppins'] text-[.9375rem] font-medium">
+          <div className="mr-3 text-[#1dbf73]">{icon}</div>
+          <span className="text-gray-800 font-medium text-base">
             {title}
           </span>
         </div>
         <svg
-          width={10}
-          height={6}
-          viewBox="0 0 10 6"
+          width={12}
+          height={8}
+          viewBox="0 0 12 8"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+          className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
         >
-          <path d="M10 0V1.71429L5 6L0 1.71429V0L5 4.28571L10 0Z" fill="#444444" />
+          <path d="M6 8L0 0H12L6 8Z" fill="#444444" />
         </svg>
       </button>
 
-      {isExpanded && <div className="px-4 pb-4">{children}</div>}
+      {isExpanded && <div className="px-4 pb-5">{children}</div>}
     </div>
   );
 };
